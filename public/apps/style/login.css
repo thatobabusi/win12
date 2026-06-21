@@ -1,6 +1,6 @@
 /* Hide all desktop content except login screen initially */
 body > div:not(#loginback),
-#page,
+#desktop,
 #taskbar,
 .window,
 #orient-hint,
