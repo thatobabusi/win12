@@ -20,7 +20,7 @@ window.win12Native = {
   },
   async pingHost(host, ipv6 = false, onOutput = null) {
     if (!this.isTauri()) {
-      throw new Error("ping/ping6 仅在 桌面版 中支持使用");
+      throw new Error("ping/ping6 is only supported in desktop version");
     }
     if (!window.__TAURI__.event || !window.__TAURI__.event.listen) {
       throw new Error("Tauri event API is unavailable");

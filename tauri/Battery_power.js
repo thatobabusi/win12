@@ -14,7 +14,7 @@ function batteryLang(text, id) {
 function setBatteryUnavailableUI() {
   const el = document.querySelector("#battery");
   if (el) {
-    const title = batteryLang("无法获取电量", "battery.unavailable");
+    const title = batteryLang("Unable to get battery level", "battery.unavailable");
     el.setAttribute("win12_title", title);
     el.setAttribute("title", title);
   }
@@ -32,8 +32,8 @@ function updateBatteryUI(battery) {
 
   const roundedPercent = Math.round(percent);
   const batteryWidth = 18 * (percent / 100) + 5;
-  const chargingText = battery.charging ? batteryLang("，正在充电", "battery.charging") : "";
-  const title = `${batteryLang("电量：", "battery.level")}${roundedPercent}%${chargingText}`;
+  const chargingText = battery.charging ? batteryLang(", charging", "battery.charging") : "";
+  const title = `${batteryLang("Battery: ", "battery.level")}${roundedPercent}%${chargingText}`;
 
   el.setAttribute("win12_title", title);
   el.setAttribute("title", title);
@@ -53,10 +53,10 @@ async function fetchBattery() {
 
   try {
     const battery = await window.win12Native.getBatteryInfo();
-    console.log("电量信息：", battery);
+    console.log("Battery info:", battery);
     updateBatteryUI(battery);
   } catch (err) {
-    console.error("获取电池失败：", err);
+    console.error("Failed to get battery:", err);
     setBatteryUnavailableUI();
   }
 }

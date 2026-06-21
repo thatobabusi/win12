@@ -106,28 +106,28 @@ let taskmgrTasks = [
         name: 'Input Locales'
     },
     {
-        name: 'Windows 壳进程'
+        name: 'Windows Shell Process'
     },
     {
-        name: '本地安全权限服务'
+        name: 'Local Security Authority Service'
     },
     {
         name: 'Machine Debug Manager'
     },
     {
-        name: '多媒体支持进程'
+        name: 'Multimedia Support Process'
     },
     {
-        name: 'Windows 路由进程'
+        name: 'Windows Routing Process'
     },
     {
-        name: 'Windows 信使服务'
+        name: 'Windows Messenger Service'
     },
     {
-        name: 'Windows 计划任务'
+        name: 'Windows Task Scheduler'
     },
     {
-        name: '远程注册表服务'
+        name: 'Remote Registry Service'
     },
     {
         name: 'RPC Portmapper'
