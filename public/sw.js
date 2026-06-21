@@ -41,7 +41,7 @@ this.addEventListener('fetch', function (event) {
 const cacheNames = ['def'];
 let nochanges = [
   '/win12/fonts/',
-  '/win12/img/',
+  '/win12/assets/images/',
   '/win12/apps/icons/',
   '/win12/scripts/jq.min.js',
   '/win12/bootstrap-icons.css',
@@ -122,7 +122,7 @@ this.addEventListener('activate', update);
 // const cacheNames = ['def'];
 // let nochanges = [
 //   '/win12/fonts/',
-//   '/win12/img/',
+//   '/win12/assets/images/',
 //   '/win12/apps/icons/',
 //   '/win12/jq.min.js',
 //   '/win12/bootstrap-icons.css',
