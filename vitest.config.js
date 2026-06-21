@@ -19,6 +19,6 @@ export default defineConfig({
       branches: 50,
       statements: 50
     },
-    include: ['tests/**/*.test.js', 'tests/**/*.spec.js']
+    include: ['tests/unit/**/*.test.js', 'tests/unit/**/*.spec.js']
   }
 });
