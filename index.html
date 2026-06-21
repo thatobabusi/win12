@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 12 Online - Boot Sequence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #bootFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="bootFrame" src="boot.html"></iframe>
+
+    <script>
+        // Boot sequence: Show boot.html for ~5 seconds, then redirect to desktop
+        // Windows 12 boot animation simulates startup before the desktop loads
+        // Desktop.html has the built-in login screen
+
+        setTimeout(() => {
+            console.log('Boot sequence complete, loading desktop...');
+            window.location.href = 'desktop.html';
+        }, 5000); // 5 second boot animation
+    </script>
+</body>
+</html>
