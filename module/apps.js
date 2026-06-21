@@ -1148,7 +1148,7 @@ let apps = {
             }
             resetHtml += `</div>`;
             $('#win-explorer>.page>.main>.content>.view')[0].innerHTML = resetHtml;
-            $('#win-explorer>.path>.tit')[0].innerHTML = '<div class="icon" style="background-image: url(\'./apps/icons/explorer/thispc.svg\')"></div><div class="path"><div class="text" onclick="apps.explorer.reset()">${lang('This PC', 'explorer.thispc')}</div><div class="arrow">&gt;</div></div>';
+            $('#win-explorer>.path>.tit')[0].innerHTML = `<div class="icon" style="background-image: url('./apps/icons/explorer/thispc.svg')"></div><div class="path"><div class="text" onclick="apps.explorer.reset()">${lang('This PC', 'explorer.thispc')}</div><div class="arrow">&gt;</div></div>`;
             // if(rename){
             m_tab.rename('explorer', '<img src="./apps/icons/explorer/thispc.svg"> ' + lang('This PC', 'explorer.thispc'));
             apps.explorer.tabs[apps.explorer.now][2] = '';
