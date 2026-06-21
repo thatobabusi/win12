@@ -1,8 +1,7 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('i18n Translation System', () => {
   let mockI18nData;
-  let mockLangCode;
 
   beforeEach(() => {
     mockI18nData = {
@@ -21,7 +20,6 @@ describe('i18n Translation System', () => {
         'about.name': '关于 Win12 网页版'
       }
     };
-    mockLangCode = 'en';
   });
 
   describe('Language key validation', () => {
@@ -111,7 +109,7 @@ describe('i18n Translation System', () => {
   describe('Translation completeness', () => {
     it('should have no hardcoded Chinese in English strings', () => {
       const chineseRegex = /[一-鿿]/g;
-      Object.entries(mockI18nData.en).forEach(([key, value]) => {
+      Object.entries(mockI18nData.en).forEach(([_key, value]) => {
         const matches = value.match(chineseRegex);
         expect(matches).toBeNull();
       });

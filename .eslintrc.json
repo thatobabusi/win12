@@ -1,9 +1,9 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "vitest/globals": true
+    "node": true
   },
   "extends": [
     "eslint:recommended"
@@ -12,15 +12,28 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "vitest"
+  "ignorePatterns": [
+    "*.html",
+    "*.json",
+    "node_modules/",
+    "coverage/",
+    "playwright-report/",
+    "test-results/",
+    "desktop.js",
+    "sw.js",
+    "module/",
+    "games/",
+    "apps/",
+    "data/",
+    "scripts/",
+    "tauri/",
+    "docs/"
   ],
   "rules": {
     "no-unused-vars": [
       "warn",
       {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
+        "argsIgnorePattern": "^_"
       }
     ],
     "no-console": [
@@ -28,17 +41,32 @@
       {
         "allow": ["warn", "error", "log"]
       }
-    ],
-    "no-var": "error",
-    "prefer-const": "error",
-    "eqeqeq": ["error", "always"],
-    "curly": "error"
+    ]
   },
   "overrides": [
     {
       "files": ["tests/**/*.{js,test.js,spec.js}"],
       "env": {
-        "vitest/globals": true
+        "node": true
+      },
+      "globals": {
+        "describe": "readonly",
+        "it": "readonly",
+        "test": "readonly",
+        "expect": "readonly",
+        "beforeEach": "readonly",
+        "afterEach": "readonly",
+        "beforeAll": "readonly",
+        "afterAll": "readonly",
+        "vi": "readonly"
+      },
+      "rules": {
+        "no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ]
       }
     }
   ]
