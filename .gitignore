@@ -7,3 +7,22 @@ web.config
 # Temporary setup files
 module/asw-*
 readme/asw-*
+
+# Node modules
+node_modules/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Playwright
+playwright-report/
+test-results/
+.auth/
+
+# Dependency lock files (optional - uncomment if using npm)
+# package-lock.json
+
+# Environment
+.env
+.env.local
