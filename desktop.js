@@ -511,7 +511,7 @@ const cms = {
     'winx': [
         arg => {
             if ($('#start-menu').hasClass('show')) {
-                return ['<i class="bi bi-box-arrow-in-down"></i> 关闭开始菜单', 'hide_startmenu()'];
+                return ['<i class="bi bi-box-arrow-in-down"></i> Close Start Menu', 'hide_startmenu()'];
             }
             else {
                 return ['<i class="bi bi-box-arrow-in-up"></i> Open开始菜单', `$('#start-btn').addClass('show');
@@ -530,7 +530,7 @@ const cms = {
         $('#search-input').focus();}, 0);`],
         '<hr>',
         ['<i class="bi bi-power"></i> 关机', 'window.location=\'shutdown.html\''],
-        ['<i class="bi bi-arrow-counterclockwise"></i> 重启', 'window.location=\'reload.html\''],
+        ['<i class="bi bi-arrow-counterclockwise"></i> Restart', 'window.location=\'reload.html\''],
     ],
     'smapp': [
         arg => {
@@ -639,7 +639,7 @@ const cms = {
         },
         arg => {
             if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-file-earmark-arrow-down"></i> 粘贴', 'apps.explorer.paste($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'新建文件夹\',type=\'files\')'];
+                return ['<i class="bi bi-file-earmark-arrow-down"></i> Paste', 'apps.explorer.paste($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'新建文件夹\',type=\'files\')'];
             return 'null';
         },
         arg => {
@@ -659,20 +659,20 @@ const cms = {
     ],
     'explorer.tab': [
         arg => {
-            return ['<i class="bi bi-x"></i> 关闭标签页', `m_tab.close('explorer',${arg})`];
+            return ['<i class="bi bi-x"></i> Close Tab', `m_tab.close('explorer',${arg})`];
         }
     ],
     'edge.tab': [
         arg => {
-            return ['<i class="bi bi-pencil-square"></i> 命名标签页', `apps.edge.c_rename(${arg})`];
+            return ['<i class="bi bi-pencil-square"></i> Rename Tab', `apps.edge.c_rename(${arg})`];
         },
         arg => {
-            return ['<i class="bi bi-x"></i> 关闭标签页', `m_tab.close('edge',${arg})`];
+            return ['<i class="bi bi-x"></i> Close Tab', `m_tab.close('edge',${arg})`];
         }
     ],
     'taskmgr.processes': [
         arg => {
-            return ['<i class="bi bi-x"></i> 结束任务', `apps.taskmgr.taskkill('${arg}')`];
+            return ['<i class="bi bi-x"></i> End Task', `apps.taskmgr.taskkill('${arg}')`];
         }
     ]
 };
@@ -768,7 +768,7 @@ const dps = {
     ],
     'notepad.edit': [
         ['<i class="bi bi-files"></i> 复制 <info>Ctrl+C</info>', 'document.execCommand(\'copy\')'],
-        ['<i class="bi bi-clipboard"></i> 粘贴 <info>Ctrl+V</info>', 'document.execCommand(\'paste\')'],
+        ['<i class="bi bi-clipboard"></i> Paste <info>Ctrl+V</info>', 'document.execCommand(\'paste\')'],
         ['<i class="bi bi-scissors"></i> 剪切 <info>Ctrl+X</info>', 'document.execCommand(\'cut\')'],
         '<hr>',
         ['<i class="bi bi-arrow-return-left"></i> 撤销 <info>Ctrl+Z</info>', 'document.execCommand(\'undo\')'],
@@ -1004,7 +1004,7 @@ const nts = {
     'shutdown': {
         cnt: `
         <p class="tit">即将注销你的登录</p>
-        <p>Windows 将在 114514 分钟后关闭。</p>`,
+        <p>Windows will shut down in 114514 minutes.</p>`,
         btn: [
             { type: 'main', text: lang('Close', 'close'), js: 'closenotice();' }
         ]
@@ -1012,11 +1012,11 @@ const nts = {
     'setting.update': {
         cnt: `
             <p class="tit">更新已就绪</p>
-            <p>请重启电脑以应用更新</p>
+            <p>请Restart电脑以应用更新</p>
         `,
         btn: [
-            { type: 'main', text: '立即重启', js: 'location.href = `./reload.html`;' },
-            { type: 'detail', text: '稍后重启', js: 'closenotice();' }
+            { type: 'main', text: '立即Restart', js: 'location.href = `./reload.html`;' },
+            { type: 'detail', text: '稍后Restart', js: 'closenotice();' }
         ]
     },
     'recognition': {
@@ -1582,7 +1582,7 @@ Windows 目录：C:\\Windows
                 $('#win-terminal>.text-cmd').append(`
 shutdown [-s] [-r] [-f] [-a] [-t time]
 -s:关机
--r:重启
+-r:Restart
 -f:注销
 -a:取消之前的操作
 -t time:指定在 time 秒 后操作
@@ -1598,7 +1598,7 @@ shutdown [-s] [-r] [-f] [-a] [-t time]
             // 初始化参数变量
             let hasTime = false;      // 是否指定了时间
             let timeValue = 0;        // 延迟时间值（秒）
-            let operation = '';       // 操作类型（关机/重启/注销）
+            let operation = '';       // 操作类型（关机/Restart/注销）
             let forceMode = false;    // 是否为强制模式（不显示通知）
 
             // 检查并解析时间参数 (-t 或 /t)
@@ -1656,7 +1656,7 @@ shutdown [-s] [-r] [-f] [-a] [-t time]
                 operation = 'shutdown';    // 关机
             }
             else if (cmds.includes('-r') || cmds.includes('/r')) {
-                operation = 'restart';     // 重启
+                operation = 'restart';     // Restart
             }
             else if (cmds.includes('-f') || cmds.includes('/f')) {
                 operation = 'logoff';      // 注销
@@ -1674,8 +1674,8 @@ shutdown [-s] [-r] [-f] [-a] [-t time]
             // 准备通知内容
             nts['shutdown'] = {
                 cnt: `
-                <p class="tit">即将${operation === 'restart' ? '重启' : operation === 'logoff' ? '注销' : '关机'}</p>
-                <p>Windows 将在 ${timeString} 后${operation === 'restart' ? '重启' : operation === 'logoff' ? '注销' : '关机'}。</p>`,
+                <p class="tit">即将${operation === 'restart' ? 'Restart' : operation === 'logoff' ? '注销' : '关机'}</p>
+                <p>Windows will shut down in ${timeString} 后${operation === 'restart' ? 'Restart' : operation === 'logoff' ? '注销' : '关机'}。</p>`,
                 btn: [
                     { type: 'main', text: lang('Close', 'close'), js: 'closenotice();' },
                 ]
@@ -2828,7 +2828,7 @@ function setupGlobalKey() {
 
         //按下徽标键
         if (event.metaKey && event.ctrlKey) {
-            //Open或关闭开始菜单
+            //Open或Close Start Menu
             openDockWidget("start-menu");
         }
     });
