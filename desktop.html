@@ -5,7 +5,7 @@
 	此项目绝不附属于微软，且不应与微软操作系统或产品混淆，
 	这也不是 Windows365 cloud PC
 	本项目中微软、Windows 和其他示范产品是微软公司的商标 -->
-<!--------禁止格式化本文档！ -------->
+<!--------禁止格式化本Documents！ -------->
 <!-----No Formatting the Code! ---->
 <!-- 编辑前务必认真阅读，有不合规范之 pr，视情况或要求整改或不予合并 -->
 <!-- 开发须知：
@@ -13,7 +13,7 @@
 旨为统一代码风格，增加其可读性，也为他人开发便利，以下内容所有开发者、贡献者务必严格遵守，感谢配合！
 
 对于 HTML 文件的规定
-1. 绝对严格禁止格式化本 html 文档，否则坚决拒绝合并
+1. 绝对严格禁止格式化本 html Documents，否则坚决拒绝合并
 2. 对于 id 属性，除必须外一般不使用 id 属性，尽量以 class 替代。若必须使用，切记：
 	1. 若非 body 下直接的子元素，原则上不设置 id。若确需，参见下方条目 3
 	2. 所取 id 必须有意义，且不可有与其他 id 重复者
@@ -54,9 +54,9 @@ openapp(name) 打开窗口，用法：openapp('程序（窗口）名称')，
 	程序（窗口）名称就是想要显示的窗口.window 的另一个类名，须设置 apps[程序（窗口）名称] 对象和 init 方法
 shownotice(name) 打开提示窗口，用法：shownotice('提示内容标识符')，
 	参考 desktop.js 中 nts 中的写法，需提前在 nts 对象中定义提示内容及其标识符
-closenotice() 与前者配合，关闭提示窗口
+closenotice() 与前者配合，Close提示窗口
 showwin(name) 显示窗口，除特殊用途外不建议使用，用法：showwin('窗口名称')，注意：窗口名称就是想要显示的窗口.window 的另一个类名
-hidewin(name) 关闭窗口，用法：hidewin('程序（窗口）名称')，注意：程序（窗口）名称就是想要显示的窗口.window 的另一个类名
+hidewin(name) Close窗口，用法：hidewin('程序（窗口）名称')，注意：程序（窗口）名称就是想要显示的窗口.window 的另一个类名
 toggletheme() 切换主题
 
 关于 App 添加：
@@ -188,7 +188,7 @@ toggletheme() 切换主题
 		<div class="user"></div>
 		<div class="name">Administrator</div>
 		
-		<input id="login-password" type="password" autocomplete="current-password" placeholder="密码" onkeydown="if(event.keyCode==13){win12LoginSubmit();}">
+		<input id="login-password" type="password" autocomplete="current-password" placeholder="Password" onkeydown="if(event.keyCode==13){win12LoginSubmit();}">
 		<div id="login-error"></div>
 		<div id="login" onclick="win12LoginSubmit();" data-i18n="login">
 			登录
@@ -212,8 +212,8 @@ toggletheme() 切换主题
 				else
 					localStorage.setItem('lang','en-US');
 				window.location.href='';">Default language of the browser</a>
-			<a class="a zh-CN" onclick="localStorage.setItem('lang','zh-CN');window.location.href='';">简体中文</a>
-			<a class="a zh-TW" onclick="localStorage.setItem('lang','zh-TW');window.location.href='';">繁體中文</a>
+			<a class="a zh-CN" onclick="localStorage.setItem('lang','zh-CN');window.location.href='';">Simplified Chinese</a>
+			<a class="a zh-TW" onclick="localStorage.setItem('lang','zh-TW');window.location.href='';">Traditional Chinese</a>
 			<a class="a en" onclick="localStorage.setItem('lang','en');window.location.href='';">English</a>
 		</list>
 		<a class="power" onclick="$(this).addClass('show')">
@@ -225,8 +225,8 @@ toggletheme() 切换主题
 				}
 				window.location.href='';
 				" win12_title="Toggle language"></i> -->
-			<i class="bi bi-power" onclick="setTimeout(() => {window.location='shutdown.html';}, 200);" win12_title="关机"></i>
-			<i class="bi bi-arrow-counterclockwise" onclick="setTimeout(() => {window.location='reload.html';}, 200);" win12_title="重启"></i>
+			<i class="bi bi-power" onclick="setTimeout(() => {window.location='shutdown.html';}, 200);" win12_title="Shutdown"></i>
+			<i class="bi bi-arrow-counterclockwise" onclick="setTimeout(() => {window.location='reload.html';}, 200);" win12_title="Restart"></i>
 		</a>
 	</div>
 
@@ -263,27 +263,27 @@ toggletheme() 切换主题
 					<img src="icon/setting.svg">
 					<p data-i18n="setting.name">Settings</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['explorer', '文件资源管理器'])" onclick="openapp('explorer');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['explorer', 'File Explorer'])" onclick="openapp('explorer');hide_startmenu();">
 					<img src="icon/explorer.svg">
 					<p data-i18n="explorer.name">File Explorer</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['calc', '计算器'])" onclick="openapp('calc');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['calc', 'Calculator'])" onclick="openapp('calc');hide_startmenu();">
 					<img src="icon/calc.svg">
 					<p data-i18n="calc.name">Calculator</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['run', '运行'])" onclick="openapp('run');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['run', 'Run'])" onclick="openapp('run');hide_startmenu();">
 					<img src="icon/run.svg">
 					<p data-i18n="run.name">Run</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['about', '关于 Win12 网页版'])" onclick="openapp('about');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['about', 'About Win12 Online'])" onclick="openapp('about');hide_startmenu();">
 					<img src="icon/about.svg">
 					<p data-i18n="about.name">About Win12 Online</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['taskmgr', '任务管理器'])" onclick="openapp('taskmgr');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['taskmgr', 'Task Manager'])" onclick="openapp('taskmgr');hide_startmenu();">
 					<img src="icon/taskmgr.png">
 					<p data-i18n="taskmgr.name">Task Manager</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['notepad', '记事本'])" onclick="openapp('notepad');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['notepad', 'Notepad'])" onclick="openapp('notepad');hide_startmenu();">
 					<img src="icon/notepad.svg">
 					<p data-i18n="notepad.name">Notepad</p>
 				</a>
@@ -299,7 +299,7 @@ toggletheme() 切换主题
 					<img src="icon/msstore.svg">
 					<p>Microsoft Store</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['camera', '相机'])" onclick="apps.camera.notice();hide_startmenu()">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['camera', 'Camera'])" onclick="apps.camera.notice();hide_startmenu()">
 					<img src="icon/camera.svg">
 					<p data-i18n="camera.name">Camera</p>
 				</a>
@@ -311,7 +311,7 @@ toggletheme() 切换主题
 					<img src="icon/python.svg">
 					<p>Python 3.11.2</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['terminal', '终端'])" onclick="openapp('terminal');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['terminal', 'Terminal'])" onclick="openapp('terminal');hide_startmenu();">
 					<img src="icon/terminal.svg">
 					<p data-i18n="terminal.name">Terminal</p>
 				</a>
@@ -319,7 +319,7 @@ toggletheme() 切换主题
 					<img src="icon/whiteboard.svg">
 					<p>Whiteboard</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['defender', 'Windows 安全中心'])" onclick="openapp('defender');hide_startmenu();">
+				<a oncontextmenu="return showcm(event, 'smlapp', ['defender', 'Windows Security'])" onclick="openapp('defender');hide_startmenu();">
 					<img src="icon/defender.svg">
 					<p data-i18n="defender.name">Windows Security</p>
 				</a>
@@ -354,17 +354,17 @@ toggletheme() 切换主题
 			<div class="row1">
 				<div class="folder">
 					<a class="a sm-app enable"
-						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/文档');hide_startmenu();">
+						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/Documents');hide_startmenu();">
 						<img src="icon/folder/docs.svg">
 						<p data-i18n="folder.doc">Documents</p>
 					</a>
 					<a class="a sm-app enable"
-						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/图片');hide_startmenu();">
+						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/Pictures');hide_startmenu();">
 						<img src="icon/folder/pics.svg">
 						<p data-i18n="folder.pic">Pictures</p>
 					</a>
 					<a class="a sm-app enable"
-						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/音乐');hide_startmenu();">
+						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/Music');hide_startmenu();">
 						<img src="icon/folder/music.svg">
 						<p data-i18n="folder.mus">Music</p>
 					</a>
@@ -373,7 +373,7 @@ toggletheme() 切换主题
 					<p style="font-size: 30px;margin: 12px 5px 2px 0;line-height:1;" class="time">12:00</p>
 					<p class="date" style="opacity: 0.5;">星期一，2368 年 13 月 34 日</p>
 					<div class="pw">
-						<a class="a btn btn-icon big" win12_title="切换全屏" onclick="
+						<a class="a btn btn-icon big" win12_title="Toggle Fullscreen" onclick="
 							if($('#start-menu').hasClass('max')){
 								$('#start-menu>#startmenu-r>.row1>.tool>.pw>.btn-icon.big').html('<i class=\'bi bi-arrows-angle-expand\'></i>');
 								$('#start-menu').removeClass('max');
@@ -385,12 +385,12 @@ toggletheme() 切换主题
 						">
 							<i class="bi bi-arrows-angle-expand"></i>
 						</a>
-						<a class="a btn btn-icon power" win12_title="电源" onclick="$(this).toggleClass('show');">
+						<a class="a btn btn-icon power" win12_title="Power" onclick="$(this).toggleClass('show');">
 							<span class="bi bi-power"></span>
 							<i class="bi bi-power" onclick="$('#start-menu').removeClass('show');
-							setTimeout(() => {window.location='shutdown.html';},200);" win12_title="关机"></i>
+							setTimeout(() => {window.location='shutdown.html';},200);" win12_title="Shutdown"></i>
 							<i class="bi bi-arrow-counterclockwise" onclick="$('#start-menu').removeClass('show');
-							setTimeout(() => {window.location='reload.html';},200);" win12_title="重启"></i>
+							setTimeout(() => {window.location='reload.html';},200);" win12_title="Restart"></i>
 						</a>
 						
 					</div>
@@ -405,11 +405,11 @@ toggletheme() 切换主题
 					</div>
 				</div>
 				<div class="apps">
-					<a class="a sm-app enable calc" onclick="openapp('calc');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['calc','计算器'])">
+					<a class="a sm-app enable calc" onclick="openapp('calc');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['calc','Calculator'])">
 						<img src="icon/calc.svg">
 						<p data-i18n="calc.name">Calculator</p>
 					</a>
-					<a class="a sm-app enable camera" onclick="apps.camera.notice();hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['camera', '相机'])">
+					<a class="a sm-app enable camera" onclick="apps.camera.notice();hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['camera', 'Camera'])">
 						<img src="icon/camera.svg">
 						<p data-i18n="camera.name">Camera</p>
 					</a>
@@ -417,15 +417,15 @@ toggletheme() 切换主题
 						<img src="icon/feedback.svg">
 						<p data-i18n="feedback.name">Feedback Hub</p>
 					</a>
-					<a class="a sm-app enable about" onclick="openapp('about');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['about','关于 Win12 网页版'])">
+					<a class="a sm-app enable about" onclick="openapp('about');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['about','About Win12 Online'])">
 						<img src="icon/about.svg">
 						<p data-i18n="about.name">About Win12 Online</p>
 					</a>
-					<a class="a sm-app enable explorer" onclick="openapp('explorer');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['explorer','文件资源管理器'])">
+					<a class="a sm-app enable explorer" onclick="openapp('explorer');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['explorer','File Explorer'])">
 						<img src="icon/explorer.svg">
 						<p data-i18n="explorer.name">File Explorer</p>
 					</a>
-					<a class="a sm-app enable notepad" onclick="openapp('notepad');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['notepad','记事本'])">
+					<a class="a sm-app enable notepad" onclick="openapp('notepad');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['notepad','Notepad'])">
 						<img src="icon/notepad.svg">
 						<p data-i18n="notepad.name">Notepad</p>
 					</a>
@@ -433,7 +433,7 @@ toggletheme() 切换主题
 						<img src="icon/setting.svg">
 						<p data-i18n="setting.name">Settings </p>
 					</a>
-					<a class="a sm-app enable defender" onclick="openapp('defender');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['defender','Windows 安全中心'])">
+					<a class="a sm-app enable defender" onclick="openapp('defender');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['defender','Windows Security'])">
 						<img src="icon/defender.svg">
 						<p data-i18n="defender.name">Windows Security</p>
 					</a>
@@ -449,7 +449,7 @@ toggletheme() 切换主题
 						<img src="icon/logo.svg">
 						<p>Windows 12</p>
 					</a>
-					<a class="a sm-app enable terminal" onclick="openapp('terminal');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['terminal','终端'])">
+					<a class="a sm-app enable terminal" onclick="openapp('terminal');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['terminal','Terminal'])">
 						<img src="icon/terminal.svg">
 						<p data-i18n="terminal.name">Terminal</p>
 					</a>
@@ -1338,7 +1338,7 @@ toggletheme() 切换主题
 								<icon>&#xE771;</icon><div><p>个性化</p><p>个性化你的系统</p></div><i class="bi bi-chevron-right"></i></a>
 							<a onclick="$('#win-setting>.menu>list>a.safe')[0].click();">
 								<icon>&#xE7EF;</icon><div><p>隐私与安全性</p><p>管理你的信息和数据</p></div><i class="bi bi-chevron-right"></i></a>
-							<!-- <a><icon><i class="bi bi-power"></i></icon><div><p>电源和电池</p><p></p></div><i class="bi bi-chevron-right"></i></a>
+							<!-- <a><icon><i class="bi bi-power"></i></icon><div><p>Power和电池</p><p></p></div><i class="bi bi-chevron-right"></i></a>
 							<a><icon><i class="bi bi-window-desktop"></i></icon><div><p>任务栏</p><p></p></div><i class="bi bi-chevron-right"></i></a>
 							<a><icon><i class="bi bi-camera"></i></icon><div><p>摄像头</p><p></p></div><i class="bi bi-chevron-right"></i></a> -->
 						</div>
@@ -1378,7 +1378,7 @@ toggletheme() 切换主题
 						<a><icon></icon><div><p>声音</p><p>声音级别、输入、输出、声音设备</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p>通知</p><p>来自系统和应用的警报</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p>专注</p><p>通知、自动规则</p></div><i class="bi bi-chevron-right"></i></a>
-						<a><icon class="b">&#xF186;</icon><div><p>电源和电池</p><p>睡眠、电池使用情况、节电模式</p></div><i class="bi bi-chevron-right"></i></a>
+						<a><icon class="b">&#xF186;</icon><div><p>Power和电池</p><p>睡眠、电池使用情况、节电模式</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p>存储</p><p>存储空间、驱动器、配置规则</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p>多任务处理</p><p>贴靠窗口、桌面、任务切换</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p>激活</p><p>激活状态、订阅、产品密钥</p></div><i class="bi bi-chevron-right"></i></a>
@@ -1507,7 +1507,7 @@ toggletheme() 切换主题
 								<a class="a checkbox" id="sys_setting_5" onclick="sys_setting[4]=1-sys_setting[4];$(this).toggleClass('checked',sys_setting[4]);$(':root').toggleClass('mica',sys_setting[4]);saveDesktop();"></a>
 							</div>
 						</div>
-						<div><icon><i class="bi bi-music-note-beamed"></i></icon><div><p data-i18n="setting.psnl.startup-sound">开机音乐</p><p data-i18n="setting.psnl.startup-sound-dt">是否启用开机音乐</p></div>
+						<div><icon><i class="bi bi-music-note-beamed"></i></icon><div><p data-i18n="setting.psnl.startup-sound">开机Music</p><p data-i18n="setting.psnl.startup-sound-dt">是否启用开机Music</p></div>
 							<div class="alr">
 								<a class="a checkbox checked" id="sys_setting_6" onclick="sys_setting[5]=1-sys_setting[5];document.getElementById('sys_setting_6').setAttribute('class', 'a checkbox' + (sys_setting[5]?' checked':''));saveDesktop();"></a>
 							</div>
@@ -1548,15 +1548,15 @@ toggletheme() 切换主题
 					<div class="setting-list">
 						<a><icon></icon><div><p>您的微软账户</p><p>订阅、账单等</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p>您的账户信息</p><p>电子邮件、日历和联系人使用的帐户</p></div><i class="bi bi-chevron-right"></i></a>
-						<a class="dp sign-in-options" onclick="$('.dp.sign-in-options').toggleClass('show');win12RefreshPasswordSettingStatus();"><icon></icon><div><p>登录选项</p><p>Windows Hello、安全密钥、密码、动态锁</p></div><i class="bi bi-chevron-down"></i></a>
+						<a class="dp sign-in-options" onclick="$('.dp.sign-in-options').toggleClass('show');win12RefreshPasswordSettingStatus();"><icon></icon><div><p>登录选项</p><p>Windows Hello、安全密钥、Password、动态锁</p></div><i class="bi bi-chevron-down"></i></a>
 						<div class="dp sign-in-options">
 							<div class="setting-password">
 								<div>
-									<p>密码</p>
+									<p>Password</p>
 									<p id="setting-password-status">加载中</p>
 								</div>
-								<input id="setting-password-current" class="input" type="password" autocomplete="current-password" placeholder="当前密码">
-								<input id="setting-password-new" class="input" type="password" autocomplete="new-password" placeholder="新密码" onkeydown="if(event.keyCode==13){win12SetLoginPassword();}">
+								<input id="setting-password-current" class="input" type="password" autocomplete="current-password" placeholder="当前Password">
+								<input id="setting-password-new" class="input" type="password" autocomplete="new-password" placeholder="新Password" onkeydown="if(event.keyCode==13){win12SetLoginPassword();}">
 								<a id="setting-password-submit" class="a button" onclick="win12SetLoginPassword();">保存</a>
 							</div>
 						</div>
@@ -1652,7 +1652,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/explorer.svg" class="icon">
-			<!-- <p style="width:min-content">文件资源管理器</p> -->
+			<!-- <p style="width:min-content">File Explorer</p> -->
 			<div class="tabs">
 			</div>
 			<div>
@@ -1704,7 +1704,7 @@ toggletheme() 切换主题
 				<div class="main">
 					<div class="tool micaalt">
 						<a class="a b t act"
-							onclick="apps.explorer.add($('#win-explorer>.path>.tit')[0].dataset.path,'新建文本文档.txt')"><img
+							onclick="apps.explorer.add($('#win-explorer>.path>.tit')[0].dataset.path,'新建文本Documents.txt')"><img
 								src="apps/icons/explorer/tool-new.png"><span data-i18n="explorer.new">新建</span></a>
 						<div class="hr"></div>
 						<a class="a b act"><img src="apps/icons/explorer/tool-cut.png"></a>
@@ -1889,7 +1889,7 @@ toggletheme() 切换主题
 						&emsp;&emsp;- 开始菜单全屏时不再是圆角<br>
 						&emsp;&emsp;- 开始菜单取消全屏时动画变为正确<br>
 						&emsp;&emsp;- 贡献者显示框更符合 Win12<br>
-						&emsp;&emsp;- 修改计算器按下按钮动效<br>
+						&emsp;&emsp;- 修改Calculator按下按钮动效<br>
 						&emsp;&emsp;- Copilot 消息卡片支持跟随系统主题色<br>
 						&emsp;&emsp;- 修改打开窗口与右键菜单动效<br>
 						&emsp;&emsp;- 打开弹窗时背景遮罩改为渐显渐隐<br>
@@ -1898,7 +1898,7 @@ toggletheme() 切换主题
 						&emsp;&emsp;-(更新来自 @tjy-gitnub)<br>
 						&emsp;&emsp;-重写设置的主页<br>
 						&emsp;&emsp;-调整优化设置外观与操作<br>
-						&emsp;&emsp;-重写关机和重启界面<br>
+						&emsp;&emsp;-重写Shutdown和Restart界面<br>
 						&emsp;&emsp;-适配更多平滑圆角<br>
 						&emsp;&emsp;-细节优化和修复<br>
 					</p></details>
@@ -1920,12 +1920,12 @@ toggletheme() 切换主题
 						&emsp;&emsp;-(更新来自 @HHCL233)<br>
 						&emsp;&emsp;-添加 Word 应用<br>
 					</p></details>
-					<details><summary><span>v10.0.7</span> 优化关机后行为和设置的部分 UI</summary><p>
+					<details><summary><span>v10.0.7</span> 优化Shutdown后行为和设置的部分 UI</summary><p>
 						&emsp;&emsp;-(更新来自 @HHCL233)<br>
 						&emsp;&emsp;-删除设置中 Windows 更新页的重复元素<br>
 						&emsp;&emsp;-设置中系统页的重命名支持打开重命名窗口<br>
 						&emsp;&emsp;-关于 Windows12 应用的侧边栏更改为类似设置侧边栏的样式<br>
-						&emsp;&emsp;-支持在关机后按下回车重新开机<br>
+						&emsp;&emsp;-支持在Shutdown后按下回车重新开机<br>
 					</p></details>
 					<details><summary><span>v10.0.6</span> 优化部分应用</summary><p>
 						&emsp;&emsp;-(更新来自 @HHCL233)<br>
@@ -1933,8 +1933,8 @@ toggletheme() 切换主题
 						&emsp;&emsp;-更改“扫雷”名称并重新分类至 Web 应用下<br>
 						&emsp;&emsp;-将“开始菜单”的“Copilot”点击行为和任务栏“Copilot”点击行为一致 (不会再打开窗口化 Copilot)<br>
 						&emsp;&emsp;-支持通过“开始菜单”的“更多”查看推荐项目<br>
-						&emsp;&emsp;-“任务管理器”的进程占用颜色现在会跟随主题色<br>
-						&emsp;&emsp;-“文件资源管理器”中不可打开的侧边栏项现在打开会显示“你没有权限打开此文件”<br>
+						&emsp;&emsp;-“Task Manager”的进程占用颜色现在会跟随主题色<br>
+						&emsp;&emsp;-“File Explorer”中不可打开的侧边栏项现在打开会显示“你没有权限打开此文件”<br>
 					</p></details>
 					<details><summary><span>v10.0.5.1</span>  灾难性错误修复</summary><p>
 						&emsp;&emsp;-(更新来自 @tangyuan0821)<br>
@@ -1950,18 +1950,18 @@ toggletheme() 切换主题
 						&emsp;&emsp;-(更新来自 @kjmjh)<br>
 				        &emsp;&emsp;-更新了扫雷<br>
 				    </p></details>
-					<details><summary><span>v10.0.3</span> 终端彩蛋命令和系统工具</summary><p>
-						&emsp;&emsp;-添加新的终端命令：cls、help、hello、matrix、snow、dance、systeminfo 和 starwars<br>
+					<details><summary><span>v10.0.3</span> Terminal彩蛋命令和系统工具</summary><p>
+						&emsp;&emsp;-添加新的Terminal命令：cls、help、hello、matrix、snow、dance、systeminfo 和 starwars<br>
 						&emsp;&emsp;-增加互动和趣味彩蛋效果，如黑客帝国代码雨、下雪、窗口跳舞和星球大战文字滚动<br>
-						&emsp;&emsp;-添加系统信息显示和基础终端实用工具<br>
-						&emsp;&emsp;-增强终端用户体验，添加趣味和实用命令<br>
+						&emsp;&emsp;-添加系统信息显示和基础Terminal实用工具<br>
+						&emsp;&emsp;-增强Terminal用户体验，添加趣味和实用命令<br>
 					</p></details>
 					<details><summary><span>v10.0.2</span> 细节优化和修复</summary><p>
 						&emsp;&emsp;-(更新来自 @tjy-gitnub)<br>
 						&emsp;&emsp;-Copilot 每日对话限制<br>
 						&emsp;&emsp;-细节优化和修复<br>
 					</p></details>
-					<details><summary><span>v10.0.1</span> 繁體中文語言支持</summary><p>
+					<details><summary><span>v10.0.1</span> Traditional Chinese語言支持</summary><p>
 						&emsp;&emsp;-(更新来自 @tjy-gitnub)<br>
 						&emsp;&emsp;-添加繁中語言支持<br>
 						&emsp;&emsp;-细节优化和修复<br>
@@ -1969,7 +1969,7 @@ toggletheme() 切换主题
 					</p></details>
 					<details><summary><span>v10.0.0</span> AI Copilot 回归，走向国际化</summary><p>
 						&emsp;&emsp;-(更新来自 @NB-Group)<br>
-						&emsp;&emsp;重启 AI Copilot！<br>
+						&emsp;&emsp;Restart AI Copilot！<br>
 						&emsp;&emsp;-(更新来自 @tjy-gitnub)<br>
 						&emsp;&emsp;-部分英语翻译<br>
 						&emsp;&emsp;-细节优化和修复<br>
@@ -1987,7 +1987,7 @@ toggletheme() 切换主题
 						&emsp;&emsp;-标签页的移动端适配问题<br>
 						&emsp;&emsp;-天气小组件 api 失效的问题<br>
 						&emsp;&emsp;新增和完善部分内容<br>
-						&emsp;&emsp;-鼠标中键关闭标签页<br>
+						&emsp;&emsp;-鼠标中键Close标签页<br>
 						&emsp;&emsp;-登录界面的美化<br>
 						&emsp;&emsp;-细节优化和修复<br>
 					</p></details>
@@ -2017,7 +2017,7 @@ toggletheme() 切换主题
 					</p></details>
 					<details><summary><span>v8.0.0</span> Microsoft Store</summary><p>
 						&emsp;&emsp;-(更新来自@User782Tec)<br>
-						&emsp;&emsp;-使用 svg 矢量图优化了任务管理器性能图表的绘制<br>
+						&emsp;&emsp;-使用 svg 矢量图优化了Task Manager性能图表的绘制<br>
 						&emsp;&emsp;-加入了半成品的 Microsoft Store<br>
 						&emsp;&emsp;-其他一些细微之处的更新</p>
 					</p></details>
@@ -2448,7 +2448,7 @@ toggletheme() 切换主题
 				</div>
 			</div>
 			<p data-i18n="camera.notice.txt">
-				&emsp;&emsp;欢迎使用“相机”应用！本应用由 User782Tec 开发，tjy-gitnub 维护。<br />
+				&emsp;&emsp;欢迎使用“Camera”应用！本应用由 User782Tec 开发，tjy-gitnub 维护。<br />
 				&emsp;&emsp;在使用中，本应用将会获取访问您摄像头的权限（用于进行拍摄照片等操作）。本应用不会收集、上传或分享您的任何个人信息与拍摄内容，所有照片仅保存在您设备本地。<br />
 				&emsp;&emsp;若您不同意上述协议，将无法使用本应用。
 			</p>
@@ -2473,7 +2473,7 @@ toggletheme() 切换主题
 		<div class="content" id="win-run">
 			<div class="top">
 				<div class="icon"></div>
-				<div class="text" data-i18n="run.txt">Windows 将根据你所输入的名称，为你打开相应的程序、文件夹、文档或 Internet 资源。</div>
+				<div class="text" data-i18n="run.txt">Windows 将根据你所输入的名称，为你打开相应的程序、文件夹、Documents或 Internet 资源。</div>
 			</div>
 			<div class="open">
 				<div class="prompt" data-i18n="run.open">打开：</div>
@@ -2666,7 +2666,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/files/picture.png" class="icon">
-			<p data-i18n="imgviewer.name">图片查看器</p>
+			<p data-i18n="imgviewer.name">Pictures查看器</p>
 			<div>
 				<a class="a wbtg red" onclick="apps.imgviewer.close()"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('imgviewer')"><i class="bi bi-app"></i></a>
@@ -2763,7 +2763,7 @@ toggletheme() 切换主题
 								<th class="align-right" onclick="apps.taskmgr.changeSort(this.childNodes[0], 'cpu');"><i class="bi bi-chevron-down"></i><div class="value">11.4%</div><span data-i18n="taskmgr.processes.cpu">CPU</span></th>
 								<th class="align-right" onclick="apps.taskmgr.changeSort(this.childNodes[0], 'memory');"><i class="bi"></i><div class="value">11.4%</div><span data-i18n="taskmgr.processes.memory">内存</span></th>
 								<th class="align-right" onclick="apps.taskmgr.changeSort(this.childNodes[0], 'disk');"><i class="bi"></i><div class="value">11.4%</div><span data-i18n="taskmgr.processes.disk">硬盘</span></th>
-								<th class="power" data-i18n="taskmgr.processes.power">电源使用情况</th>
+								<th class="power" data-i18n="taskmgr.processes.power">Power使用情况</th>
 							</tr>
 						</thead>
 						<tbody class="view">
@@ -2871,7 +2871,7 @@ toggletheme() 切换主题
 										<div><div class="top">进程</div><div class="value">1145</div></div>
 										<div><div class="top">线程</div><div class="value">114514</div></div>
 										<div><div class="top">句柄</div><div class="value">114514191918</div></div>
-										<div><div class="top">正常运行时间</div><div class="value">0:11:45:14</div></div>
+										<div><div class="top">正常Run时间</div><div class="value">0:11:45:14</div></div>
 									</div>
 									<div class="right">
 										<table>
@@ -3166,16 +3166,16 @@ toggletheme() 切换主题
 					<div class="card-list">
 						<div class="card" onclick="apps.word.new()">
 							<img border="0" src="img/office-newfile.png">
-							<p>空白文档</p>
+							<p>空白Documents</p>
 						</div>
 						<div class="card" onclick="apps.word.new()">
 							<img border="0" src="img/office-newfile.png">
-							<p>空白文档</p>
+							<p>空白Documents</p>
 						</div>
 					</div>
 					<h3>最近</h3>
 					<input type="text" class="input" placeholder="搜索">
-					<p>你最近尚未打开任何文档。</p>
+					<p>你最近尚未打开任何Documents。</p>
 				</div>
 			</div>
 		</div>

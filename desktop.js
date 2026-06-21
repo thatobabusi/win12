@@ -444,7 +444,7 @@ var use_mic_voice = true;
 const cms = {
     'save-bar': [
         arg => {
-            return ['<i class="bi bi-window-x"></i> 移除', `removeEdgeSaveUrl('${arg}')`];
+            return ['<i class="bi bi-window-x"></i> Remove', `removeEdgeSaveUrl('${arg}')`];
         }
     ],
     'titbar': [
@@ -453,10 +453,10 @@ const cms = {
                 return 'null';
             }
             if ($('.window.' + arg).hasClass('max')) {
-                return ['<i class="bi bi-window-stack"></i> ' + lang('还原', 'window.restore'), `maxwin('${arg}')`];
+                return ['<i class="bi bi-window-stack"></i> ' + lang('Restore', 'window.restore'), `maxwin('${arg}')`];
             }
             else {
-                return ['<i class="bi bi-window-fullscreen"></i> ' + lang('最大化', 'window.max'), `maxwin('${arg}')`];
+                return ['<i class="bi bi-window-fullscreen"></i> ' + lang('Maximize', 'window.max'), `maxwin('${arg}')`];
             }
         },
         arg => {
@@ -464,7 +464,7 @@ const cms = {
                 return 'null';
             }
             else {
-                return ['<i class="bi bi-window-dash"></i> ' + lang('最小化', 'window.min'), `minwin('${arg}')`];
+                return ['<i class="bi bi-window-dash"></i> ' + lang('Minimize', 'window.min'), `minwin('${arg}')`];
             }
         },
         arg => {
@@ -482,9 +482,9 @@ const cms = {
         }
     ],
     'desktop': [
-        [`<i class="bi bi-arrow-clockwise"></i> ${lang('刷新', 'refresh')} <info>F5</info>`, '$(\'#desktop\').css(\'opacity\',\'0\');setTimeout(()=>{$(\'#desktop\').css(\'opacity\',\'1\');},100);setIcon();'],
-        ['<i class="bi bi-circle-square"></i> ' + lang('切换主题', 'desktop.tgltheme'), 'toggletheme()'],
-        `<a onmousedown="window.open(\'https://github.com/win12-online/win12\',\'_blank\');" win12_title="https://github.com/win12-online/win12" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)"><i class="bi bi-github"></i> ${lang('在 Github 中查看此项目', 'desktop.vogithub')}</a>`,
+        [`<i class="bi bi-arrow-clockwise"></i> ${lang('Refresh', 'refresh')} <info>F5</info>`, '$(\'#desktop\').css(\'opacity\',\'0\');setTimeout(()=>{$(\'#desktop\').css(\'opacity\',\'1\');},100);setIcon();'],
+        ['<i class="bi bi-circle-square"></i> ' + lang('Toggle Theme', 'desktop.tgltheme'), 'toggletheme()'],
+        `<a onmousedown="window.open(\'https://github.com/win12-online/win12\',\'_blank\');" win12_title="https://github.com/win12-online/win12" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)"><i class="bi bi-github"></i> ${lang('View this project on Github', 'desktop.vogithub')}</a>`,
         arg => {
             if (edit_mode) {
                 return ['<i class="bi bi-pencil"></i> ' + lang('退出编辑模式', 'desktop.exitedit'), 'editMode();'];
@@ -494,15 +494,15 @@ const cms = {
             }
         },
         ['<i class="bi bi-info-circle"></i> ' + lang('关于 Win12 网页版', 'about.name'), '$(\'#win-about>.about\').addClass(\'show\');$(\'#win-about>.update\').removeClass(\'show\');openapp(\'about\');if($(\'.window.about\').hasClass(\'min\'))minwin(\'about\');'],
-        ['<i class="bi bi-brush"></i> ' + lang('个性化', 'psnl'), 'openapp(\'setting\');$(\'#win-setting > div.menu > list > a.enable.appearance\')[0].click()']
+        ['<i class="bi bi-brush"></i> ' + lang('Personalization', 'psnl'), 'openapp(\'setting\');$(\'#win-setting > div.menu > list > a.enable.appearance\')[0].click()']
     ],
     'desktop.icon': [
         arg => {
-            return ['<i class="bi bi-folder2-open"></i> ' + lang('打开', 'open'), 'openapp(`' + arg[0] + '`)'];
+            return ['<i class="bi bi-folder2-open"></i> ' + lang('Open', 'open'), 'openapp(`' + arg[0] + '`)'];
         },
         arg => {
             if (arg[1] >= 0) {
-                return ['<i class="bi bi-trash3"></i> ' + lang('删除', 'del'), 'desktopItem.splice(' + (arg[1]) + ', 1);saveDesktop();setIcon();addMenu();'];
+                return ['<i class="bi bi-trash3"></i> ' + lang('Delete', 'del'), 'desktopItem.splice(' + (arg[1]) + ', 1);saveDesktop();setIcon();addMenu();'];
             } else {
                 return 'null';
             }
@@ -514,7 +514,7 @@ const cms = {
                 return ['<i class="bi bi-box-arrow-in-down"></i> 关闭开始菜单', 'hide_startmenu()'];
             }
             else {
-                return ['<i class="bi bi-box-arrow-in-up"></i> 打开开始菜单', `$('#start-btn').addClass('show');
+                return ['<i class="bi bi-box-arrow-in-up"></i> Open开始菜单', `$('#start-btn').addClass('show');
                 if($('#search-win').hasClass('show')){$('#search-btn').removeClass('show');
                 $('#search-win').removeClass('show');setTimeout(() => {$('#search-win').removeClass('show-begin');
                 }, 200);}$('#start-menu').addClass('show-begin');setTimeout(() => {$('#start-menu').addClass('show');
@@ -534,7 +534,7 @@ const cms = {
     ],
     'smapp': [
         arg => {
-            return ['<i class="bi bi-window"></i> ' + lang('打开', 'open'), `openapp('${arg[0]}');hide_startmenu();`];
+            return ['<i class="bi bi-window"></i> ' + lang('Open', 'open'), `openapp('${arg[0]}');hide_startmenu();`];
         },
         arg => {
             return ['<i class="bi bi-link-45deg"></i> 在桌面创建链接', 'var s=`<div class=\'b\' ondblclick=openapp(\'' + arg[0] + '\')  ontouchstart=openapp(\'' + arg[0] + '\') appname=\'' + arg[0] + '\'><img src=\'icon/' + geticon(arg[0]) + '\'><p>' + arg[1] + '</p></div>`;$(\'#desktop\').append(s);desktopItem[desktopItem.length]=s;addMenu();saveDesktop();'];
@@ -545,7 +545,7 @@ const cms = {
     ],
     'smlapp': [
         arg => {
-            return ['<i class="bi bi-window"></i> ' + lang('打开', 'open'), `openapp('${arg[0]}');hide_startmenu();`];
+            return ['<i class="bi bi-window"></i> ' + lang('Open', 'open'), `openapp('${arg[0]}');hide_startmenu();`];
         },
         arg => {
             return ['<i class="bi bi-link-45deg"></i> 在桌面创建链接', 'var s=`<div class=\'b\' ondblclick=openapp(\'' + arg[0] + '\')  ontouchstart=openapp(\'' + arg[0] + '\') appname=\'' + arg[0] + '\'><img src=\'icon/' + geticon(arg[0]) + '\'><p>' + arg[1] + '</p></div>`;$(\'#desktop\').append(s);desktopItem[desktopItem.length]=s;addMenu();saveDesktop();'];
@@ -562,14 +562,14 @@ const cms = {
     ],
     'explorer.folder': [
         arg => {
-            return ['<i class="bi bi-folder2-open"></i> ' + lang('打开', 'open'), `apps.explorer.goto('${arg}')`];
+            return ['<i class="bi bi-folder2-open"></i> ' + lang('Open', 'open'), `apps.explorer.goto('${arg}')`];
         },
         arg => {
-            return ['<i class="bi bi-arrow-up-right-square"></i> 在新标签页中打开', `apps.explorer.newtab('${arg}');`];
+            return ['<i class="bi bi-arrow-up-right-square"></i> 在新标签页中Open', `apps.explorer.newtab('${arg}');`];
         },
         arg => {
             if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-trash3"></i> ' + lang('删除', 'del'), `apps.explorer.del('${arg}')`];
+                return ['<i class="bi bi-trash3"></i> ' + lang('Delete', 'del'), `apps.explorer.del('${arg}')`];
             return 'null';
         },
         arg => {
@@ -592,7 +592,7 @@ const cms = {
         arg => {
             const drive = arg.split('/')[0];
             if (apps.explorer.mounts[drive])
-                return ['<i class="bi bi-folder2-open"></i> ' + lang('打开','open'), `apps.explorer.openMountedFile('${arg}')`];
+                return ['<i class="bi bi-folder2-open"></i> ' + lang('Open','open'), `apps.explorer.openMountedFile('${arg}')`];
             // Find the file's command from virtual FS
             var pathl = arg.split('/'), fileName = pathl.pop();
             var tmp = apps.explorer.path;
@@ -603,12 +603,12 @@ const cms = {
                 if (f && f.command) fileCmd = f.command;
             }
             if (fileCmd)
-                return ['<i class="bi bi-folder2-open"></i> ' + lang('打开','open'), fileCmd];
+                return ['<i class="bi bi-folder2-open"></i> ' + lang('Open','open'), fileCmd];
             return 'null';
         },
         arg => {
             if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-trash3"></i> ' + lang('删除', 'del'), `apps.explorer.del('${arg}')`];
+                return ['<i class="bi bi-trash3"></i> ' + lang('Delete', 'del'), `apps.explorer.del('${arg}')`];
             return 'null';
         },
         arg => {
@@ -644,8 +644,8 @@ const cms = {
         },
         arg => {
             if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-arrow-clockwise"></i> 刷新', 'apps.explorer.goto($(\'#win-explorer>.path>.tit\')[0].dataset.path, false)'];
-            return ['<i class="bi bi-arrow-clockwise"></i> 刷新', 'apps.explorer.reset()'];
+                return ['<i class="bi bi-arrow-clockwise"></i> Refresh', 'apps.explorer.goto($(\'#win-explorer>.path>.tit\')[0].dataset.path, false)'];
+            return ['<i class="bi bi-arrow-clockwise"></i> Refresh', 'apps.explorer.reset()'];
         },
         arg => {
             if ($('#win-explorer>.path>.tit>.path>div.text').length <= 1 && apps.explorer.fsApiSupported)
@@ -654,7 +654,7 @@ const cms = {
         }
     ],
     'explorer.mounted': [
-        arg => ['<i class="bi bi-folder2-open"></i> 打开', `apps.explorer.goto('${arg}')`],
+        arg => ['<i class="bi bi-folder2-open"></i> Open', `apps.explorer.goto('${arg}')`],
         arg => ['<i class="bi bi-eject"></i> 卸载', `apps.explorer.unmountDrive('${arg}')`]
     ],
     'explorer.tab': [
@@ -780,7 +780,7 @@ const dps = {
         ['<i class="bi bi-type-h2"></i> 插入次标题', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<h2>H2</h2>\''],
         ['<i class="bi bi-type-h3"></i> 插入副标题', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<h3>H3</h3>\''],
         ['<i class="bi bi-type-underline"></i> 插入下划线', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<u>U</u>\''],
-        ['<i class="bi bi-type-strikethrough"></i> 插入删除线', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<s>S</s>\''],
+        ['<i class="bi bi-type-strikethrough"></i> 插入Delete线', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<s>S</s>\''],
         ['<i class="bi bi-type-italic"></i> 插入斜体字', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<i>I</i>\''],
         ['<i class="bi bi-type-bold"></i> 插入加粗字', 'hidedp(true);$(\'#win-notepad>.text-box\')[0].innerHTML+=\'<b>B</b>\''],
         '<hr>',
@@ -911,7 +911,7 @@ const nts = {
         cnt: `<p class="tit">${lang('反馈', 'nts.feedback.name')}</p>
             <p>${lang('我们非常注重用户的体验与反馈', 'nts.feedback.txt')}</p>
             <list class="new">
-                <a class="a" onclick="window.open('https://github.com/win12-online/win12/issues','_blank');" win12_title="在浏览器新窗口打开链接" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)">${lang('在 github 上提交 issue (需要 github 账户)', 'nts.feedback.github')}</a>
+                <a class="a" onclick="window.open('https://github.com/win12-online/win12/issues','_blank');" win12_title="在浏览器新窗口Open链接" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)">${lang('在 github 上提交 issue (需要 github 账户)', 'nts.feedback.github')}</a>
             </list>`,
         btn: [
             { type: 'main', text: lang(lang('关闭', 'close'), 'close'), js: 'closenotice();' },
@@ -994,8 +994,8 @@ const nts = {
              <p>你可以使用此 AI 助手帮助你更快地完成工作，此 AI 助手基于 Deepseek v4 pro 模型 (有人用 Win12 工作？)<br>
             也请适当使用，不要谈论敏感、违规话题，<br>请有身为一个人类最基本的道德底线。<br>根据相关法律法规，我们不向欧盟用户提供服务。<br>
             在此特别感谢云智 api(yunzhiapi.cn) 为本项目提供赞助！</p>
-            <a class="a" onclick="window.open('https://status.win12.tech/status/win12/','_blank');" win12_title="在浏览器新窗口打开链接">状态监测</a><br>
-            <a class="a" onclick="window.open('https://www.yunzhiapi.cn/','_blank');" win12_title="在浏览器新窗口打开链接">云智 API 官网</a>
+            <a class="a" onclick="window.open('https://status.win12.tech/status/win12/','_blank');" win12_title="在浏览器新窗口Open链接">状态监测</a><br>
+            <a class="a" onclick="window.open('https://www.yunzhiapi.cn/','_blank');" win12_title="在浏览器新窗口Open链接">云智 API 官网</a>
         `,
         btn: [
             { type: 'main', text: lang('确定', 'ok'), js: 'closenotice();' },
@@ -1058,7 +1058,7 @@ const nts = {
     },
     'no-files-permission': {
         cnt: lang(`<p class="tit">文件资源管理器</p>
-            <p>你没有权限打开该文件，请向文件的所有者或管理员申请权限<br /></p>`),
+            <p>你没有权限Open该文件，请向文件的所有者或管理员申请权限<br /></p>`),
         btn: [
             { type: 'main', text: lang(lang('关闭', 'close'), 'close'), js: 'closenotice();' }
         ]
@@ -1076,7 +1076,7 @@ const nts = {
     },
     'no-files-permission': {
         cnt: lang(`<p class="tit">文件资源管理器</p>
-            <p>你没有权限打开该文件，请向文件的所有者或管理员申请权限<br /></p>`),
+            <p>你没有权限Open该文件，请向文件的所有者或管理员申请权限<br /></p>`),
         btn: [
             { type: 'main', text: lang(lang('关闭', 'close'), 'close'), js: 'closenotice();' }
         ]
@@ -1093,8 +1093,8 @@ const nts = {
         ]
     },
     'word-open-files-fail': {
-        cnt: lang(`<p class="tit">打开失败</p>
-            <p>Word在试图打开文件时遇到错误<br /></p>`),
+        cnt: lang(`<p class="tit">Open失败</p>
+            <p>Word在试图Open文件时遇到错误<br /></p>`),
         btn: [
             { type: 'main', text: lang(lang('关闭', 'close'), 'close'), js: 'closenotice();' }
         ]
@@ -1114,8 +1114,8 @@ const nts = {
         ]
     },
     'unsupported-file-type': {
-        cnt: lang(`<p class="tit">无法打开文件</p>
-            <p>没有找到可以打开此类型文件的应用程序。</p>`, 'nts.unsupported-file-type'),
+        cnt: lang(`<p class="tit">无法Open文件</p>
+            <p>没有找到可以Open此类型文件的应用程序。</p>`, 'nts.unsupported-file-type'),
         btn: [
             { type: 'main', text: lang('确定', 'ok'), js: 'closenotice();' }
         ]
@@ -1235,13 +1235,13 @@ function runcmd(cmd, inTerminal = false) {
 ${lang('有关某个命令的详细信息，请键入 HELP 命令名', 'terminal.help.title')}
 DIR             ${lang('显示目录中的文件和子目录列表', 'terminal.help.dir')}
 LS              ${lang('显示目录中的文件和子目录列表 (DIR 的别名)', 'terminal.help.ls')}
-DEL             ${lang('删除一个或多个文件', 'terminal.help.del')}
+DEL             ${lang('Delete一个或多个文件', 'terminal.help.del')}
 CD              ${lang('显示当前目录的名称或将其更改', 'terminal.help.cd')}
 CLS             ${lang('清除屏幕', 'terminal.help.cls')}
 HELP            ${lang('提供 Windows 命令的帮助信息', 'terminal.help.help')}
 SYSTEMINFO      ${lang('显示系统信息', 'terminal.help.systeminfo')}
 SHUTDOWN        ${lang('关闭计算机', 'terminal.help.shutdown')}
-CMD             ${lang('打开新的命令提示符窗口', 'terminal.help.cmd')}
+CMD             ${lang('Open新的命令提示符窗口', 'terminal.help.cmd')}
 EXIT            ${lang('退出命令提示符程序', 'terminal.help.exit')}
 
 ${lang('彩蛋命令：', 'terminal.help.easter')}
@@ -1279,7 +1279,7 @@ ${new Date().toLocaleDateString()}  ${new Date().toLocaleTimeString()}    <DIR> 
         if (inTerminal) {
             const fileName = cmd.substring(4).trim();
             if (fileName.toLowerCase().includes('system32') || fileName.toLowerCase().includes('windows') || fileName.toLowerCase().includes('program files')) {
-                $('#win-terminal>.text-cmd').append(`错误: 拒绝访问。无法删除系统关键文件或目录。\n`);
+                $('#win-terminal>.text-cmd').append(`错误: 拒绝访问。无法Delete系统关键文件或目录。\n`);
             } else {
                 $('#win-terminal>.text-cmd').append(`找不到文件 "${fileName}"。\n`);
             }
@@ -1355,7 +1355,7 @@ ${new Date().toLocaleDateString()}  ${new Date().toLocaleTimeString()}    <DIR> 
                 matrixContainer.html(matrixContent.join('\n'));
             }, 100);
 
-            // 10 秒后停止动画并移除容器
+            // 10 秒后停止动画并Remove容器
             setTimeout(() => {
                 clearInterval(interval);
                 setTimeout(() => {
@@ -1573,7 +1573,7 @@ Windows 目录：C:\\Windows
         if ((cmds[0] == 'shutdown') || (cmds[0] == 'shutdown.exe')) {
             // 如果没有参数，显示帮助信息
             if (cmds.length == 1) {
-                // 如果不是在终端中执行，则打开终端
+                // 如果不是在终端中执行，则Open终端
                 if (!inTerminal) {
                     openapp('terminal');
                     $('#win-terminal').html('<pre class="text-cmd"></pre>');
@@ -1890,13 +1890,13 @@ let copilot = {
 你可以在回答中发送对系统的一些指令。指令一并放在回答的最后。
 多条指令用换行隔开。系统收到指令后会执行，且对用户隐藏回答后的指令。
 你不能在对用户说的话的中间中提到、引用指令。绝不能要求用户执行指令。
-1.指令"{openapp appid}";用来打开某个应用，用在下文"应用的功能介绍"中匹配的 id 代替其中的"appid"
-2.指令"{openurl url}";用来在 Microsoft Edge 浏览器中打开某个 URL，其中用 URL 地址代替"url"。当用户想要搜索某内容，请用 bing 搜索
-3.指令"{feedback copilot}";打开 ai 助手反馈界面，用于用户想对 ai 助手的功能提出反馈时帮助他打开
-4.指令"{feedback win12}";打开反馈中心，当用户希望对除 ai 助手外的其他系统功能发送反馈时，帮他打开反馈中心
+1.指令"{openapp appid}";用来Open某个应用，用在下文"应用的功能介绍"中匹配的 id 代替其中的"appid"
+2.指令"{openurl url}";用来在 Microsoft Edge 浏览器中Open某个 URL，其中用 URL 地址代替"url"。当用户想要搜索某内容，请用 bing 搜索
+3.指令"{feedback copilot}";Open ai 助手反馈界面，用于用户想对 ai 助手的功能提出反馈时帮助他Open
+4.指令"{feedback win12}";Open反馈中心，当用户希望对除 ai 助手外的其他系统功能发送反馈时，帮他Open反馈中心
 5.指令"{settheme theme}";用于切换系统的深色、浅色模式，区别于主题。用"light"表浅色，"dark"表深色，来替换其中的"theme"
 如下是应用的功能介绍。
-1.设置:id 为 setting;在个性化页面中可以设置系统的主题，主题色，是否启用动画、阴影、圆角、云母 mica 效果和为所有窗口开启亚克力透明效果。
+1.设置:id 为 setting;在Personalization页面中可以设置系统的主题，主题色，是否启用动画、阴影、圆角、云母 mica 效果和为所有窗口开启亚克力透明效果。
 2.关于 win12 网页版:id 为 about;简介页面有关于本项目的介绍说明与贡献者信息，更新记录页面有本项目的各版本更新记录。
 3.Microsoft Edge 浏览器:id 为 edge;一个浏览器。因为浏览器跨域的限制，部分网页会显示"拒绝连接"而无法访问。
 4.计算器:id 为 calc;
@@ -1909,11 +1909,11 @@ let copilot = {
 1.Windows 12 网页版是一个开源项目，由谭景元原创，使用 Html,css,js，在网络上模拟、创新操作系统
 2.项目的 Github 地址是 https://github.com/tjy-gitnub/win12
 3.此项目使用 EPL v2.0 开源许可
-当用户询问更多项目信息时，帮助他打开"关于 win12 网页版"应用。
-比如这时用户说"请打开计算器"，你会回答什么？`
+当用户询问更多项目信息时，帮助他Open"关于 win12 网页版"应用。
+比如这时用户说"请Open计算器"，你会回答什么？`
     }, {
         role: 'assistant',
-        content: '好的呢，现在我就帮您打开计算器。\n{openapp calc}'
+        content: '好的呢，现在我就帮您Open计算器。\n{openapp calc}'
     }, {
         role: 'system',
         content: '很好。现在开始与用户对话。'
@@ -1924,8 +1924,8 @@ let copilot = {
     init: () => {
         $('#copilot>.chat').html('');
         $('#copilot>.chat').append(`<div class="line system"><p class="text">本 AI 助手基于 Deepseek v4 pro 模型，目前支持以下操作：<br>
-        1.打开除 webapp 外大多应用<br>
-        2.在浏览器中打开链接、搜索<br>
+        1.Open除 webapp 外大多应用<br>
+        2.在浏览器中Open链接、搜索<br>
         3.发送对系统、AI 助手的反馈<br>
         4.切换颜色主题<br>
         需注意，根据相关法律法规，我们不向欧盟用户提供服务。</p></div>`);
@@ -1983,16 +1983,16 @@ let copilot = {
                             let t = i.match(/(?<={openapp ).+(?=})/)[0];
                             if ($('.window.' + t).length) {
                                 openapp(t);
-                                rt = rt.replace(i, `<div class="action"><p class="tit">打开应用</p><p class="detail">${$(`.window.${t}>.titbar>p`).text()}</p></div>`);
+                                rt = rt.replace(i, `<div class="action"><p class="tit">Open应用</p><p class="detail">${$(`.window.${t}>.titbar>p`).text()}</p></div>`);
                             } else {
-                                rt = rt.replace(i, `<div class="action"><p class="tit">打开应用</p><p class="detail">${t} <span style="color:red">(AI 理解力较差，见谅)</span></p></div>`);
+                                rt = rt.replace(i, `<div class="action"><p class="tit">Open应用</p><p class="detail">${t} <span style="color:red">(AI 理解力较差，见谅)</span></p></div>`);
                             }
                         } else if (/{openurl .+?}/.test(i)) {
                             const t = i.match(/(?<={openurl ).+(?=})/)[0];
                             openapp('edge');
                             apps.edge.newtab();
                             apps.edge.goto(t);
-                            rt = rt.replace(i, `<div class="action"><p class="tit">打开 URL</p><p class="detail">${decodeHtml(t)}</p></div>`);
+                            rt = rt.replace(i, `<div class="action"><p class="tit">Open URL</p><p class="detail">${decodeHtml(t)}</p></div>`);
                         } else if (/{feedback win12}/.test(i)) {
                             shownotice('feedback');
                             rt = rt.replace(i, '<div class="action"><p class="tit">反馈</p><p class="detail">关于 Windows 12 网页版</p></div>');
@@ -2142,11 +2142,11 @@ function openapp(name) {
 
 
 
-//打开任务栏按钮对应的 widget
+//Open任务栏按钮对应的 widget
 
 // 为啥管这个东西叫 widget?? from stsc
 function openDockWidget(name) {
-    if (name == "start-menu") { //打开开始菜单
+    if (name == "start-menu") { //Open开始菜单
         if ($('#start-menu').hasClass('show')) {
             hide_startmenu();
         }
@@ -2166,7 +2166,7 @@ function openDockWidget(name) {
                 $('#start-menu').addClass('show');
             }, 0);
         }
-    } else if (name == "search-win") {   //打开搜索框
+    } else if (name == "search-win") {   //Open搜索框
         if ($('#search-win').hasClass('show')) {
             $('#search-btn').removeClass('show');
             $('#search-win').removeClass('show');
@@ -2184,7 +2184,7 @@ function openDockWidget(name) {
             }, 0);
             $('#search-input').focus();
         }
-    } else if (name == "widgets") {  //打开小组件
+    } else if (name == "widgets") {  //Open小组件
         if ($('#widgets').hasClass('show')) {
             hide_widgets();
         }
@@ -2204,7 +2204,7 @@ function openDockWidget(name) {
             }, 0);
             $('#widgets-input').focus();
         }
-    } else if (name == "control") {  //打开控制
+    } else if (name == "control") {  //Open控制
         if ($('#control').hasClass('show')) {
             $('#control').removeClass('show');
             setTimeout(() => {
@@ -2225,7 +2225,7 @@ function openDockWidget(name) {
                 $('#control').addClass('show');
             }, 0);
         }
-    } else if (name == "datebox") {  //打开时间框
+    } else if (name == "datebox") {  //Open时间框
         if ($('#datebox').hasClass('show')) {
             $('.dock.date').removeClass('show');
             $('#datebox').removeClass('show');
@@ -2479,7 +2479,7 @@ window.addEventListener('mouseup', e => {
 });
 let isDark = false;
 
-// 个性化主题
+// Personalization主题
 function toggletheme() {
     $('.dock.theme').toggleClass('dk');
     // var darkControl = $(`#control .btn4 .icon`)
@@ -2799,15 +2799,15 @@ function calcTimeString(second) {
 //监听全局按键
 function setupGlobalKey() {
     $(document).keydown(function (event) {
-        if (event.keyCode == 116/*F5 被按下 (刷新)*/) {
-            event.preventDefault();/*取消默认刷新行为*/
+        if (event.keyCode == 116/*F5 被按下 (Refresh)*/) {
+            event.preventDefault();/*取消默认Refresh行为*/
             $('#desktop').css('opacity', '0'); setTimeout(() => { $('#desktop').css('opacity', '1'); }, 100); setIcon();
             return;
         }
 
         // 激活键：Meta / Meta + Ctrl / Alt
         if ((event.metaKey && !event.altKey) || (!event.metaKey && event.altKey)) {
-        //按下激活键 + E，打开文件资源管理器（此电脑）
+        //按下激活键 + E，Open文件资源管理器（此电脑）
             if ((event.key || '').toLowerCase() == 'e') {
                 event.preventDefault();
                 if (!event.repeat) {
@@ -2816,7 +2816,7 @@ function setupGlobalKey() {
                 }
                 return;
             }
-            //按下激活键 + I，打开设置
+            //按下激活键 + I，Open设置
             if ((event.key || '').toLowerCase() == 'i') {
                 event.preventDefault();
                 if (!event.repeat) {
@@ -2828,7 +2828,7 @@ function setupGlobalKey() {
 
         //按下徽标键
         if (event.metaKey && event.ctrlKey) {
-            //打开或关闭开始菜单
+            //Open或关闭开始菜单
             openDockWidget("start-menu");
         }
     });
