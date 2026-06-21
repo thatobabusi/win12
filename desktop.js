@@ -115,8 +115,13 @@ let langc = {
     'en-gb': 'en'
 }
 
-let langcode, lang = (txt, id) => {
-    return $.i18n.prop(id);
+let langcode, i18nData = {}, lang = (txt, id) => {
+    // First check if translation exists in i18nData
+    if (i18nData[langcode] && i18nData[langcode][id]) {
+        return i18nData[langcode][id];
+    }
+    // Fall back to provided English text
+    return txt;
 };
 
 if (localStorage.getItem('lang') != null) {
