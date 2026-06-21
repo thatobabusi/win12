@@ -1,6 +1,6 @@
 /**
  * @author lingbopro
- * 在线新闻功能
+ * Online News Feature
  */
 
 const wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
@@ -8,8 +8,8 @@ const wait = (duration) => new Promise((resolve) => setTimeout(resolve, duration
 var news = {
     sources: [
         {
-            name: '东方网',
-            description: '东方网新闻头条（使用公益 API）',
+            name: 'Oriental News',
+            description: 'Oriental News Headlines (using public API)',
             url: 'https://tools.mgtv100.com/external/v1/toutiao/index',
             async getData() {
                 try {
@@ -18,7 +18,7 @@ var news = {
                     if (!(data.status === 'success' && data.code === 200)) {
                         return {
                             status: 'error',
-                            message: '返回结果中未包含成功信息',
+                            message: 'Response does not contain success information',
                         };
                     }
                     const list = data.data.result.data.map((value) => {
@@ -43,8 +43,8 @@ var news = {
             },
         },
         {
-            name: '知乎每日新闻',
-            description: '知乎每日新闻（使用公益 API）',
+            name: 'Zhihu Daily News',
+            description: 'Zhihu Daily News (using public API)',
             url: 'https://v.api.aa1.cn/api/zhihu-news/index.php?aa1=xiarou',
             async getData() {
                 try {
@@ -83,7 +83,7 @@ var news = {
             })
             .join('\n');
         nts['widgets.news.source'].cnt = `
-                <p class="tit">切换新闻源</p>
+                <p class="tit">Switch News Source</p>
                 <list class="new">
                     ${sourcesListSelectInnerListHtml}
                 </list>`;
@@ -97,16 +97,16 @@ var news = {
     async refresh() {
         const contentEl = document.querySelector('#widgets>.news>.content');
         const contentNewsEl = document.querySelector('#widgets>.news>.content>.news-all');
-        this.setFullTip(false, true, '加载中');
+        this.setFullTip(false, true, 'Loading...');
         contentNewsEl.innerHTML = '';
         const data = await this.sources[this.selectedSource].getData();
         if (data.status !== 'success') {
             this.setFullTip(
                 false,
                 false,
-                '载入失败',
-                '无法载入新闻。\n请检查你的网络设置，或更改新闻源并稍后再试。',
-                '详细信息：' + (data.error ? data.error.message : data.message ? data.message : '未知')
+                'Load Failed',
+                'Unable to load news.\nPlease check your network settings or try changing the news source later.',
+                'Details: ' + (data.error ? data.error.message : data.message ? data.message : 'Unknown')
             );
             return;
         }
@@ -114,7 +114,7 @@ var news = {
             return `
 <div class="card ${classList}" style="background: url(${data.image}) right;">
     <p class="tit">${await this.parseToHTMLString(data.title)}</p>
-    <a class="a" onclick="openapp(\'edge\');window.setTimeout(() => {apps.edge.newtab();apps.edge.goto('${data.url}');}, 300);">详细信息 &gt;</a>
+    <a class="a" onclick="openapp(\'edge\');window.setTimeout(() => {apps.edge.newtab();apps.edge.goto('${data.url}');}, 300);">Details &gt;</a>
 </div>
 `;
         };
@@ -125,7 +125,7 @@ var news = {
             const current = data.data[i];
             const html = await genCardHTML(current, i % 2 == 0 ? 'card-left' : 'card-right');
             contentNews.push(html);
-            // 不等待会有严重卡顿，我也不知道为啥
+            // Without wait there is serious lag, not sure why
             await wait(1);
         }
         let contentNewsHTML = '';

@@ -1,7 +1,7 @@
-// 窗口操作模块
+// Window operation module
 
-/***** 项目一级保护代码 *****
- 未经允许，严禁擅改，否则可致灾难性错误 */
+/***** Project First-level Protected Code *****
+ Unauthorized modifications are strictly prohibited, as they could cause catastrophic errors */
 function showwin(name) {
     $('.window.' + name).addClass('show-begin');
     setTimeout(() => { $('.window.' + name).addClass('show'); }, 0);
@@ -32,7 +32,7 @@ function hidewin(name, arg = 'window') {
     $('.window.' + name).removeClass('max');
     $('.window.' + name).removeClass('show');
     if (name == 'camera') {
-      // 相机关闭后统一清理 tracks
+      // Unified cleanup of tracks after camera closes
       closeVideo()
     }
     if (arg == 'window') {
@@ -290,7 +290,7 @@ function orderwin() {
     }
 }
 
-// 拖拽窗口
+// Drag window
 const titbars = document.querySelectorAll('.window>.titbar');
 const wins = document.querySelectorAll('.window');
 let deltaLeft = 0, deltaTop = 0, fil = false, filty = 'none', bfLeft = 0, bfTop = 0;
@@ -358,7 +358,7 @@ function win_move(e) {
     else if ($(this).hasClass('max')) {
         deltaLeft = deltaLeft / (this.offsetWidth - (45 * 3)) * ((0.7 * document.body.offsetWidth) - (45 * 3));
         maxwin(this.classList[1], false);
-        // 窗口控制按钮宽 45px
+        // Window control button width 45px
         // $(this).css('cssText', `left:${cx - deltaLeft}px;top:${cy - deltaTop}px;`);
         $(this).css('left', `${cx - deltaLeft}px`);
         $(this).css('top', `${cy - deltaTop}px`);
@@ -470,7 +470,7 @@ page.addEventListener('mousemove', (e) => {
 });
 
 
-// 屎山警告
+// Legacy code warning
 function focwin(name, arg = 'window') {
     // if(wo[0]==name)return;
     if (arg == 'window') {

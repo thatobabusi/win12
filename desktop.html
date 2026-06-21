@@ -167,7 +167,7 @@ toggletheme() 切换主题
 			<svg style="position:absolute;left:calc(50% - 25px);top:72%;" width="50px" height="50px" viewBox="0 0 16 16">
 				<circle cx="8px" cy="8px" r="7px"></circle>
 			</svg>
-			<p id="loadbackupdate" style="position:absolute;top:calc(72% + 55px);left:0;width:100%;text-align:center;color:#fff;font-size: 25px;display:none;" data-i18n="updating">休对故人思故国，且将新火试新茶<br>正在更新</p>
+			<p id="loadbackupdate" style="position:absolute;top:calc(72% + 55px);left:0;width:100%;text-align:center;color:#fff;font-size: 25px;display:none;" data-i18n="updating">Updating</p>
 		</loading>
 		<script>
 			setTimeout(() => {
@@ -181,8 +181,8 @@ toggletheme() 切换主题
             <img src="icon/ls.svg" alt="半透明图标" class="svg translucent">
             <img src="icon/ls.svg" alt="旋转图标" class="svg rotating">
         </div>
-        <div data-i18n="cover-hp">横屏以获得最佳体验</div>
-        <button class="orientation-close-btn" onclick="dismissOrientation();" data-i18n="cover-hp-close">继续使用竖屏</button>
+        <div data-i18n="cover-hp">Landscape for the best experience</div>
+        <button class="orientation-close-btn" onclick="dismissOrientation();" data-i18n="cover-hp-close">Continue using portrait mode</button>
     </div>
 	<div id="loginback">
 		<div class="user"></div>
@@ -202,7 +202,7 @@ toggletheme() 切换主题
 			<p style="font-size: 22px;
             color: #fff;
 			margin-top: 5px;
-            text-align: center;" data-i18n="welcome">欢迎</p>
+            text-align: center;" data-i18n="welcome">Welcome</p>
 		</div>
 		<list class="langselect new">
 			<span class="text" style="font-size: 22px;"><i class="bi bi-globe2"></i></span>
@@ -258,34 +258,34 @@ toggletheme() 切换主题
 				$('#search-input').focus();" data-i18n-attr="placeholder" data-i18n-key="sch-ph">
 			<input-before class="bi bi-search"></input-before>
 			<list>
-				<p class="text" data-i18n="stmenu-avlb">可用</p>
+				<p class="text" data-i18n="stmenu-avlb">Available</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['setting', '设置'])" onclick="openapp('setting');hide_startmenu();">
 					<img src="icon/setting.svg">
-					<p data-i18n="setting.name">设置</p>
+					<p data-i18n="setting.name">Settings</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['explorer', '文件资源管理器'])" onclick="openapp('explorer');hide_startmenu();">
 					<img src="icon/explorer.svg">
-					<p data-i18n="explorer.name">文件资源管理器</p>
+					<p data-i18n="explorer.name">File Explorer</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['calc', '计算器'])" onclick="openapp('calc');hide_startmenu();">
 					<img src="icon/calc.svg">
-					<p data-i18n="calc.name">计算器</p>
+					<p data-i18n="calc.name">Calculator</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['run', '运行'])" onclick="openapp('run');hide_startmenu();">
 					<img src="icon/run.svg">
-					<p data-i18n="run.name">运行</p>
+					<p data-i18n="run.name">Run</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['about', '关于 Win12 网页版'])" onclick="openapp('about');hide_startmenu();">
 					<img src="icon/about.svg">
-					<p data-i18n="about.name">关于 Win12 网页版</p>
+					<p data-i18n="about.name">About Win12 Online</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['taskmgr', '任务管理器'])" onclick="openapp('taskmgr');hide_startmenu();">
 					<img src="icon/taskmgr.png">
-					<p data-i18n="taskmgr.name">任务管理器</p>
+					<p data-i18n="taskmgr.name">Task Manager</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['notepad', '记事本'])" onclick="openapp('notepad');hide_startmenu();">
 					<img src="icon/notepad.svg">
-					<p data-i18n="notepad.name">记事本</p>
+					<p data-i18n="notepad.name">Notepad</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['copilot', 'AI Chat'])" onclick="shownotice('error_aichat')">
 					<img src="icon/copilot.svg">
@@ -301,7 +301,7 @@ toggletheme() 切换主题
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['camera', '相机'])" onclick="apps.camera.notice();hide_startmenu()">
 					<img src="icon/camera.svg">
-					<p data-i18n="camera.name">相机</p>
+					<p data-i18n="camera.name">Camera</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['pythonEditor', 'Python Editor'])" onclick="openapp('pythonEditor');hide_startmenu()">
 					<img src="icon/pythonEditor.svg">
@@ -313,7 +313,7 @@ toggletheme() 切换主题
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['terminal', '终端'])" onclick="openapp('terminal');hide_startmenu();">
 					<img src="icon/terminal.svg">
-					<p data-i18n="terminal.name">终端</p>
+					<p data-i18n="terminal.name">Terminal</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['whiteboard', 'Whiteboard'])" onclick="openapp('whiteboard');hide_startmenu();">
 					<img src="icon/whiteboard.svg">
@@ -321,20 +321,20 @@ toggletheme() 切换主题
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['defender', 'Windows 安全中心'])" onclick="openapp('defender');hide_startmenu();">
 					<img src="icon/defender.svg">
-					<p data-i18n="defender.name">Windows 安全中心</p>
+					<p data-i18n="defender.name">Windows Security</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['word', 'Word Preview'])" onclick="openapp('word');hide_startmenu();">
 					<img src="icon/word.svg">
 					<p data-i18n="word.name">Word Preview</p>
 				</a>
-				<p class="text" data-i18n="stmenu-webapp">Web 应用</p>
+				<p class="text" data-i18n="stmenu-webapp">Webapps</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['minesweeper', 'Windows 12 minesweeper'])" onclick="openapp('minesweeper');hide_startmenu()">
 					 <img src="icon/minesweeper.svg">
 				  <p>扫雷</p>
 			    </a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['bilibili', '哔哩哔哩'])" onclick="openapp('bilibili');hide_startmenu();">
 					<img src="icon/bilibili.png">
-					<p data-i18n="bilibili.name">哔哩哔哩</p>
+					<p data-i18n="bilibili.name">Bilibili</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['vscode', 'Visual Studio Code'])" onclick="openapp('vscode');hide_startmenu();">
 					<img src="icon/vscode.png">
@@ -342,7 +342,7 @@ toggletheme() 切换主题
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['wsa', '适用于 Android™️ 的 Windows 子系统'])" onclick="openapp('wsa');hide_startmenu();">
 					<img src="icon/wsa.png">
-					<p data-i18n="wsa.name">适用于 Android™ 的 Windows 子系统</p>
+					<p data-i18n="wsa.name">Windows Subsystem for Android™</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['windows12', 'Windows 12'])" onclick="openapp('windows12');hide_startmenu();">
 					<img src="icon/logo.svg">
@@ -356,17 +356,17 @@ toggletheme() 切换主题
 					<a class="a sm-app enable"
 						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/文档');hide_startmenu();">
 						<img src="icon/folder/docs.svg">
-						<p data-i18n="folder.doc">文档</p>
+						<p data-i18n="folder.doc">Documents</p>
 					</a>
 					<a class="a sm-app enable"
 						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/图片');hide_startmenu();">
 						<img src="icon/folder/pics.svg">
-						<p data-i18n="folder.pic">图片</p>
+						<p data-i18n="folder.pic">Pictures</p>
 					</a>
 					<a class="a sm-app enable"
 						onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/音乐');hide_startmenu();">
 						<img src="icon/folder/music.svg">
-						<p data-i18n="folder.mus">音乐</p>
+						<p data-i18n="folder.mus">Music</p>
 					</a>
 				</div>
 				<div class="tool">
@@ -399,43 +399,43 @@ toggletheme() 切换主题
 			<div class="pinned">
 				<!-- 已固定 卡片 -->
 				<div class="title">
-					<p data-i18n="stmenu-pinned">已固定</p>
+					<p data-i18n="stmenu-pinned">Pinned</p>
 					<div>
-						<a class="a more-btn"><span data-i18n="stmenu-allapp">所有应用</span> <i class="bi bi-chevron-right"></i></a>
+						<a class="a more-btn"><span data-i18n="stmenu-allapp">All</span> <i class="bi bi-chevron-right"></i></a>
 					</div>
 				</div>
 				<div class="apps">
 					<a class="a sm-app enable calc" onclick="openapp('calc');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['calc','计算器'])">
 						<img src="icon/calc.svg">
-						<p data-i18n="calc.name">计算器</p>
+						<p data-i18n="calc.name">Calculator</p>
 					</a>
 					<a class="a sm-app enable camera" onclick="apps.camera.notice();hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['camera', '相机'])">
 						<img src="icon/camera.svg">
-						<p data-i18n="camera.name">相机</p>
+						<p data-i18n="camera.name">Camera</p>
 					</a>
 					<a class="a sm-app enable" onclick="shownotice('feedback');">
 						<img src="icon/feedback.svg">
-						<p data-i18n="feedback.name">反馈中心</p>
+						<p data-i18n="feedback.name">Feedback Hub</p>
 					</a>
 					<a class="a sm-app enable about" onclick="openapp('about');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['about','关于 Win12 网页版'])">
 						<img src="icon/about.svg">
-						<p data-i18n="about.name">关于 Win12 网页版</p>
+						<p data-i18n="about.name">About Win12 Online</p>
 					</a>
 					<a class="a sm-app enable explorer" onclick="openapp('explorer');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['explorer','文件资源管理器'])">
 						<img src="icon/explorer.svg">
-						<p data-i18n="explorer.name">文件资源管理器</p>
+						<p data-i18n="explorer.name">File Explorer</p>
 					</a>
 					<a class="a sm-app enable notepad" onclick="openapp('notepad');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['notepad','记事本'])">
 						<img src="icon/notepad.svg">
-						<p data-i18n="notepad.name">记事本</p>
+						<p data-i18n="notepad.name">Notepad</p>
 					</a>
 					<a class="a sm-app enable setting" onclick="openapp('setting');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['setting','设置'])">
 						<img src="icon/setting.svg">
-						<p data-i18n="setting.name">设置 </p>
+						<p data-i18n="setting.name">Settings </p>
 					</a>
 					<a class="a sm-app enable defender" onclick="openapp('defender');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['defender','Windows 安全中心'])">
 						<img src="icon/defender.svg">
-						<p data-i18n="defender.name">Windows 安全中心</p>
+						<p data-i18n="defender.name">Windows Security</p>
 					</a>
 					<a class="a sm-app enable msstore" onclick="openapp('msstore');hide_startmenu();" oncontextmenu="return showcm(event, 'smapp', ['msstore', 'Microsoft Store'])">
 						<img src="icon/msstore.svg">
@@ -451,15 +451,15 @@ toggletheme() 切换主题
 					</a>
 					<a class="a sm-app enable terminal" onclick="openapp('terminal');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['terminal','终端'])">
 						<img src="icon/terminal.svg">
-						<p data-i18n="terminal.name">终端</p>
+						<p data-i18n="terminal.name">Terminal</p>
 					</a>
 				</div>
 			</div>
 			<div class="tuijian">
 				<div class="title">
-					<p data-i18n="stmenu-tj">推荐的项目</p>
+					<p data-i18n="stmenu-tj">Recommended</p>
 					<div>
-						<a class="a more-btn" onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/推荐的项目');hide_startmenu();"><span data-i18n="more">更多</span> <i class="bi bi-chevron-right"></i></a>
+						<a class="a more-btn" onclick="openapp('explorer');apps.explorer.goto('C:/用户/Administrator/推荐的项目');hide_startmenu();"><span data-i18n="more">More</span> <i class="bi bi-chevron-right"></i></a>
 					</div>
 				</div>
 				<div class="apps">
@@ -478,21 +478,21 @@ toggletheme() 切换主题
 			oninput="apps.search.search(this.value.length)" data-i18n-attr="placeholder" data-i18n-key="sch-ph">
 		<input-before class="bi bi-search"></input-before>
 		<div class="tab">
-			<a class="now" data-i18n="all">全部</a><a data-i18n="sch-app">应用</a><a data-i18n="sch-doc">文档</a><a data-i18n="sch-web">网页</a>
-			<a data-i18n="sch-setting">设置</a>
-			<a data-i18n="sch-folder">文件夹</a><a data-i18n="sch-photo">照片</a>
+			<a class="now" data-i18n="all">All</a><a data-i18n="sch-app">Apps</a><a data-i18n="sch-doc">Documents</a><a data-i18n="sch-web">Web</a>
+			<a data-i18n="sch-setting">Settings</a>
+			<a data-i18n="sch-folder">Folders</a><a data-i18n="sch-photo">Photos</a>
 		</div>
 		<div class="ans">
 			<div class="list">
 				<list>
-					<p class="text" data-i18n="sch-tj">推荐</p>
+					<p class="text" data-i18n="sch-tj">Recommended</p>
 					<a onclick="openapp('setting');$('#search-btn').removeClass('show');
 					$('#search-win').removeClass('show');
 					setTimeout(() => {
 						$('#search-win').removeClass('show-begin');
 					}, 200);">
 						<img src="icon/setting.svg">
-						<p data-i18n="setting.name">设置</p>
+						<p data-i18n="setting.name">Settings</p>
 					</a>
 					<a onclick="openapp('about');$('#search-btn').removeClass('show');
 					$('#search-win').removeClass('show');
@@ -500,7 +500,7 @@ toggletheme() 切换主题
 						$('#search-win').removeClass('show-begin');
 					}, 200);">
 						<img src="icon/about.svg">
-						<p data-i18n="about.name">关于 Win12 网页版</p>
+						<p data-i18n="about.name">About Win12 Online</p>
 					</a>
 				</list>
 			</div>
@@ -513,7 +513,7 @@ toggletheme() 切换主题
 				<hr>
 				<div class="option">
 					<list>
-						<a class="a" data-i18n="sch-open">打开</a>
+						<a class="a" data-i18n="sch-open">Open</a>
 						<a class="a" data-i18n="sch-opfl">打开文件所在位置</a>
 						<a class="a" data-i18n="sch-cpp">复制路径</a>
 					</list>
@@ -524,7 +524,7 @@ toggletheme() 切换主题
 	<div id="widgets">
 		<div class="widgets">
 			<div class="bar">
-				<p class="tit" data-i18n="widget">小组件</p>
+				<p class="tit" data-i18n="widget">Widgets</p>
 				<button onclick="shownotice('widgets')" class="a act btn btn-icon big"
 					style="background: linear-gradient(100deg, var(--theme-1), var(--theme-2));color:#fff;"
 					win12_title="添加"><i class="bi bi-plus-lg"></i></button>
@@ -882,7 +882,7 @@ toggletheme() 切换主题
 	<div id="desktop-editbar-container">
 		<div id="desktop-editbar">
 			<div onclick="shownotice('widgets.desktop');"><i class="bi bi-plus"></i> <span data-i18n="editmd-add">添加小组件</span></div>
-			<div onclick="openapp('setting');$('#win-setting > div.menu > list > a.enable.appearance')[0].click();"><i class="bi bi-brush"></i> <span data-i18n="psnl">个性化</span></div>
+			<div onclick="openapp('setting');$('#win-setting > div.menu > list > a.enable.appearance')[0].click();"><i class="bi bi-brush"></i> <span data-i18n="psnl">Personalization</span></div>
 			<div onclick="editMode();" win12_title="退出编辑模式"><i class="bi bi-x-lg"></i></div>
 		</div>
 	</div>
@@ -903,7 +903,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/defender.svg" class="icon">
-			<p data-i18n="defender.name">Windows 安全中心</p>
+			<p data-i18n="defender.name">Windows Security</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('defender')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('defender')"><i class="bi bi-app"></i></a>
@@ -927,7 +927,7 @@ toggletheme() 切换主题
 					<li class="nav-list-item active">
 						<a class="nav-list-link">
 							<icon></icon>
-							<span data-i18n="home">主页</span>
+							<span data-i18n="home">Home</span>
 						</a>
 					</li>
 					<li class="nav-list-item">
@@ -1272,7 +1272,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/setting.svg" class="icon">
-			<p data-i18n="setting.name">设置</p>
+			<p data-i18n="setting.name">Settings</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('setting')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('setting')"><i class="bi bi-app"></i></a>
@@ -1294,7 +1294,7 @@ toggletheme() 切换主题
 				<input type="text" class="input" placeholder="查找设置" style="padding-left: 30px;" data-i18n-attr="placeholder" data-i18n-key="setting.sch">
 				<input-before class="bi bi-search"></input-before>
 				<list class="focs">
-					<a class="enable home check" onclick="apps.setting.page('home')"><img src="apps/icons/setting/home.png"><span data-i18n="home">主页</span></a><!-- 主页  @lh11117 (2023/9/31~2023/10/1) -->
+					<a class="enable home check" onclick="apps.setting.page('home')"><img src="apps/icons/setting/home.png"><span data-i18n="home">Home</span></a><!-- 主页  @lh11117 (2023/9/31~2023/10/1) -->
 					<a class="enable system" onclick="apps.setting.page('system')"><img src="apps/icons/setting/system.png"><span data-i18n="setting.system">系统</span></a><!-- 系统  stsc 远古-->
 					<a class="enable blueteeth" onclick="apps.setting.page('blueteeth')"><img src="apps/icons/setting/blueteeth.png"><span data-i18n="setting.device">蓝牙和其他设备</span></a><!-- 蓝牙与设备  @Junchen Yi 2023-9-9-->
 					<a class="enable network" onclick="apps.setting.page('network')"><img src="apps/icons/setting/network.png"><span data-i18n="setting.network">网络和 Internet</span></a><!-- 网络和 Internet  @Junchen Yi 2023-9-10-->
@@ -1468,7 +1468,7 @@ toggletheme() 切换主题
 									value="#1168ae">
 								<a class="a button" style="margin-left: 20px;" onclick="$(':root').css('--theme-1',$('div.app-color>div>input.theme1inp').val());
 									$(':root').css('--theme-2',$('div.app-color>div>input.theme2inp').val());setData('color1',$('div.app-color>div>input.theme1inp').val());
-									setData('color2',$('div.app-color>div>input.theme2inp').val())" data-i18n="apply">应用</a>
+									setData('color2',$('div.app-color>div>input.theme2inp').val())" data-i18n="apply">Apply</a>
 							</div>
 						</div>
 						<a class="dp theme" onclick="$('.dp.theme').toggleClass('show');if (!($('#set-theme>.a').length)) apps.setting.theme_get();">
@@ -1728,7 +1728,7 @@ toggletheme() 切换主题
 	<div class="window calc">
 		<div class="titbar">
 			<img src="icon/calc.svg" class="icon">
-			<p data-i18n="calc.name">计算器</p>
+			<p data-i18n="calc.name">Calculator</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('calc')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" style="pointer-events: none;color: #777;"><i class="bi bi-app"></i></a>
@@ -1805,7 +1805,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/about.svg" class="icon">
-			<p data-i18n="about.name">关于 Win12 网页版</p>
+			<p data-i18n="about.name">About Win12 Online</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('about')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('about')"><i class="bi bi-app"></i></a>
@@ -2027,7 +2027,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/notepad.svg" class="icon">
-			<p data-i18n="notepad.name">记事本</p>
+			<p data-i18n="notepad.name">Notepad</p>
 			<div>
 				<a class="a wbtg red" onclick="apps.notepad.close()"><i
 						class="bi bi-x-lg"></i></a>
@@ -2135,8 +2135,8 @@ toggletheme() 切换主题
 				</div>
 			</div>
 			<div class="buttons">
-				<a class="a submit act" onclick="apps.notepadFonts.commitFont();" data-i18n="ok">确定</a>
-				<a class="a cancel act" onclick="hidewin('notepad-fonts', 'configs');font_window=false;" data-i18n="cancel">取消</a>
+				<a class="a submit act" onclick="apps.notepadFonts.commitFont();" data-i18n="ok">OK</a>
+				<a class="a cancel act" onclick="hidewin('notepad-fonts', 'configs');font_window=false;" data-i18n="cancel">Cancel</a>
 			</div>
 		</div>
 	</div>
@@ -2144,7 +2144,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/terminal.svg" class="icon">
-			<p data-i18n="terminal.name">终端</p>
+			<p data-i18n="terminal.name">Terminal</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('terminal')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('terminal')"><i class="bi bi-app"></i></a>
@@ -2292,7 +2292,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/bilibili.png" class="icon">
-			<p data-i18n="bilibili.name">哔哩哔哩</p>
+			<p data-i18n="bilibili.name">Bilibili</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('bilibili')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('bilibili')"><i class="bi bi-app"></i></a>
@@ -2383,7 +2383,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/camera.svg" class="icon">
-			<p data-i18n="camera.name">相机</p>
+			<p data-i18n="camera.name">Camera</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('camera')"><i class="bi bi-x-lg"></i></a>
 				<a class="a wbtg max" onclick="maxwin('camera')"><i class="bi bi-app"></i></a>
@@ -2458,7 +2458,7 @@ toggletheme() 切换主题
 	<div class="window run">
 		<div class="titbar">
 			<img src="icon/run.svg" class="icon">
-			<p data-i18n="run.name">运行</p>
+			<p data-i18n="run.name">Run</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('run')"><i class="bi bi-x-lg"></i></a>
 			</div>
@@ -2477,8 +2477,8 @@ toggletheme() 切换主题
 					onkeyup="if (event.keyCode == 13) { hidewin('run');apps.run.run($('#win-run>.open>input').val()); }">
 			</div>
 			<div class="buttons">
-				<a class="a submit act" onclick="hidewin('run');apps.run.run($('#win-run>.open>input').val())" data-i18n="ok">确定</a>
-				<a class="a cancel act" onclick="hidewin('run')" data-i18n="cancel">取消</a>
+				<a class="a submit act" onclick="hidewin('run');apps.run.run($('#win-run>.open>input').val())" data-i18n="ok">OK</a>
+				<a class="a cancel act" onclick="hidewin('run')" data-i18n="cancel">Cancel</a>
 			</div>
 		</div>
 	</div>
@@ -2603,7 +2603,7 @@ toggletheme() 切换主题
 			</div>
 			<p ondblclick="$(this).hide()" class="a mesg" data-i18n="winver.p5">上面都是胡扯，切勿当真 (双击隐藏此消息)</p>
 			<div class="buttons">
-				<a class="a submit act" onclick="hidewin('winver');" data-i18n="ok">确定</a>
+				<a class="a submit act" onclick="hidewin('winver');" data-i18n="ok">OK</a>
 			</div>
 		</div>
 	</div>
@@ -2723,7 +2723,7 @@ toggletheme() 切换主题
 		<div class="resize-bar"></div>
 		<div class="titbar">
 			<img src="icon/taskmgr.png" class="icon">
-			<span style="font-size: 15px;margin-top: 9px;" data-i18n="taskmgr.name">任务管理器</span>
+			<span style="font-size: 15px;margin-top: 9px;" data-i18n="taskmgr.name">Task Manager</span>
 			<div style="flex-grow: 1;display: flex;align-items: center;justify-content: center;">
 				<input type="text" class="input" style="width: 75%;" placeholder="键入要搜索的名称" id="tsk-search" oninput="apps.taskmgr.generateProcesses()" value=""></input>
 			</div>

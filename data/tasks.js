@@ -1,6 +1,6 @@
 let taskmgrTasks = [
     {
-        name: '任务管理器',
+        name: 'Task Manager',
         icon: 'icon/taskmgr.png',
         link: 'taskmgr'
     },
@@ -10,12 +10,12 @@ let taskmgrTasks = [
         link: 'whiteboard'
     },
     {
-        name: '相机',
+        name: 'Camera',
         icon: 'icon/camera.svg',
         link: 'camera'
     },
     {
-        name: '哔哩哔哩客户端',
+        name: 'Bilibili Client',
         icon: 'icon/bilibili.png',
         link: 'bilibili'
     },
@@ -25,40 +25,40 @@ let taskmgrTasks = [
         link: 'edge'
     },
     {
-        name: 'WebView2 运行时组件'
+        name: 'WebView2 Runtime'
     },
     {
-        name: '设置',
+        name: 'Settings',
         icon: 'icon/setting.svg',
         link: 'setting'
     },
     {
-        name: 'Python Editor(Python 程序编辑器)',
+        name: 'Python Editor',
         icon: 'icon/pythonEditor.svg',
         link: 'pythonEditor'
     },
     {
-        name: '计算器',
+        name: 'Calculator',
         icon: 'icon/calc.svg',
         link: 'calc'
     },
     {
-        name: '文件资源管理器',
+        name: 'File Explorer',
         icon: 'icon/explorer.svg',
         link: 'explorer'
     },
     {
-        name: '关于 Windows12',
+        name: 'About Windows 12',
         icon: 'icon/about.svg',
         link: 'about'
     },
     {
-        name: '记事本',
+        name: 'Notepad',
         icon: 'icon/notepad.svg',
         link: 'notepad'
     },
     {
-        name: '终端',
+        name: 'Terminal',
         icon: 'icon/terminal.svg',
         link: 'terminal'
     },
@@ -76,19 +76,19 @@ let taskmgrTasks = [
         name: 'System'
     },
     {
-        name: 'Windows 内存处理系统进程'
+        name: 'Windows Memory Manager'
     },
     {
-        name: '应用层网关服务'
+        name: 'Application Layer Gateway Service'
     },
     {
-        name: 'DCOM DLL Host 进程'
+        name: 'DCOM DLL Host Process'
     },
     {
-        name: 'Windows 内存处理系统进程'
+        name: 'Windows Memory Manager'
     },
     {
-        name: '应用层网关服务'
+        name: 'Application Layer Gateway Service'
     },
     {
         name: 'Client/Server Runtime Server Subsystem'
@@ -97,7 +97,7 @@ let taskmgrTasks = [
         name: 'DirectDraw Helper'
     },
     {
-        name: 'DCOM DLL Host 进程'
+        name: 'DCOM DLL Host Process'
     },
     {
         name: 'IIS Admin Service Helper'

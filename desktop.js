@@ -14,28 +14,61 @@ console.log('%cWindows 12 网页版 (GitHub: win12-online/win12)', 'background-i
 
 
 
-function loadlang(code) {
-    $.i18n.properties({
-        name: 'lang',
-        path: 'lang/', // 目录
-        language: code,
-        mode: 'map',
-        callback: function () {
-            $('[data-i18n]').each(function () {
-                // 标签的内容
-                // console.log($(this).data("i18n"));
-                // console.log($.i18n.prop($(this).data("i18n")));
-                // if($.i18n.prop($(this).data("i18n"))!=$(this).html())console.log($(this).data("i18n"),$(this).html());
-                $(this).html($.i18n.prop($(this).data("i18n")));
-            });
-            $('[data-i18n-attr]').each(function () {
-                // 标签的属性
+// Simple custom i18n implementation (no decodeURI bug)
+const i18nData = {};
 
-                // if($.i18n.prop($(this).data("i18n-key"))!=$(this).attr($(this).data("i18n-attr")))console.log($(this).data("i18n-key"),$(this).attr($(this).data("i18n-attr")));
-                $(this).attr($(this).data("i18n-attr"), $.i18n.prop($(this).data("i18n-key")));
+function loadlang(code) {
+    console.log('Loading language:', code);
+
+    const filename = 'lang/lang/lang_' + code + '.properties';
+
+    fetch(filename)
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.text();
+        })
+        .then(data => {
+            console.log('Language file loaded successfully:', code);
+
+            // Parse properties file without using buggy decodeURI()
+            const lines = data.split('\n');
+            const translations = {};
+
+            for (let line of lines) {
+                line = line.trim();
+                // Skip empty lines and comments
+                if (!line || line.startsWith('#') || line.startsWith('!')) continue;
+
+                // Split on first = only
+                const eqIndex = line.indexOf('=');
+                if (eqIndex === -1) continue;
+
+                const key = line.substring(0, eqIndex).trim();
+                const value = line.substring(eqIndex + 1).trim();
+
+                if (key) translations[key] = value;
+            }
+
+            i18nData[code] = translations;
+            console.log('Parsed', Object.keys(translations).length, 'translations');
+
+            // Apply translations to DOM
+            $('[data-i18n]').each(function () {
+                const key = $(this).data("i18n");
+                const value = translations[key];
+                if (value) $(this).html(value);
             });
-        }
-    });
+
+            $('[data-i18n-attr]').each(function () {
+                const key = $(this).data("i18n-key");
+                const value = translations[key];
+                if (value) $(this).attr($(this).data("i18n-attr"), value);
+            });
+        })
+        .catch(error => {
+            console.error('Failed to load language:', code, error);
+            lang = (txt, id) => txt; // Fallback to HTML text
+        });
 }
 
 let nl = 'zh-TW';
@@ -83,8 +116,16 @@ if (document.querySelectorAll('#loginback>.langselect>.' + langcode).length != 0
 }
 
 
-if (langcode != 'zh-CN')
-    loadlang(langcode);
+if (langcode != 'zh-CN') {
+    try {
+        console.log('Attempting to load language:', langcode);
+        console.log('Looking for file: lang/lang/lang_' + langcode + '.properties');
+        loadlang(langcode);
+    } catch (e) {
+        console.warn('Language file failed to load, using fallback:', e);
+        lang = (txt, id) => txt;
+    }
+}
 
 if (langcode == 'zh-CN') {
     lang = (txt, id) => {

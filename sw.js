@@ -24,10 +24,12 @@ this.addEventListener('fetch', function (event) {
         fetch(event.request)
           .then(responese => {
             const responeseClone = responese.clone();
-            caches.open('def').then(cache => {
-              console.log('下载数据', responeseClone.url);
-              cache.put(event.request, responeseClone);
-            })
+            if (responese.status >= 200 && responese.status < 300 && responese.status !== 206) {
+              caches.open('def').then(cache => {
+                console.log('下载数据', responeseClone.url);
+                cache.put(event.request, responeseClone);
+              })
+            }
             return responese;
           })
           .catch(err => {
