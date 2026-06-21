@@ -593,8 +593,8 @@ function win12FinishLogin() {
     $('#login-welc').css('opacity', '1');
 
     // Show desktop elements
-    console.log('Showing desktop: #page, #taskbar, .window');
-    $('#page').css('display', 'grid');
+    console.log('Showing desktop: #desktop, #taskbar, .window');
+    $('#desktop').css('display', 'flex');
     $('#taskbar').css('display', 'flex');
     $('.window').css('display', 'grid');
     $('#orient-hint').css('display', 'block');
