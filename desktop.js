@@ -286,7 +286,7 @@ async function initLoginPassword() {
             loginPasswordHasPassword = !!(status && status.has_password);
             if (loginPasswordHasPassword) {
                 $('#loginback').addClass('tauri-password');
-                $('#login-password').attr('placeholder', '密码');
+                $('#login-password').attr('placeholder', 'Password');
                 $('#login-password').focus();
             }
             else {
@@ -294,7 +294,7 @@ async function initLoginPassword() {
             }
         }
         catch (e) {
-            setLoginError('无法读取本地密码状态');
+            setLoginError('Unable to read local password status');
         }
     }
 }
@@ -312,13 +312,13 @@ async function win12LoginSubmit() {
 
     const password = $('#login-password').val();
     if (!password) {
-        setLoginError('请输入密码');
+        setLoginError('Please enter password');
         $('#login-password').focus();
         return;
     }
 
     $('#login').css('pointer-events', 'none');
-    setLoginError('正在验证');
+    setLoginError('Verifying...');
 
     try {
         const result = await window.win12Native.verifyLoginPassword(password);
@@ -327,7 +327,7 @@ async function win12LoginSubmit() {
             win12FinishLogin();
             return;
         }
-        setLoginError('密码错误');
+        setLoginError('Incorrect password');
         $('#login-password').val('').focus();
     }
     catch (e) {
@@ -340,7 +340,7 @@ async function win12LoginSubmit() {
 
 async function win12RefreshPasswordSettingStatus() {
     if (!(window.win12Native && window.win12Native.isTauri())) {
-        $('#setting-password-status').text('仅 Tauri App 可用');
+        $('#setting-password-status').text('Only available in Tauri App');
         $('#setting-password-current').hide();
         $('#setting-password-new').prop('disabled', true);
         $('#setting-password-submit').addClass('disabled');
@@ -350,11 +350,11 @@ async function win12RefreshPasswordSettingStatus() {
     try {
         const status = await window.win12Native.getLoginPasswordStatus();
         loginPasswordHasPassword = !!(status && status.has_password);
-        $('#setting-password-status').text(loginPasswordHasPassword ? '已设置密码' : '未设置密码');
+        $('#setting-password-status').text(loginPasswordHasPassword ? 'Password is set' : 'Password is not set');
         $('#setting-password-current')[loginPasswordHasPassword ? 'show' : 'hide']();
         $('#setting-password-current').val('');
         $('#setting-password-new').val('').prop('disabled', false);
-        $('#setting-password-new').attr('placeholder', loginPasswordHasPassword ? '新密码（留空清除密码）' : '新密码');
+        $('#setting-password-new').attr('placeholder', loginPasswordHasPassword ? 'New password (leave empty to clear)' : 'New password');
         $('#setting-password-submit').removeClass('disabled');
     }
     catch (e) {
@@ -364,31 +364,31 @@ async function win12RefreshPasswordSettingStatus() {
 
 async function win12SetLoginPassword() {
     if (!(window.win12Native && window.win12Native.isTauri())) {
-        $('#setting-password-status').text('仅 Tauri App 可用');
+        $('#setting-password-status').text('Only available in Tauri App');
         return;
     }
 
     const currentPassword = $('#setting-password-current').val();
     const newPassword = $('#setting-password-new').val();
     if (!loginPasswordHasPassword && !newPassword) {
-        $('#setting-password-status').text('请输入新密码');
+        $('#setting-password-status').text('Please enter new password');
         $('#setting-password-new').focus();
         return;
     }
     if (loginPasswordHasPassword && !currentPassword) {
-        $('#setting-password-status').text('请输入当前密码');
+        $('#setting-password-status').text('Please enter current password');
         $('#setting-password-current').focus();
         return;
     }
 
     $('#setting-password-submit').addClass('disabled');
     const clearingPassword = loginPasswordHasPassword && !newPassword;
-    $('#setting-password-status').text(clearingPassword ? '正在清除' : '正在保存');
+    $('#setting-password-status').text(clearingPassword ? 'Clearing...' : 'Saving...');
 
     try {
         await window.win12Native.setLoginPassword(loginPasswordHasPassword ? currentPassword : null, newPassword);
         await win12RefreshPasswordSettingStatus();
-        $('#setting-password-status').text(clearingPassword ? '密码已清空' : '密码已保存');
+        $('#setting-password-status').text(clearingPassword ? 'Password cleared' : 'Password saved');
     }
     catch (e) {
         $('#setting-password-status').text(String(e));
