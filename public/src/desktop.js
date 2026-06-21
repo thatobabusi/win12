@@ -586,16 +586,19 @@ function stop(e) {
 let loginPasswordHasPassword = false;
 
 function win12FinishLogin() {
+    console.log('✓ win12FinishLogin called');
     $('#login').css('opacity', '0');
     $('#login-password').css('opacity', '0');
     $('#login-error').css('opacity', '0');
     $('#login-welc').css('opacity', '1');
     // Show desktop elements
+    console.log('Showing desktop: #page, #taskbar, .window');
     $('#page').css('display', 'grid');
     $('#taskbar').css('display', 'flex');
     $('.window').css('display', 'grid');
     $('#orient-hint').css('display', 'block');
     $('#notice-board').css('display', 'flex');
+    console.log('Desktop elements shown. Page display:', $('#page').css('display'));
     setTimeout(() => {
         $('#loginback').addClass('close');
         setTimeout(() => {
