@@ -76,6 +76,7 @@ function applyTranslations(code) {
         }
     });
 
+    if (typeof updateAboutAppEntrypoints === 'function') updateAboutAppEntrypoints();
     translateLooseEnglishText(code);
 
     return applied;
@@ -841,7 +842,7 @@ const cms = {
                 return ['<i class="bi bi-pencil"></i> ' + lang('Enter editing mode', 'desktop.enteredit'), 'editMode();'];
             }
         },
-        ['<i class="bi bi-info-circle"></i> ' + lang('About Win12 Online', 'about.name'), '$(\'#win-about>.about\').addClass(\'show\');$(\'#win-about>.update\').removeClass(\'show\');openapp(\'about\');if($(\'.window.about\').hasClass(\'min\'))minwin(\'about\');'],
+        ['<i class="bi bi-info-circle"></i> ' + getAboutAppTitle(), 'openapp(\'about\');'],
         ['<i class="bi bi-brush"></i> ' + lang('Personalization', 'psnl'), 'openapp(\'setting\');$(\'#win-setting > div.menu > list > a.enable.appearance\')[0].click()']
     ],
     'desktop.icon': [
@@ -904,8 +905,8 @@ const cms = {
     ],
     'msgupdate': [
         ['<i class="bi bi-layout-text-window-reverse"></i> 查看详细', `openapp('about');if($('.window.about').hasClass('min'))
-        minwin('about');$('#win-about>.about').removeClass('show');$('#win-about>.update').addClass('show');
-        $('#win-about>.update>div>details:first-child').attr('open','open')`],
+        minwin('about');apps.about.page('update');
+        $('#win-about>.update.show>div>details:first-child').attr('open','open')`],
         ['<i class="bi bi-box-arrow-right"></i> 关闭', '$(\'.msg.update\').removeClass(\'show\')']
     ],
     'explorer.folder': [
@@ -2891,7 +2892,7 @@ function setIcon() {
     </div>
     <div class="b" ondblclick="openapp('about');" ontouchstart="openapp('about');" oncontextmenu="return showcm(event,'desktop.icon',['about',-1]);" appname="about">
         <img src="assets/icons/about.svg">
-        <p>${lang('About Win12 Online', 'about.name')}</p>
+        <p>${getAboutAppTitle()}</p>
     </div>
     <div class="b" ondblclick="openapp('edge');" ontouchstart="openapp('edge');" oncontextmenu="return showcm(event,'desktop.icon',['edge',-1]);" appname="edge">
         <img src="assets/icons/edge.svg">
