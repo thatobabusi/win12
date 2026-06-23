@@ -1,118 +1,94 @@
 # Win12 Documentation Hub
 
-Complete documentation for the Win12 Online project.
+Complete documentation for the Win12 Online project, in **English**, **中文**, **Français**, and **Setswana**.
 
-## 📚 Documentation Structure
+Start here: **[English overview](en/index.md)** · **[中文总览](zh/index.md)** · **[Aperçu en français](fr/index.md)** · **[Tshobokanyo ya Setswana](tn/index.md)**
 
-### English Documentation (English)
+---
 
-**Testing & Development**
-- **[Testing Guide](en/testing/)** - Complete testing documentation
-  - [Quick Start](en/testing/QUICKSTART.md) - Get started in 5 minutes
-  - [Docker Testing](en/testing/DOCKER.md) - Testing with Docker containers
-  
-- **[Contributing Guide](en/contributing/README.md)** - How to contribute with testing requirements
+## 📚 Documentation
 
-**Project Guidelines**
-- **[Localization Guide](en/localization/README.md)** - Engineering guide for multi-language support
-  - Translation architecture and best practices
-  - `data-i18n` patterns and JavaScript translation
-  - Settings app localization requirements
-  - Tauri and web parity
+| Topic | English | 中文 | Français | Setswana |
+|-------|---------|------|----------|----------|
+| Overview | [index](en/index.md) | [总览](zh/index.md) | [index](fr/index.md) | [tshobokanyo](tn/index.md) |
+| Installation | [installation](en/installation.md) | [安装](zh/installation.md) | [installation](fr/installation.md) | [go tsenya](tn/installation.md) |
+| Configuration | [configuration](en/configuration.md) | [配置](zh/configuration.md) | [configuration](fr/configuration.md) | [thulaganyo](tn/configuration.md) |
+| Architecture | [architecture](en/architecture.md) | [架构](zh/architecture.md) | [architecture](fr/architecture.md) | [moago](tn/architecture.md) |
+| Usage | [usage](en/usage.md) | [使用](zh/usage.md) | [utilisation](fr/usage.md) | [tiriso](tn/usage.md) |
+| Testing | [testing](en/testing/README.md) | [测试](zh/testing/README.md) | [tests](fr/testing/README.md) | [diteko](tn/testing/README.md) |
+| Contributing | [contributing](en/contributing/README.md) | [贡献](zh/contributing/README.md) | [contribution](fr/contributing/README.md) | [go nna le seabe](tn/contributing/README.md) |
+| Localization | [localization](en/localization/README.md) | [本地化](zh/localization/README.md) | [localisation](fr/localization/README.md) | [localization](tn/localization/README.md) |
+| Changelog | [changelog](en/changelog.md) | [更新记录](zh/changelog.md) | [journal](fr/changelog.md) | [lonaane lwa diphetogo](tn/changelog.md) |
+| License | [license](en/license.md) | [许可证](zh/license.md) | [licence](fr/license.md) | [laesense](tn/license.md) |
 
-### 中文文档 (Mandarin Chinese)
+### Maintainer references (English)
 
-**测试与开发**
-- **[测试指南](zh/testing/)** - 完整的测试文档
-  - [快速入门](zh/testing/QUICKSTART.md) - 5分钟快速开始
-  - [Docker 测试](zh/testing/DOCKER.md) - 使用 Docker 进行测试
+- **[sync/](sync/README.md)** ([中文](sync/README.zh-CN.md)) — reference↔fork path
+  map + `compare.mjs` for incorporating upstream changes (`npm run compare`).
+- **[learning/](../.claude/internal-affairs/learning/README.md)** — engineering post-mortems (boot / login /
+  service-worker saga). Read before re-touching those flows.
 
-- **[贡献指南](zh/contributing/README.md)** - 贡献指南和测试要求
+---
 
-**项目指南**
-- **[本地化指南](zh/localization/README.md)** - 多语言支持工程指南
-  - 翻译架构和最佳实践
-  - `data-i18n` 模式和 JavaScript 翻译
-  - Settings 应用本地化要求
-  - Tauri 和 Web 一致性
+## 🔍 Quick navigation
 
-## 🔍 Quick Navigation
+- **New here?** → [English overview](en/index.md) / [中文总览](zh/index.md) / [Aperçu FR](fr/index.md)
+- **Get it running?** → [Installation](en/installation.md) / [安装](zh/installation.md) / [Installation FR](fr/installation.md)
+- **Changes not showing up?** → [Configuration → Service worker](en/configuration.md#service-worker)
+- **Want to contribute?** → [Contributing](en/contributing/README.md) / [贡献](zh/contributing/README.md)
+- **Adding UI text?** → [Localization](en/localization/README.md) / [本地化](zh/localization/README.md)
 
-### Starting Out?
-- 👉 [English Quick Start](en/testing/QUICKSTART.md)
-- 👉 [中文快速入门](zh/testing/QUICKSTART.md)
+---
 
-### Want to Contribute?
-- 👉 [English Contributing Guide](en/contributing/README.md)
-- 👉 [中文贡献指南](zh/contributing/README.md)
-
-### Implementing Features?
-- 👉 [English Localization Guide](en/localization/README.md)
-- 👉 [中文本地化指南](zh/localization/README.md)
-
-## 📂 Complete Folder Structure
+## 📂 Folder structure
 
 ```
 docs/
-├── README.md (this file)
-├── en/
-│   ├── testing/
-│   │   ├── README.md          - Testing overview
-│   │   ├── QUICKSTART.md      - 5-minute quick start
-│   │   └── DOCKER.md          - Docker testing guide
-│   ├── contributing/
-│   │   └── README.md          - Contributing guidelines
-│   └── localization/
-│       └── README.md          - Localization engineering guide
-├── zh/
-│   ├── testing/
-│   │   ├── README.md          - 测试指南概述
-│   │   ├── QUICKSTART.md      - 快速入门指南
-│   │   └── DOCKER.md          - Docker 测试指南
-│   ├── contributing/
-│   │   └── README.md          - 贡献指南
-│   └── localization/
-│       └── README.md          - 本地化指南
-├── english/                   - Legacy (kept for backwards compatibility)
-├── mandarin/                  - Legacy (kept for backwards compatibility)
-└── ...
+├── README.md            (this hub)
+├── en/                  English docs
+│   ├── index.md         overview
+│   ├── installation.md
+│   ├── configuration.md
+│   ├── architecture.md
+│   ├── usage.md
+│   ├── changelog.md
+│   ├── license.md
+│   ├── testing/         README, QUICKSTART, DOCKER
+│   ├── contributing/    README
+│   └── localization/    README
+├── zh/                  中文文档（与 en/ 结构镜像）
+│   └── …                index, installation, configuration, architecture, usage, changelog, license, testing/, contributing/, localization/
+├── fr/                  Documentation française (miroir de en/)
+│   └── …                index, installation, configuration, architecture, usage, changelog, license, testing/, contributing/, localization/
+├── tn/                  Ditokomane tsa Setswana (e tshwana le en/)
+│   └── …                index, installation, configuration, architecture, usage, changelog, license, testing/, contributing/, localization/
+├── sync/                reference↔fork comparison tool (compare.mjs, path-map.json, REPORT.md)
+└── learning/            engineering post-mortems
 ```
 
-## 🌍 Language Support
+---
 
-This project provides comprehensive documentation in:
-- 🇬🇧 **English** - Complete documentation in `docs/en/`
-- 🇨🇳 **Mandarin Chinese (中文)** - Complete documentation in `docs/zh/`
+## 📝 Key guidelines
 
-## 📝 Key Guidelines
+### All UI work must be localized
 
-### All UI Work Must Be Localized
+User-facing text must be designed for language switching:
+- Wire new text through translation keys (`data-i18n` for HTML, `lang()` for JS).
+- Keep `lang/lang/*.properties` in sync (`lang_en`, `lang_en-US`, `lang_zh_CN`, `lang_zh_TW`).
 
-All user-facing UI text must be designed with language switching in mind:
-- New text must be wired through translation keys
-- Keep translations in sync across supported language files (`lang_en.properties`, `lang_en-US.properties`, `lang_zh_CN.properties`, `lang_zh_TW.properties`)
-- Use `data-i18n` for HTML text, `lang()` for JavaScript-generated text
+See [Localization](en/localization/README.md) / [本地化](zh/localization/README.md).
 
-See [Localization Guide](en/localization/README.md) or [本地化指南](zh/localization/README.md) for details.
+### Testing
 
-### Testing is Required
+Changes should ship with tests — unit (Vitest), lint (ESLint), and e2e (Playwright).
+See [Testing](en/testing/README.md) / [测试](zh/testing/README.md).
 
-All changes must have accompanying tests:
-- Unit tests for logic and modules
-- Linting checks for code quality
-- E2E tests for user workflows (run locally)
+---
 
-See [Testing Guide](en/testing/QUICKSTART.md) or [测试指南](zh/testing/QUICKSTART.md) for details.
+## 🔗 Related files
 
-## 🔗 Related Files
-
-- **[Main README](../README.md)** - Project overview
-- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Root-level contributing guidelines (legacy)
-- **[changelog.md](../changelog.md)** - Project changelog
-- **[CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)** - Code of conduct
-
-## 📞 Questions?
-
-- Check the relevant guide above
-- Review examples in existing code
-- Create an issue on GitHub for questions
+- [Main README](../README.md) — project overview
+- [CONTRIBUTING.md](../CONTRIBUTING.md) — root contributing notes
+- [changelog.md](../changelog.md) — upstream changelog (Chinese)
+- [LICENSE](../LICENSE) · [LICENSE-CC](../LICENSE-CC) — licensing
+- [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)

@@ -430,7 +430,11 @@ let langc = {
     'en-US': 'en-US',
     'en-us': 'en-US',
     'en-GB': 'en',
-    'en-gb': 'en'
+    'en-gb': 'en',
+
+    'tn': 'tn',
+    'tn-ZA': 'tn',
+    'tn-BW': 'tn'
 }
 
 let langcode, lang = (txt, id) => {
@@ -463,23 +467,18 @@ if (document.querySelectorAll('#loginback>.langselect>.' + langcode).length != 0
 }
 
 
-if (langcode != 'zh-CN') {
-    try {
-        console.log('Attempting to load language:', langcode);
-        console.log('Looking for file: lang/lang/lang_' + langcode + '.properties');
-        loadlangSync(langcode);
-        loadlang(langcode);
-    } catch (e) {
-        console.warn('Language file failed to load, using fallback:', e);
-        lang = (txt, id) => txt;
-    }
-}
-
-if (langcode == 'zh-CN') {
-    lang = (txt, id) => {
-        // if(txt!=$.i18n.prop(id))console.log(id,txt);
-        return txt;
-    };
+// Load the translation file for EVERY language, including zh-CN. (Historically
+// zh-CN was skipped because the static markup was assumed to already be clean
+// Simplified Chinese; but this fork's static text is mangled Chinese/English, so
+// zh-CN must load lang_zh_CN.properties and apply it like any other language.)
+try {
+    console.log('Attempting to load language:', langcode);
+    console.log('Looking for file: lang/lang/lang_' + langcode + '.properties');
+    loadlangSync(langcode);
+    loadlang(langcode);
+} catch (e) {
+    console.warn('Language file failed to load, using fallback:', e);
+    lang = (txt, id) => txt;
 }
 $(function () {
     translateLooseEnglishText();
@@ -586,25 +585,10 @@ function stop(e) {
 let loginPasswordHasPassword = false;
 
 function win12FinishLogin() {
-    console.log('✓ win12FinishLogin called');
     $('#login').css('opacity', '0');
     $('#login-password').css('opacity', '0');
     $('#login-error').css('opacity', '0');
     $('#login-welc').css('opacity', '1');
-
-    // Show desktop elements
-    console.log('Showing desktop: #desktop, #taskbar, .window');
-    $('#desktop').css('display', 'flex');
-    $('#taskbar').css('display', 'flex');
-    $('.window').css('display', 'grid');
-    $('#orient-hint').css('display', 'block');
-    $('#notice-board').css('display', 'flex');
-
-    // CRITICAL: Initialize desktop icons and menus (same as normal startup)
-    setIcon();
-    addMenu();
-
-    console.log('Desktop elements shown and initialized');
     setTimeout(() => {
         $('#loginback').addClass('close');
         setTimeout(() => {

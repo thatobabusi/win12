@@ -1,0 +1,8 @@
+{
+  "window": "about",
+  "entries": [
+    { "match": "More", "tag": "a", "key": "more", "en": "More", "tn": "Go feta" },
+    { "match": "项目主页", "tag": "a", "key": "about.project-home", "en": "Project homepage", "tn": "Tsebe ya gae ya porojeke" },
+    { "match": "无偿请求帮助我们翻译此项目！详见", "tag": "p", "key": "about.help-translate", "en": "We'd love your help translating this project for free! See", "tn": "Re ka rata thuso ya gago go ranola porojeke e ka mahala! Bona" }
+  ]
+}

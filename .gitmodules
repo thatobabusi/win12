@@ -1,3 +1,4 @@
-[submodule "lang"]
-	path = lang
-	url = https://github.com/win12-online/win12-locales.git
+[submodule "public/lang"]
+	path = public/lang
+	url = https://github.com/thatobabusi/win12-locales.git
+	branch = main

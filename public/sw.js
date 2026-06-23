@@ -1,174 +1,76 @@
-let dymanic = [
+// Win12 service worker.
+//
+// Strategy: NETWORK-FIRST for same-origin requests, with the cache used only as
+// an offline fallback. This means code/asset edits ALWAYS reflect on the next
+// load — no more stale files lingering across browsers. (The old worker was
+// cache-first with no versioning, so once a file was cached it was served
+// forever, which is why edits did not show up.)
+//
+// CACHE_VERSION is stamped into the cache name. Bumping it makes every client
+// drop all previous caches on activate. skipWaiting() + clients.claim() make a
+// new worker take over immediately instead of waiting for all tabs to close.
+const CACHE_VERSION = 'win12-2026-06-22-2';
+
+// External hosts that must always hit the network and never be cached.
+const passthrough = [
   'api.github.com',
   'tjy-gitnub.github.io/win12-theme',
   'win12server.freehk.svipss.top',
   'assets.msn.cn'
-]
-this.addEventListener('fetch', function (event) {
-  if (!/^https?:$/.test(new URL(event.request.url).protocol)) return
+];
 
-  event.respondWith(
-    caches.match(event.request).then(res => {
-      let fl = false;
-      dymanic.forEach(d => {
-        if (event.request.url.indexOf(d) > 0) {
-          fl = true;
-          return;
-        }
-      });
-      if (fl) {
-        console.log('动态请求', event.request.url);
-        return fetch(event.request);
-      }
-      return res ||
-        fetch(event.request)
-          .then(responese => {
-            const responeseClone = responese.clone();
-            if (responese.status >= 200 && responese.status < 300 && responese.status !== 206) {
-              caches.open('def').then(cache => {
-                console.log('下载数据', responeseClone.url);
-                cache.put(event.request, responeseClone);
-              })
-            }
-            return responese;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-    })
-  )
+self.addEventListener('install', () => {
+  // Don't wait for old tabs to close — activate this worker right away.
+  self.skipWaiting();
 });
-const cacheNames = ['def'];
-let nochanges = [
-  '/win12/fonts/',
-  '/win12/assets/images/',
-  '/win12/apps/icons/',
-  '/win12/scripts/jq.min.js',
-  '/win12/bootstrap-icons.css',
-]
-let flag = false;
 
-function update(force = false) {
-  caches.keys().then(keys => {
-    if (keys.includes('def')) {
-      caches.open('def').then(cc => {
-        cc.keys().then(key => {
-          key.forEach(k => {
-            let fl = true;
-            if (force) {
-              console.log('删除数据', k.url);
-              return cc.delete(k);
-            }
-            nochanges.forEach(fi => {
-              if (RegExp(fi + '\\S+').test(k.url)) {
-                fl = false;
-                return;
-              }
-            });
-            if (fl) {
-              console.log('删除数据', k.url);
-              return cc.delete(k);
-            }
-          });
-        });
-      });
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
+    // Delete every cache that isn't the current version.
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => k !== CACHE_VERSION).map(k => caches.delete(k)));
+    // Take control of pages that are already open.
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('fetch', (event) => {
+  const req = event.request;
+
+  // Only same-protocol http(s) requests.
+  let url;
+  try { url = new URL(req.url); } catch (e) { return; }
+  if (!/^https?:$/.test(url.protocol)) return;
+
+  // Let the browser handle non-GET and external dynamic hosts normally.
+  if (req.method !== 'GET') return;
+  if (passthrough.some(d => req.url.indexOf(d) > 0)) return;
+
+  // Network-first: try the live file, fall back to cache only when offline.
+  // cache:'reload' forces the request past the BROWSER's own HTTP cache, so an
+  // edited file is never masked by a stale browser-cached copy (this was the
+  // bug where corrected CSS/JS still rendered stale until a manual cache clear).
+  event.respondWith((async () => {
+    try {
+      const res = await fetch(req, { cache: 'reload' });
+      // Cache fresh, cacheable, same-origin responses for offline use.
+      if (res && res.status >= 200 && res.status < 300 && res.status !== 206 &&
+          url.origin === self.location.origin) {
+        const clone = res.clone();
+        caches.open(CACHE_VERSION).then(cache => cache.put(req, clone)).catch(() => {});
+      }
+      return res;
+    } catch (err) {
+      const cached = await caches.match(req);
+      if (cached) return cached;
+      throw err;
     }
-  });
-}
+  })());
+});
 
-
-this.addEventListener('message', function (e) {
-  if (e.data.head == 'update') {
-    if(e.data.force)update(true);
-    else update();
+// Let the page request a full cache wipe: navigator.serviceWorker.controller.postMessage({head:'update'})
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.head === 'update') {
+    caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
   }
 });
-this.addEventListener('activate', update);
-
-// let dongtai=[
-//   'api.github.com',
-//   'tjy-gitnub.github.io/win12-theme',
-//   'win12server.freehk.svipss.top',
-//   'assets.msn.cn'
-// ]
-// this.addEventListener('fetch', function (event) {
-//   event.respondWith(
-//     caches.match(event.request).then(res => {
-//       let fl=false;
-//       dongtai.forEach(d=>{
-//         if(event.request.url.indexOf(d)>0){
-//           fl=true;
-//           return;
-//         }
-//       });
-//       if(fl){console.log('动态请求',event.request.url);return fetch(event.request);}
-//       return res ||
-//         fetch(event.request)
-//           .then(responese => {
-//             // console.log(event.request);
-//             const responeseClone = responese.clone();
-//             caches.open('def').then(cache => {
-//               console.log('下载数据', responeseClone.url);
-//               cache.put(event.request, responeseClone);
-//             })
-//             return responese;
-//           })
-//           .catch(err => {
-//             console.log(err);
-//           });
-//     })
-//   )
-// });
-// const cacheNames = ['def'];
-// let nochanges = [
-//   '/win12/fonts/',
-//   '/win12/assets/images/',
-//   '/win12/apps/icons/',
-//   '/win12/jq.min.js',
-//   '/win12/bootstrap-icons.css',
-// ]
-// let flag = false;
-// this.addEventListener('activate', function (event) {
-//   flag = true;
-//   console.log('开始更新');
-//   event.waitUntil(
-//     caches.keys().then(keys => {
-//       if (keys.includes('def')) {
-//         caches.open('def').then(cc => {
-//           cc.keys().then(key => {
-//             key.forEach(k => {
-//               let fl = true;
-//               nochanges.forEach(fi => {
-//                 if (RegExp(fi + '\\S+').test(k.url)) {
-//                   fl = false;
-//                   return;
-//                 }
-//               });
-//               if (fl) {
-//                 console.log('删除数据', k.url);
-//                 return cc.delete(k);
-//               }
-//             });
-//           })
-//         })
-//       }
-//     })
-//   );
-//   event.waitUntil(
-//     caches.open('def').then(function (cache) {
-//       return cache.addAll([
-//         'bg-dark.svg'
-//       ]);
-//     })
-//   );
-// });
-// this.addEventListener('message', function (e) {
-//   if (e.data.head == 'is_update') {
-//     if (flag) {
-//       e.source.postMessage({
-//         head: 'update'
-//       });
-//       flag = false;
-//     }
-//   }
-// });

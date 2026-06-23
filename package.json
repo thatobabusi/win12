@@ -11,7 +11,8 @@
     "test:e2e:ui": "playwright test --ui --config config/playwright.config.js",
     "test:all": "npm run test && npm run test:e2e",
     "lint": "eslint . --ext .js,.html --config config/.eslintrc.json",
-    "lint:fix": "eslint . --ext .js,.html --fix --config config/.eslintrc.json"
+    "lint:fix": "eslint . --ext .js,.html --fix --config config/.eslintrc.json",
+    "compare": "node docs/sync/compare.mjs"
   },
   "dependencies": {
     "jquery": "^3.7.0"

@@ -1,0 +1,8 @@
+{
+  "window": "notepad",
+  "entries": [
+    { "match": "预览", "tag": "a", "key": "notepad.preview", "en": "Preview", "tn": "Ponelopele" },
+    { "match": "在此输入...", "tag": "p", "key": "notepad.typehere", "en": "Type here...", "tn": "Kwala fano..." },
+    { "match": "另存为", "tag": "a", "key": "notepad.saveas", "en": "Save As", "tn": "Boloka jaaka" }
+  ]
+}

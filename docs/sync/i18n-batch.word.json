@@ -1,0 +1,15 @@
+{
+  "window": "word",
+  "entries": [
+    { "match": "新建", "tag": "h3", "key": "word.new", "en": "New", "tn": "Sesha" },
+    { "match": "空白Documents", "tag": "p", "key": "word.blank-doc", "en": "Blank document", "tn": "Tokomane e e se nang sepe" },
+    { "match": "最近", "tag": "h3", "key": "word.recent", "en": "Recent", "tn": "Sa bosheng" },
+    { "match": "你最近尚未打开任何Documents。", "tag": "p", "key": "word.no-recent", "en": "You haven't opened any documents recently.", "tn": "Ga o ise o bule tokomane epe bosheng." },
+    { "match": "文件", "tag": "a", "key": "word.file", "en": "File", "tn": "Faele" },
+    { "match": "插入", "tag": "a", "key": "word.insert", "en": "Insert", "tn": "Tsenya" },
+    { "match": "主标题", "tag": "p", "key": "word.heading", "en": "Title", "tn": "Setlhogo" },
+    { "match": "方形", "tag": "p", "key": "word.square", "en": "Square", "tn": "Khutlonne" },
+    { "match": "表格", "tag": "p", "key": "word.table", "en": "Table", "tn": "Tafole" },
+    { "match": "空白页", "tag": "p", "key": "word.blank-page", "en": "Blank page", "tn": "Tsebe e e se nang sepe" }
+  ]
+}

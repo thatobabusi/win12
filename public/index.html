@@ -3,40 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows 12 Online - Boot Sequence</title>
+    <title>Windows 12 Online</title>
+    <!-- Boot order (matches reference win12 project):
+         index.html -> boot.html (BIOS progress bar, ~2s, F2 -> bios.html)
+                    -> desktop.html (login overlay -> desktop)
+         boot_kernel.js drives the boot.html -> desktop.html redirect.
+         No iframe / no competing timer here, so the boot runs exactly once. -->
+    <meta http-equiv="refresh" content="0; url=boot.html">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
-
-        body {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            background: #000;
-        }
-
-        #bootFrame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        html, body { margin: 0; padding: 0; background: #000; }
     </style>
 </head>
 <body>
-    <iframe id="bootFrame" src="boot.html"></iframe>
-
     <script>
-        // Boot sequence: Show boot.html for ~5 seconds, then redirect to desktop
-        // Windows 12 boot animation simulates startup before the desktop loads
-        // Desktop.html has the built-in login screen
-
-        setTimeout(() => {
-            console.log('Boot sequence complete, loading desktop...');
-            window.location.href = 'desktop.html';
-        }, 5000); // 5 second boot animation
+        // Enter the boot sequence as a full-page navigation (not an iframe),
+        // so boot_kernel.js controls progress and the redirect to the desktop.
+        // replace() keeps this entry page out of the back-history.
+        window.location.replace('boot.html');
     </script>
 </body>
 </html>

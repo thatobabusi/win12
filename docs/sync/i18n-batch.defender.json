@@ -1,0 +1,13 @@
+{
+  "window": "defender",
+  "entries": [
+    { "match": "过去 30 天", "tag": "span", "key": "defender.past30", "en": "Past 30 days", "tn": "Malatsi a a fetileng a le 30" },
+    { "match": "请求成功", "tag": "span", "key": "defender.req-ok", "en": "Request succeeded", "tn": "Kopo e atlegile" },
+    { "match": "请求失败", "tag": "span", "key": "defender.req-fail", "en": "Request failed", "tn": "Kopo e paletswe" },
+    { "match": "请求发出后无响应", "tag": "span", "key": "defender.req-noresp", "en": "No response after request", "tn": "Ga go na karabo morago ga kopo" },
+    { "match": "含有病毒", "tag": "span", "key": "defender.has-virus", "en": "Contains virus", "tn": "E na le vaerase" },
+    { "match": "今天 仅展示最近 5 次请求", "tag": "span", "key": "defender.today-5", "en": "Today (showing only the last 5 requests)", "tn": "Gompieno (go bontshiwa fela dikopo tse 5 tsa bofelo)" },
+    { "match": "Get url :", "tag": "p", "key": "defender.get-url", "en": "Get URL:", "tn": "URL ya Get:" },
+    { "match": "Post url :", "tag": "p", "key": "defender.post-url", "en": "Post URL:", "tn": "URL ya Post:" }
+  ]
+}

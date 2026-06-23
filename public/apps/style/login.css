@@ -1,13 +1,3 @@
-/* Hide all desktop content except login screen initially */
-body > div:not(#loginback),
-#desktop,
-#taskbar,
-.window,
-#orient-hint,
-#notice-board {
-    display: none;
-}
-
 #loginback {
     width: 100%;
     height: 100%;
@@ -23,8 +13,8 @@ body > div:not(#loginback),
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 1;
-    display: flex !important;
+    opacity: 0;
+    display: flex;
     z-index: 101;
 }
 

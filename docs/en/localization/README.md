@@ -42,10 +42,15 @@ When translation files are not used properly, the impact is immediate:
 
 The current language catalog lives in the nested locale repository:
 
-- `lang/lang/lang_zh_CN.properties`
-- `lang/lang/lang_zh_TW.properties`
-- `lang/lang/lang_en.properties`
-- `lang/lang/lang_en-US.properties`
+- `public/lang/lang/lang_zh_CN.properties`
+- `public/lang/lang/lang_zh_TW.properties`
+- `public/lang/lang/lang_en.properties`
+- `public/lang/lang/lang_en-US.properties`
+- `public/lang/lang/lang_tn.properties` (Setswana)
+
+All five are kept at full key parity (566 keys). Setswana (`tn`) must never fall
+behind English — when you add a key, add it to every file. The i18n tooling in
+`../../sync/` (`i18n-apply.mjs`, `i18n-zh.mjs`) helps keep them aligned.
 
 For English, `lang_en.properties` and `lang_en-US.properties` must remain aligned unless there is a deliberate regional wording difference.
 
