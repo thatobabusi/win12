@@ -494,6 +494,26 @@ console.log('?')
 // 
 // 为开发方便，故不将简体中文纳入语言考虑
 
+// --- Cherry-picked from upstream win12-online/win12 #845 (About app) ---
+// Standalone, dormant helpers (no .about-app-title markup yet in this fork, so
+// updateAboutAppEntrypoints() is a no-op). Kept for forward-compat / future merge.
+function isTauriApp() {
+    return !!((window.win12Native && window.win12Native.isTauri && window.win12Native.isTauri()) || (window.__TAURI__ && window.__TAURI__.core));
+}
+
+function getAboutAppTitle() {
+    if (!isTauriApp()) return lang('关于 Win12 网页版', 'about.name');
+    if (langcode == 'en') return 'About Win12-desktop';
+    if (langcode == 'zh-TW') return '關於 Win12-desktop';
+    return '关于 Win12-desktop';
+}
+
+function updateAboutAppEntrypoints() {
+    $('.about-app-title').text(getAboutAppTitle());
+}
+
+updateAboutAppEntrypoints();
+
 
 // 后端服务器
 const server = 'http://win12server.freehk.svipss.top/';

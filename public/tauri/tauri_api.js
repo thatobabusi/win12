@@ -53,3 +53,8 @@ window.win12Native = {
     }
   },
 };
+
+// Cherry-picked from upstream #845: refresh About-app title once Tauri API is ready.
+if (typeof updateAboutAppEntrypoints === "function") {
+  updateAboutAppEntrypoints();
+}

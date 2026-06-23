@@ -1,6 +1,6 @@
 # Reference ↔ WIP comparison report
 
-_Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by hand — re-run the script._
+_Generated 2026-06-23T17:02:18.090Z by `docs/sync/compare.mjs`. Do not edit by hand — re-run the script._
 
 - **Reference:** `D:\My Software Dev\Tools\win12-git`
 - **WIP:** `D:\My Software Dev\Herd\sites-wip\win12`
@@ -9,10 +9,10 @@ _Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by h
 
 | Category | Count | Meaning |
 |---|---:|---|
-| IDENTICAL | 124 | byte-for-byte equal |
-| MODIFIED | 49 | exists in both but diverged — **merge by hand when upstream changes these** |
-| MISSING_IN_WIP | 17 | upstream has it, WIP does not — **candidates to incorporate** |
-| WIP_ONLY | 3 | your additions, not in upstream |
+| IDENTICAL | 127 | byte-for-byte equal |
+| MODIFIED | 50 | exists in both but diverged — **merge by hand when upstream changes these** |
+| MISSING_IN_WIP | 13 | upstream has it, WIP does not — **candidates to incorporate** |
+| WIP_ONLY | 4 | your additions, not in upstream |
 | UNMAPPED (ref top-level) | 2 | reference entries with no mapping rule — extend `path-map.json` |
 
 ## MODIFIED — diverged files (review on every upstream pull)
@@ -58,11 +58,12 @@ _Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by h
 | `lang/lang/lang_en.properties` | `public/lang/lang/lang_en.properties` |
 | `lang/lang/lang_zh_CN.properties` | `public/lang/lang/lang_zh_CN.properties` |
 | `lang/lang/lang_zh_TW.properties` | `public/lang/lang/lang_zh_TW.properties` |
+| `mainpage.html` | `public/mainpage.html` |
 | `module/apps.js` | `public/src/modules/apps.js` |
 | `module/tab.js` | `public/src/modules/tab.js` |
 | `module/widget.js` | `public/src/modules/widget.js` |
 | `module/window.js` | `public/src/modules/window.js` |
-| `README.md` | `README.md` |
+| `pwa/manifest.json` | `public/pwa/manifest.json` |
 | `scripts/Lunar.js` | `public/scripts/Lunar.js` |
 | `scripts/news.js` | `public/scripts/news.js` |
 | `sw.js` | `public/sw.js` |
@@ -74,7 +75,6 @@ _Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by h
 | reference | wip |
 |---|---|
 | `img/ai-copilot.png` | `public/assets/images/ai-copilot.png` |
-| `img/Bing.svg` | `public/assets/images/Bing.svg` |
 | `img/colorful-apps.png` | `public/assets/images/colorful-apps.png` |
 | `img/corsiri.svg` | `public/assets/images/corsiri.svg` |
 | `img/dark-mode.png` | `public/assets/images/dark-mode.png` |
@@ -87,9 +87,6 @@ _Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by h
 | `img/win13.jpg` | `public/assets/images/win13.jpg` |
 | `img/wsm.png` | `public/assets/images/wsm.png` |
 | `img/yq.jpg` | `public/assets/images/yq.jpg` |
-| `mainpage.html` | `public/mainpage.html` |
-| `reload.html` | `public/reload.html` |
-| `shutdown.html` | `public/shutdown.html` |
 
 ## WIP_ONLY — your additions
 
@@ -98,6 +95,7 @@ _Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by h
 | `icon/folder.png` | `public/assets/icons/folder.png` |
 | `lang/lang/lang_en-US.properties` | `public/lang/lang/lang_en-US.properties` |
 | `lang/lang/lang_tn.properties` | `public/lang/lang/lang_tn.properties` |
+| `pwa/logo.svg` | `public/pwa/logo.svg` |
 
 ## UNMAPPED reference top-level entries
 
@@ -108,19 +106,20 @@ _Generated 2026-06-23T13:08:21.763Z by `docs/sync/compare.mjs`. Do not edit by h
 
 Hardcoded CJK (Chinese) character counts in **shared** `.js`/`.html` files. Upstream keeps strings hardcoded in Chinese; this table quantifies how many remain and lets you point at specific files when proposing the multilingual (lang-key) approach.
 
-**Totals across shared source: reference 12872 vs WIP 10553 CJK chars.**
+**Totals across shared source: reference 13300 vs WIP 10723 CJK chars.**
 
 | file (ref → wip) | ref CJK | wip CJK |
 |---|---:|---:|
-| `desktop.html` → `public/desktop.html` | 5951 | 4635 |
-| `desktop.js` → `public/src/desktop.js` | 4237 | 4789 |
-| `module/apps.js` → `public/src/modules/apps.js` | 769 | 399 |
+| `desktop.html` → `public/desktop.html` | 6174 | 4635 |
+| `desktop.js` → `public/src/desktop.js` | 4236 | 4798 |
+| `module/apps.js` → `public/src/modules/apps.js` | 814 | 399 |
 | `bluescreen.html` → `public/bluescreen.html` | 340 | 229 |
 | `data/disconnected_dark.html` → `public/src/data/disconnected_dark.html` | 233 | 63 |
 | `data/disconnected.html` → `public/src/data/disconnected.html` | 216 | 71 |
 | `index.html` → `public/index.html` | 168 | 0 |
 | `scripts/Lunar.js` → `public/scripts/Lunar.js` | 157 | 3 |
 | `games/minesweeper.html` → `public/src/games/minesweeper.html` | 146 | 119 |
+| `mainpage.html` → `public/mainpage.html` | 138 | 138 |
 | `data/tasks.js` → `public/src/data/tasks.js` | 114 | 0 |
 | `scripts/news.js` → `public/scripts/news.js` | 112 | 0 |
 | `module/widget.js` → `public/src/modules/widget.js` | 99 | 53 |
@@ -132,11 +131,13 @@ Hardcoded CJK (Chinese) character counts in **shared** `.js`/`.html` files. Upst
 | `bios.html` → `public/bios.html` | 29 | 29 |
 | `tauri/Battery_power.js` → `public/tauri/Battery_power.js` | 22 | 0 |
 | `scripts/calculator_kernel.js` → `public/scripts/calculator_kernel.js` | 20 | 20 |
+| `shutdown.html` → `public/shutdown.html` | 15 | 15 |
 | `tauri/tauri_api.js` → `public/tauri/tauri_api.js` | 10 | 0 |
+| `reload.html` → `public/reload.html` | 8 | 8 |
 
 ## IDENTICAL files
 
-_124 files — run with `--full` to list them._
+_127 files — run with `--full` to list them._
 
 ---
 
