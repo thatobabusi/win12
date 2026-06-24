@@ -56,6 +56,16 @@ tse di tletseng.
   go baakantswe config ya Playwright (`testDir`, nako ya 60s, port 8123) le diteko tsa
   e2e go tshwana le app ya nnete le go akaretsa Setswana, app ya About, le ditsebe tsa
   go simolola sesha/go tima. Diteko tsa unit di le 50 / e2e di le 14 di a feta.
+- **Go kopanya le upstream (2026-06-24)** — re kopantse **#852** (Dipeakanyo → Windows
+  Update: tlhatlhobo ya nnete ya dintšhafatso ka di-release tsa GitHub mo Tauri —
+  papiso ya version ya tlhago + kgokaganyo ya "bona release ya bofelo"). Mofuta wa web o
+  sala o sa dire mme o tshwailwe sentle gore ga o gone. Re o kopantse le i18n ya foroko
+  eno: mela e 16 e mesha ya `setting.upd.*` e fetoletswe mo dipuong tsotlhe tse 5. Re
+  okeditse le di-key tse 3 tsa About tse di neng di diegisitswe — dipuo tsotlhe jaanong di
+  na le **di-key di le 585**. Re **iketleeleditse go tlola** #851 (llama-guard — e romela
+  Copilot chat go endpoint ya batho ba bangwe, e na le URL e e senang protocol e e
+  senyegileng, e bile ga e a fetolelwa) le ntšhafatso ya lang submodule ya upstream
+  (foroko eno e dirisa repo ya yona ya `win12-locales`, go e tsaya go ka latlhegelwa ke Setswana).
 
 ---
 

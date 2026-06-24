@@ -18,6 +18,12 @@ window.win12Native = {
     if (!this.isTauri()) return null;
     return await window.__TAURI__.core.invoke("set_login_password", { currentPassword, newPassword });
   },
+  async checkAppUpdate() {
+    if (!this.isTauri()) {
+      throw new Error("App update check is only available in the Tauri desktop app");
+    }
+    return await window.__TAURI__.core.invoke("check_app_update");
+  },
   async pingHost(host, ipv6 = false, onOutput = null) {
     if (!this.isTauri()) {
       throw new Error("ping/ping6 is only supported in desktop version");

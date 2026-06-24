@@ -1631,12 +1631,12 @@ toggletheme() 切换主题
 								<p class="notice" data-i18n="setting.upd.checking">正在检查更新...</p>
 								<p class="detail"></p>
 							</div>
-							<div><a class="a button disabled" style="font-size: 16px;margin-top: -7.5px; opacity: 0.5; pointer-events: none;" data-i18n="setting.upd.check">检查更新</a></div>
+							<div><a class="a button update-check" onclick="apps.setting.checkUpdate(true)" style="font-size: 16px;margin-top: -7.5px;" data-i18n="setting.upd.check">检查更新</a></div>
 						</div>
 					</div>
 					<div class="setting-list">
 						<a onclick="openapp('about');apps.about.page('update');" style="opacity: 0.5; pointer-events: none;"><icon>&#xE946;</icon><div><p data-i18n="setting.upd.history">更新历史记录</p><p data-i18n="setting.upd.history-desc">查看历史版本功能</p></div><i class="bi bi-chevron-right"></i></a>
-						<a style="opacity: 0.5; pointer-events: none;"><icon>&#xE896;</icon><div><p data-i18n="setting.upd.full">Downloads完整内容</p><p data-i18n="setting.upd.full-desc">当更新或System出现问题，使用此项Downloads最新完整内容</p></div><i class="bi bi-chevron-right"></i></a>
+						<a class="update-release disabled"><icon>&#xE896;</icon><div><p data-i18n="setting.upd.full">Downloads完整内容</p><p data-i18n="setting.upd.full-desc">当更新或System出现问题，使用此项Downloads最新完整内容</p></div><i class="bi bi-chevron-right"></i></a>
 						<div><icon></icon><div><p data-i18n="setting.upd.auto">自动更新</p><p data-i18n="setting.upd.auto-desc">Settings是否启用自动更新</p></div>
 							<div class="alr">
 								<a class="checkbox checked a" onclick="$(this).toggleClass('checked'); autoUpdate = !autoUpdate; localStorage.setItem('autoUpdate', autoUpdate)"></a>

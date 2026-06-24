@@ -68,21 +68,64 @@ window.apps = {
             });
         },
         // 无法正常运行，待调试
-        checkUpdate: () => {
-            $('#win-setting>.page>.cnt.update>.lo>.update-main .notice')[0].innerText = 'Developer has not perfected this feature';
-            $('#win-setting>.page>.cnt.update>.lo>.update-main .detail')[0].innerHTML = 'Windows Update has been disabled';
-            $('#win-setting>.page>.cnt.update>.setting-list>.update-now').addClass('disabled');
-            $('#win-setting>.page>.cnt.update>.lo>.update-main>div:last-child').addClass('disabled');
-            // Simulate the previous functionality for backward compatibility but disable actual updates
-            setTimeout(() => {
-                $('#win-setting>.page>.cnt.update>.lo>.update-main .notice')[0].innerText = 'This feature is not yet completed';
-                $('#win-setting>.page>.cnt.update>.lo>.update-main .detail')[0].innerText = 'Windows Update is disabled';
-                // $('#win-setting>.page>.cnt.update>.setting-list>.update-now>div>p:first-child')[0].innerText = '开发者暂未完善此功能';
-                // $('#win-setting>.page>.cnt.update>.setting-list>.update-now>div>p:last-child')[0].innerText = 'Windows 更新已被禁用';
-                // Keep buttons disabled as requested
-                $('#win-setting>.page>.cnt.update>.setting-list>.update-now').addClass('disabled');
-                $('#win-setting>.page>.cnt.update>.lo>.update-main>div:last-child').addClass('disabled');
-            }, 1000);
+        // Upstream #852: real GitHub release update check. Tauri-only (native API);
+        // on the web build it stays inert and clearly marked unavailable. All
+        // user-facing strings go through lang() so every locale is covered.
+        checkUpdate: async (manual = false) => {
+            const $update = $('#win-setting>.page>.cnt.update');
+            const $notice = $update.find('.update-main .notice');
+            const $detail = $update.find('.update-main .detail');
+            const $button = $update.find('.update-check');
+            const $release = $update.find('.update-release');
+
+            $release.addClass('disabled').removeAttr('onclick');
+
+            if (!(window.win12Native && window.win12Native.isTauri())) {
+                $notice.text(lang('Available in the Tauri desktop app only', 'setting.upd.tauri-only'));
+                $detail.text(lang('Windows Update needs the desktop app to call the GitHub release API.', 'setting.upd.tauri-only-desc'));
+                $button.addClass('disabled');
+                return;
+            }
+
+            $button.addClass('disabled').text(lang('Checking...', 'setting.upd.checking-btn'));
+            $notice.text(lang('Checking for updates...', 'setting.upd.checking'));
+            $detail.text(lang('Connecting to GitHub', 'setting.upd.connecting'));
+
+            try {
+                const result = await window.win12Native.checkAppUpdate();
+                const unknown = lang('Unknown version', 'setting.upd.unknown-version');
+                const currentVersion = result.current_version || unknown;
+                const latestVersion = result.latest_version || unknown;
+                const publishedAt = result.published_at ? new Date(result.published_at).toLocaleString() : '';
+                const releaseText = result.latest_name || latestVersion;
+                const curLabel = lang('Current version', 'setting.upd.current-label');
+
+                if (result.update_available) {
+                    const latLabel = lang('latest version', 'setting.upd.latest-label');
+                    $notice.text(lang('Update available', 'setting.upd.available'));
+                    $detail.text(`${curLabel} ${currentVersion}, ${latLabel} ${latestVersion}` +
+                        (publishedAt ? `, ${lang('published', 'setting.upd.published-label')} ${publishedAt}` : ''));
+                    $release.removeClass('disabled')
+                        .attr('onclick', `window.open(${JSON.stringify(result.release_url)}, '_blank')`)
+                        .find('div>p:first-child').text(`${lang('Get', 'setting.upd.get-release')} ${releaseText}`);
+                    $release.find('div>p:last-child').text(lang('Open the latest GitHub release page to download the installer', 'setting.upd.release-open-desc'));
+                }
+                else {
+                    $notice.text(lang("You're on the latest version", 'setting.upd.uptodate'));
+                    $detail.text(`${curLabel} ${currentVersion}, ${lang('GitHub latest version', 'setting.upd.gh-latest-label')} ${latestVersion}`);
+                    $release.find('div>p:first-child').text(lang('Download full content', 'setting.upd.full'));
+                    $release.find('div>p:last-child').text(lang('There is no newer version than your local build', 'setting.upd.no-newer-desc'));
+                }
+            }
+            catch (e) {
+                $notice.text(lang('Could not check for updates', 'setting.upd.fail'));
+                $detail.text(String(e));
+            }
+            finally {
+                $button.removeClass('disabled').text(manual
+                    ? lang('Check again', 'setting.upd.recheck')
+                    : lang('Check for updates', 'setting.upd.check'));
+            }
         },
     },
     msstore: {

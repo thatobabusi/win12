@@ -59,6 +59,16 @@ rétrospectives détaillées.
   Playwright (`testDir`, délai de 60 s, port 8123) et des tests e2e pour refléter
   l'app réelle et couvrir le setswana, l'app À propos et les pages redémarrage/arrêt.
   50 tests unitaires / 14 e2e passent.
+- **Sync amont (2026-06-24)** — fusion de **#852** (Paramètres → Windows Update : une
+  vraie vérification de mise à jour via les releases GitHub sous Tauri — comparaison
+  de version native + lien « obtenir la dernière release »). La version web reste inerte
+  et clairement marquée indisponible. Réconcilié avec l'i18n de ce fork : 16 nouvelles
+  chaînes `setting.upd.*` traduites dans les 5 langues. Ajout aussi des 3 clés de notes
+  de version « À propos » différées — toutes les langues sont désormais à **585 clés**.
+  **Volontairement ignorés** : #851 (llama-guard — il envoie le chat Copilot vers un
+  point de terminaison tiers, embarque une URL sans schéma donc cassée, et n'est pas
+  localisé) et la mise à jour du sous-module de langues amont (ce fork utilise son propre
+  dépôt `win12-locales` ; la prendre supprimerait le setswana).
 
 ---
 

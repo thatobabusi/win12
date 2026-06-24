@@ -49,6 +49,15 @@ post-mortems.
   integrity, no CJK leak); rewired the Playwright config (correct `testDir`, 60s
   timeout, port 8123) and the e2e specs to match the real app + cover Setswana, the
   About app, and the restart/shutdown pages. Unit 50 / e2e 14 passing.
+- **Upstream sync (2026-06-24)** — merged **#852** (Settings → Windows Update: a
+  real Tauri GitHub-release update check — native version compare + "get latest
+  release" link). The web build stays inert and clearly marked unavailable.
+  Reconciled with this fork's i18n: 16 new `setting.upd.*` strings translated
+  across all 5 locales. Added the 3 deferred About release-notes keys too — all
+  locales now at **585 keys each**. Deliberately **skipped** #851 (llama-guard —
+  it routes Copilot chat to a third-party endpoint, ships a schemeless/broken URL,
+  and isn't localized) and the upstream lang-submodule bump (this fork uses its own
+  `win12-locales` repo, so taking it would drop Setswana).
 
 ---
 
