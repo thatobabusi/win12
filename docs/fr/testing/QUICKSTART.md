@@ -83,7 +83,7 @@ npm run lint:fix
 - Normalisation des langues (conversion du code navigateur vers le code app)
 - Vérifications d'exhaustivité des traductions
 
-**Couverture :** 28 tests répartis sur 2 suites de tests
+**Couverture :** 50 tests répartis sur 3 suites unitaires (dont `lang-files.test.js`, qui valide les vrais fichiers de langue des 5 langues)
 
 ### Linting (~17 secondes)
 - Qualité du code et cohérence du style

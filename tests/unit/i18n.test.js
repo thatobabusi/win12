@@ -1,5 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 
+// NOTE: These are LOGIC tests for the lang()/normalize behaviour, using small
+// fixtures. Validation of the ACTUAL translation files (full key parity across
+// en/en-US/zh_CN/zh_TW/tn, no empty values, placeholder integrity, no CJK leak)
+// lives in tests/unit/lang-files.test.js.
+
 describe('i18n Translation System', () => {
   let mockI18nData;
 
@@ -91,17 +96,24 @@ describe('i18n Translation System', () => {
 
   describe('Language code normalization', () => {
     it('should normalize browser language codes', () => {
+      // Mirrors the real langc map in public/src/desktop.js (incl. Setswana).
       const normalize = (code) => ({
         'zh-CN': 'zh_CN',
         'zh-cn': 'zh_CN',
         'zh-TW': 'zh_TW',
         'zh-tw': 'zh_TW',
-        'en-US': 'en',
-        'en-GB': 'en'
+        'en-US': 'en-US',
+        'en-us': 'en-US',
+        'en-GB': 'en',
+        'en-gb': 'en',
+        'tn': 'tn',
+        'tn-ZA': 'tn',
+        'tn-BW': 'tn'
       }[code] || code);
 
       expect(normalize('zh-CN')).toBe('zh_CN');
-      expect(normalize('en-US')).toBe('en');
+      expect(normalize('en-US')).toBe('en-US');
+      expect(normalize('tn-ZA')).toBe('tn');
       expect(normalize('en')).toBe('en');
     });
   });

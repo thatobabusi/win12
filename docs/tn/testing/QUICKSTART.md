@@ -83,7 +83,7 @@ npm run lint:fix
 - Go tlwaela ga puo (go fetola code ya sebadi go ya go code ya app)
 - Ditlhatlhobo tsa botlalo jwa phetolelo
 
-**Phimolelo:** diteko di le 28 mo ditlhopheng tse 2 tsa diteko
+**Phimolelo:** diteko di le 50 mo ditlhopheng tse 3 tsa unit (go akaretsa `lang-files.test.js`, e e netefatsang difaele tsa nnete tsa dipuo tsotlhe tse 5)
 
 ### Linting (~17 metsotswana)
 - Boleng jwa khoutu le go nna le seemo sa setaele

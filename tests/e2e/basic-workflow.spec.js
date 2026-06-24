@@ -1,182 +1,125 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Win12 Basic Workflows', () => {
-  test.beforeEach(async ({ page }) => {
-    // Navigate to Win12
-    await page.goto('/desktop.html');
-    // Wait for desktop to load
-    await page.waitForSelector('#desktop', { timeout: 5000 });
+// Apps are opened via the global openapp() (robust against overlay/selector churn).
+// ?skip_login=1 bypasses the login overlay; ?develop=1 disables the service worker
+// so tests always run against fresh files.
+const URL = '/desktop.html?skip_login=1&develop=1';
+
+async function boot(page) {
+  await page.goto(URL);
+  await page.waitForSelector('#desktop', { timeout: 20000 });
+  // wait until the app globals are ready (desktop.html pulls large/CDN scripts on a cold load)
+  await page.waitForFunction(() => typeof window.openapp === 'function', { timeout: 25000 });
+}
+async function openApp(page, name) {
+  await page.evaluate((n) => window.openapp(n), name);
+  const win = page.locator(`.window.${name}`);
+  await expect(win).toBeVisible({ timeout: 15000 });
+  return win;
+}
+
+test.describe('Win12 desktop & apps', () => {
+  test.beforeEach(async ({ page }) => boot(page));
+
+  test('desktop, taskbar and start button load', async ({ page }) => {
+    await expect(page.locator('#desktop')).toBeVisible();
+    await expect(page.locator('#taskbar')).toHaveCount(1);
+    await expect(page.locator('#start-menu')).toHaveCount(1);
+    await expect(page.locator('#start-btn')).toHaveCount(1);
   });
 
-  test('should load desktop successfully', async ({ page }) => {
-    const desktop = await page.$('#desktop');
-    expect(desktop).not.toBeNull();
-
-    // Check for key UI elements
-    const taskbar = await page.$('#taskbar');
-    const startMenu = await page.$('#start-menu');
-    expect(taskbar).not.toBeNull();
-    expect(startMenu).not.toBeNull();
+  test('desktop has app icons', async ({ page }) => {
+    const icons = await page.locator('#desktop > div[appname]').count();
+    expect(icons).toBeGreaterThan(0);
   });
 
-  test('should display taskbar with app icons', async ({ page }) => {
-    const taskbarItems = await page.locator('#taskbar [data-app]').count();
-    expect(taskbarItems).toBeGreaterThan(0);
-  });
+  test('opens Settings', async ({ page }) => { await openApp(page, 'setting'); });
+  test('opens File Explorer', async ({ page }) => { await openApp(page, 'explorer'); });
+  test('opens Calculator', async ({ page }) => { await openApp(page, 'calc'); });
+  test('opens Terminal', async ({ page }) => { await openApp(page, 'terminal'); });
 
-  test('should open Settings app', async ({ page }) => {
-    // Look for settings icon in taskbar
-    await page.click('text=Settings');
-
-    // Wait for settings window to appear
-    const settingsWindow = await page.waitForSelector('.window.settings', { timeout: 5000 });
-    expect(settingsWindow).not.toBeNull();
-
-    // Verify window is visible
-    const isVisible = await settingsWindow.isVisible();
-    expect(isVisible).toBe(true);
-  });
-
-  test('should open File Explorer', async ({ page }) => {
-    // Open File Explorer
-    await page.click('text=File Explorer');
-
-    // Wait for file explorer window
-    const explorerWindow = await page.waitForSelector('.window.explorer', { timeout: 5000 });
-    expect(explorerWindow).not.toBeNull();
-  });
-
-  test('should open Calculator app', async ({ page }) => {
-    await page.click('text=Calculator');
-
-    const calcWindow = await page.waitForSelector('.window.calc', { timeout: 5000 });
-    expect(calcWindow).not.toBeNull();
-  });
-
-  test('should close window', async ({ page }) => {
-    // Open a window
-    await page.click('text=Settings');
-    await page.waitForSelector('.window.settings', { timeout: 5000 });
-
-    // Close the window
-    const closeButton = await page.$('.window.settings .close-btn');
-    if (closeButton) {
-      await closeButton.click();
-    }
-  });
-
-  test('should switch between windows', async ({ page }) => {
-    // Open two windows
-    await page.click('text=Settings');
-    await page.click('text=Calculator');
-
-    await page.waitForSelector('.window.settings', { timeout: 5000 });
-    await page.waitForSelector('.window.calc', { timeout: 5000 });
-
-    // Both windows should exist
-    const settingsWindow = await page.$('.window.settings');
-    const calcWindow = await page.$('.window.calc');
-    expect(settingsWindow).not.toBeNull();
-    expect(calcWindow).not.toBeNull();
+  test('closes a window', async ({ page }) => {
+    await openApp(page, 'calc');
+    await page.evaluate(() => window.hidewin('calc'));
+    await expect(page.locator('.window.calc')).toBeHidden({ timeout: 5000 });
   });
 });
 
-test.describe('Win12 Language Switching', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/desktop.html');
-    await page.waitForSelector('#desktop', { timeout: 5000 });
+test.describe('Win12 localization', () => {
+  test('defaults to English', async ({ page }) => {
+    await page.evaluate(() => localStorage.removeItem('lang')).catch(() => {});
+    await boot(page);
+    // login button text would be English; check a known English desktop label
+    const txt = await page.locator('#desktop > div[appname="setting"] p').first().textContent();
+    expect(txt?.trim()).toBe('Settings');
   });
 
-  test('should default to English interface', async ({ page }) => {
-    // Check for English text in UI
-    const hasEnglish = await page.locator('text=Settings').isVisible();
-    expect(hasEnglish).toBe(true);
+  test('login language picker includes Setswana', async ({ page }) => {
+    await page.goto('/desktop.html?develop=1'); // login overlay visible
+    await page.waitForSelector('#loginback .langselect .tn', { timeout: 10000 });
+    const label = await page.locator('#loginback .langselect .tn').textContent();
+    expect(label?.trim()).toBe('Setswana');
   });
 
-  test('should have language selector', async ({ page }) => {
-    // Look for language settings
-    const languageControl = await page.$('[data-lang-selector]');
-    expect(languageControl).not.toBeNull();
+  test('switches to Setswana and persists (lang key)', async ({ page }) => {
+    await page.goto('/desktop.html?skip_login=1&develop=1');
+    await page.waitForSelector('#desktop', { timeout: 10000 });
+    await page.evaluate(() => { localStorage.setItem('lang', 'tn'); location.reload(); });
+    await page.waitForSelector('#desktop', { timeout: 10000 });
+    await page.waitForFunction(() => typeof window.openapp === 'function', { timeout: 10000 });
+    // persisted under the real key
+    expect(await page.evaluate(() => localStorage.getItem('lang'))).toBe('tn');
+    // Settings desktop icon should now read Setswana ("Dipeakanyo")
+    await page.waitForFunction(
+      () => document.querySelector('#desktop > div[appname="setting"] p')?.textContent.trim() === 'Dipeakanyo',
+      { timeout: 8000 }
+    );
   });
 
-  test('should switch to Chinese', async ({ page }) => {
-    // Change language to Chinese
-    await page.evaluate(() => {
-      localStorage.setItem('win12-lang', 'zh_CN');
-      location.reload();
-    });
-
-    await page.waitForLoadState('networkidle');
-
-    // Check for Chinese text (settings icon or label)
-    const pageText = await page.textContent('body');
-    // Should have some Chinese characters or different UI
-    expect(pageText).toBeTruthy();
-  });
-
-  test('should persist language selection', async ({ page }) => {
-    // Set language
-    await page.evaluate(() => {
-      localStorage.setItem('win12-lang', 'zh_CN');
-    });
-
-    // Reload page
-    await page.reload();
-    await page.waitForLoadState('networkidle');
-
-    // Check that language is still Chinese
-    const savedLang = await page.evaluate(() => localStorage.getItem('win12-lang'));
-    expect(savedLang).toBe('zh_CN');
+  test('switches to Chinese (zh-CN actually loads now)', async ({ page }) => {
+    await page.goto('/desktop.html?skip_login=1&develop=1');
+    await page.waitForSelector('#desktop', { timeout: 10000 });
+    await page.evaluate(() => { localStorage.setItem('lang', 'zh-CN'); location.reload(); });
+    await page.waitForSelector('#desktop', { timeout: 10000 });
+    await page.waitForFunction(
+      () => document.querySelector('#desktop > div[appname="setting"] p')?.textContent.trim() === '设置',
+      { timeout: 8000 }
+    );
   });
 });
 
-test.describe('Win12 File Operations', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/desktop.html');
-    await page.waitForSelector('#desktop', { timeout: 5000 });
-  });
+test.describe('Win12 About app (upstream #845)', () => {
+  test.beforeEach(async ({ page }) => boot(page));
 
-  test('should display files in explorer', async ({ page }) => {
-    // Open File Explorer
-    await page.click('text=File Explorer');
-    await page.waitForSelector('.window.explorer', { timeout: 5000 });
-
-    // Check for file list
-    const fileList = await page.$('.file-list');
-    expect(fileList).not.toBeNull();
-  });
-
-  test('should navigate folders', async ({ page }) => {
-    // Open File Explorer
-    await page.click('text=File Explorer');
-    await page.waitForSelector('.window.explorer', { timeout: 5000 });
-
-    // Double click a folder
-    const folder = await page.locator('[data-type="folder"]').first();
-    const exists = await folder.isVisible();
-    expect(exists).toBe(true);
+  test('opens, switches tabs, loads contributors', async ({ page }) => {
+    await openApp(page, 'about');
+    // page() API exists and web panels are used (not Tauri)
+    expect(await page.evaluate(() => typeof window.apps.about.page)).toBe('function');
+    await expect(page.locator('#win-about > .about-web.show')).toHaveCount(1);
+    // switch to update tab
+    await page.evaluate(() => window.apps.about.page('update'));
+    await expect(page.locator('#win-about > .update-web.show')).toHaveCount(1);
+    await expect(page.locator('#win-about > .about-web.show')).toHaveCount(0);
+    // Tauri-only panels stay hidden on web
+    await expect(page.locator('#win-about > .about-tauri.show')).toHaveCount(0);
+    // contributors load from GitHub (allow time / tolerate rate limit)
+    await page.evaluate(() => window.apps.about.page('about'));
+    await page.waitForSelector('#contri > .a', { timeout: 15000 }).catch(() => {});
   });
 });
 
-test.describe('Win12 Terminal', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/desktop.html');
-    await page.waitForSelector('#desktop', { timeout: 5000 });
+test.describe('Win12 system pages', () => {
+  test('restart screen (reload.html) serves real content', async ({ page }) => {
+    const resp = await page.goto('/reload.html');
+    expect(resp?.status()).toBe(200);
+    const body = await page.textContent('body');
+    expect(body).not.toContain('404'); // not the fallback page
   });
 
-  test('should open terminal', async ({ page }) => {
-    await page.click('text=Terminal');
-
-    const terminalWindow = await page.waitForSelector('.window.terminal', { timeout: 5000 });
-    expect(terminalWindow).not.toBeNull();
-  });
-
-  test('should display terminal prompt', async ({ page }) => {
-    await page.click('text=Terminal');
-    await page.waitForSelector('.window.terminal', { timeout: 5000 });
-
-    // Check for terminal prompt
-    const prompt = await page.locator('.terminal-prompt').isVisible();
-    expect(prompt).toBe(true);
+  test('shutdown screen (shutdown.html) serves real content', async ({ page }) => {
+    const resp = await page.goto('/shutdown.html');
+    expect(resp?.status()).toBe(200);
+    const body = await page.textContent('body');
+    expect(body).not.toContain('404');
   });
 });

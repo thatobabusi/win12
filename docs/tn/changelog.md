@@ -39,6 +39,23 @@ tse di tletseng.
   e laise pele, ka jalo Sechaena se se Bonolo se ne se bontsha mafoko a a sa siamang), mme
   `lang/` e suteleditswe mo `public/lang/` gore difaele di newe sentle. Didirisiwa tsa i18n di mo `docs/sync/`.
 - **Ditokomane** — go okeditswe setlhopha se sa ditokomane tsa dipuo tse dintsi (EN / 中文 / FR / TN).
+- **Tirelo le go phepafatsa** — `lang/` le `pwa/` di suteleditswe mo `public/` gore di
+  newe sentle; PWA e e ka tsenngwang (`start_url`/`scope` di baakantswe, chwantsho ya
+  SVG e e gologang); go ntshitswe dikhopi tse 6 tsa HTML tsa kgale tsa motheo (app e
+  nna gotlhe mo `public/`).
+- **Ditsebe tse disha** — go busediwa `reload.html` (go simolola sesha),
+  `shutdown.html` (go tima), le `mainpage.html` (tsebe ya gae/tab e ntšhwa ya Edge),
+  tse di neng di busa 404.
+- **Go tsamaisana le upstream** — reference e isitswe kwa upstream mme go kopantswe
+  commit **#845** (go agiwa sesha ga app ya About: tsela ya `apps.about.page()` +
+  di-panel tsa About tsa desktop/Tauri tse di nang le release notes tsa GitHub), go
+  dumalanngwa le i18n loader ya fork e.
+- **Diteko le config ya CI** — go okeditswe `tests/unit/lang-files.test.js` (e netefatsa
+  difaele tsa nnete tsa puo: go lekana ka botlalo ga di-key go akaretsa Setswana, ga go
+  na dintlha tse di lolea, di-placeholder di a tshwana, ga go na CJK e e dutlang);
+  go baakantswe config ya Playwright (`testDir`, nako ya 60s, port 8123) le diteko tsa
+  e2e go tshwana le app ya nnete le go akaretsa Setswana, app ya About, le ditsebe tsa
+  go simolola sesha/go tima. Diteko tsa unit di le 50 / e2e di le 14 di a feta.
 
 ---
 

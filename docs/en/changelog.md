@@ -36,6 +36,19 @@ post-mortems.
   Chinese was showing mangled text) and moved `lang/` into `public/lang/` so the
   files actually serve. i18n tooling is in `docs/sync/` (`i18n-extract`/`apply`/`zh`).
 - **Docs** — added a multilingual documentation set: English, 中文, Français, Setswana.
+- **Serving & cleanup** — moved `lang/` and `pwa/` into `public/` so they actually
+  serve; made the PWA installable (`start_url`/`scope` fixed, scalable SVG icon);
+  removed 6 stale root-level HTML duplicates (the app lives entirely in `public/`).
+- **New pages** — restored `reload.html` (restart) and `shutdown.html` (shutdown)
+  screens, and `mainpage.html` (Edge new-tab/home), which were 404ing.
+- **Upstream sync** — fast-forwarded the reference to upstream and merged commit
+  **#845** (About-app refactor: `apps.about.page()` routing + desktop/Tauri About
+  panels with GitHub release notes), reconciled with this fork's i18n loader.
+- **Tests & CI config** — added `tests/unit/lang-files.test.js` (validates the real
+  locale files: full key parity incl. Setswana, no empty values, placeholder
+  integrity, no CJK leak); rewired the Playwright config (correct `testDir`, 60s
+  timeout, port 8123) and the e2e specs to match the real app + cover Setswana, the
+  About app, and the restart/shutdown pages. Unit 50 / e2e 14 passing.
 
 ---
 

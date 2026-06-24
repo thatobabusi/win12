@@ -42,6 +42,23 @@ rétrospectives détaillées.
   (ce qui n'était jamais le cas — le chinois simplifié affichait du texte corrompu) et
   déplacement de `lang/` dans `public/lang/` pour qu'il soit réellement servi.
 - **Docs** — ajout de cet ensemble de documentation multilingue (EN / 中文 / FR / TN).
+- **Service & nettoyage** — déplacement de `lang/` et `pwa/` dans `public/` pour
+  qu'ils soient réellement servis ; PWA installable (`start_url`/`scope` corrigés,
+  icône SVG vectorielle) ; suppression de 6 doublons HTML obsolètes à la racine
+  (l'app vit entièrement dans `public/`).
+- **Nouvelles pages** — restauration de `reload.html` (redémarrage),
+  `shutdown.html` (arrêt) et `mainpage.html` (page d'accueil/nouvel onglet d'Edge),
+  qui renvoyaient un 404.
+- **Synchronisation amont** — référence avancée sur l'amont et fusion du commit
+  **#845** (refonte de l'app À propos : routage `apps.about.page()` + panneaux
+  About bureau/Tauri avec notes de version GitHub), réconcilié avec le chargeur
+  i18n de ce fork.
+- **Tests & config CI** — ajout de `tests/unit/lang-files.test.js` (valide les vrais
+  fichiers de langue : parité complète des clés dont le setswana, pas de valeurs
+  vides, intégrité des placeholders, pas de fuite de CJK) ; correction de la config
+  Playwright (`testDir`, délai de 60 s, port 8123) et des tests e2e pour refléter
+  l'app réelle et couvrir le setswana, l'app À propos et les pages redémarrage/arrêt.
+  50 tests unitaires / 14 e2e passent.
 
 ---
 

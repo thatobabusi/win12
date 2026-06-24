@@ -21,10 +21,19 @@ Win12 uses a three-layer testing approach:
 - Location: `tests/unit/`
 
 **Example Coverage:**
-- i18n translation system
+- i18n translation logic (`i18n.test.js`, fixture-based)
+- **Real locale-file validation** (`lang-files.test.js`) — reads the actual
+  `public/lang/lang/*.properties` and asserts full key parity across all 5
+  languages (English, en-US, Simplified/Traditional Chinese, **Setswana**),
+  no empty values, placeholder integrity, and no Chinese leaking into the
+  English/Setswana files. This is the guard that keeps Setswana from falling behind.
 - Window manager operations
-- Calculator logic
 - Language normalization
+
+**e2e (Playwright)** covers desktop/app launch, language switching (incl.
+**Setswana** and the now-working Simplified Chinese), the About app tabs
+(upstream #845), and the restart/shutdown pages. The Playwright config serves
+`public/` on port 8123 (avoids the common port-3000 conflict).
 
 ### 2. Linting (Code Quality - ~17 seconds)
 - Check code style and quality
