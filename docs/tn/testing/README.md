@@ -21,10 +21,20 @@ Win12 e dirisa mokgwa wa diteko wa dikarolo tse tharo:
 - Lefelo: `tests/unit/`
 
 **Sekai sa phimolelo:**
-- Tsamaiso ya phetolelo ya i18n
+- Logic ya phetolelo ya i18n (`i18n.test.js`, e e theilweng mo difikistjhareng)
+- **Netefatso ya difaele tsa nnete tsa puo** (`lang-files.test.js`) — e bala
+  difaele tsa nnete tsa `public/lang/lang/*.properties` mme e netefatsa go tshwana
+  ga di-key ka botlalo mo dipuong tsotlhe tse 5 (Seesemane, en-US, Sechaena se se
+  Bonolo/sa Setso, **Setswana**), go se nne le maemo a a sa tshwarwang, bothakga jwa
+  diplacheholdara, le gore ga go na Sechaena se se tsenang mo difaeleng tsa
+  Seesemane/Setswana. Se ke moletedi o o thibelang Setswana go sala morago.
 - Ditiro tsa motsamaisi wa mafesetere
-- Logic ya calculator
 - Go tlwaela ga puo (normalization)
+
+**e2e (Playwright)** e akaretsa go laisa ga desktop/di-app, go fetola puo (go akaretsa
+**Setswana** le Sechaena se se Bonolo se jaanong se dirang), di-tab tsa app ya About
+(amon #845), le ditsebe tsa go simolola sešwa/go tima. Tlhamo ya Playwright e abela
+`public/` mo porteng 8123 (e efoga kgotlhang e e tlwaelegileng ya porte 3000).
 
 ### 2. Linting (boleng jwa khoutu — ~17 metsotswana)
 - E tlhatlhoba setaele le boleng jwa khoutu
