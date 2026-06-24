@@ -28,3 +28,7 @@ test-results/
 .env.local
 /.claude/internal-affairs/
 /.claude/worktrees/
+/.worktrees/
+
+# Local visual brainstorming sessions
+/.superpowers/brainstorm/
