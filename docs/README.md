@@ -87,7 +87,7 @@ See [Testing](en/testing/README.md) / [测试](zh/testing/README.md).
 
 ## 🔗 Related files
 
-- [Main README](../README.md) — project overview
+- [Main README](../README_zh_ch.md) — project overview
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — root contributing notes
 - [changelog.md](../changelog.md) — upstream changelog (Chinese)
 - [LICENSE](../LICENSE) · [LICENSE-CC](../LICENSE-CC) — licensing

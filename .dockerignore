@@ -4,7 +4,7 @@ package-lock.json
 yarn.lock
 .git
 .gitignore
-README.md
+README_zh_ch.md
 LICENSE
 .env
 .env.local
