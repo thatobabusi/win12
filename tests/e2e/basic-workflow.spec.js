@@ -38,6 +38,27 @@ test.describe('Win12 desktop & apps', () => {
   test('opens Calculator', async ({ page }) => { await openApp(page, 'calc'); });
   test('opens Terminal', async ({ page }) => { await openApp(page, 'terminal'); });
 
+  test('opens Media Player with a demo library from Start', async ({ page }) => {
+    await page.evaluate(() => {
+      document.querySelector('#loginback').style.display = 'none';
+      window.openDockWidget('start-menu');
+    });
+    await page.locator('[data-app="mediaplayer"]').click();
+    await expect(page.locator('.window.mediaplayer')).toBeVisible();
+    await expect(page.locator('#mediaplayer-library [data-track-id]')).toHaveCount(3);
+    await expect(page.locator('#mediaplayer-open-file')).toBeVisible();
+    await expect(page.locator('#mediaplayer-now-title')).toContainText('Windows Startup');
+  });
+
+  test('opening a video hides the Media Player artwork', async ({ page }) => {
+    await page.evaluate(() => {
+      window.apps.mediaplayer.open('data:video/mp4;base64,', 'Regression video.mp4', 'video');
+    });
+
+    await expect(page.locator('#mediaplayer-video')).toBeVisible();
+    await expect(page.locator('#mediaplayer-artwork')).toBeHidden();
+  });
+
   test('closes a window', async ({ page }) => {
     await openApp(page, 'calc');
     await page.evaluate(() => window.hidewin('calc'));
