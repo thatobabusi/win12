@@ -328,6 +328,10 @@ toggletheme() 切换主题
 					<img src="assets/icons/word.svg">
 					<p data-i18n="word.name">Word Preview</p>
 				</a>
+				<a data-app="mediaplayer" oncontextmenu="return showcm(event, 'smlapp', ['mediaplayer', 'Media Player'])" onclick="openapp('mediaplayer');hide_startmenu();">
+					<img src="assets/icons/files/music.png">
+					<p data-i18n="mediaplayer.name">Media Player</p>
+				</a>
 				<p class="text" data-i18n="stmenu-webapp">Webapps</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['minesweeper', 'Windows 12 minesweeper'])" onclick="openapp('minesweeper');hide_startmenu()">
 					 <img src="assets/icons/minesweeper.svg">
@@ -2751,8 +2755,44 @@ toggletheme() 切换主题
 			<img src="assets/icons/files/vidio.png" class="icon">
 		</div>
 		<div class="content" id="win-mediaplayer">
-			<video id="mediaplayer-video" controls style="display:none;"></video>
-			<audio id="mediaplayer-audio" controls style="display:none;"></audio>
+			<aside class="mediaplayer-sidebar">
+				<p data-i18n="mediaplayer.library">Library</p>
+				<button id="mediaplayer-open-file" class="a mediaplayer-open-file" type="button" data-i18n="mediaplayer.open-file">Open file</button>
+				<input id="mediaplayer-file-input" type="file" accept="audio/*,video/*" hidden>
+			</aside>
+			<section class="mediaplayer-main">
+				<div class="mediaplayer-stage">
+					<div id="mediaplayer-artwork" class="mediaplayer-artwork">
+						<i class="bi bi-music-note-beamed"></i>
+					</div>
+					<video id="mediaplayer-video" playsinline></video>
+					<audio id="mediaplayer-audio"></audio>
+					<div id="mediaplayer-error" class="mediaplayer-error" role="status" aria-live="polite"></div>
+				</div>
+				<div class="mediaplayer-now">
+					<div>
+						<p id="mediaplayer-now-title">Windows Startup</p>
+						<p id="mediaplayer-now-artist">Win12</p>
+					</div>
+				</div>
+				<div class="mediaplayer-controls" aria-label="Media player controls">
+					<input id="mediaplayer-progress" class="mediaplayer-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Playback progress">
+					<div class="mediaplayer-control-row">
+						<button id="mediaplayer-previous" class="a mediaplayer-control" type="button" aria-label="Previous">⏮</button>
+						<button id="mediaplayer-play" class="a mediaplayer-control mediaplayer-toggle" type="button" aria-label="Play or pause">▶</button>
+						<button id="mediaplayer-next" class="a mediaplayer-control" type="button" aria-label="Next">⏭</button>
+						<label class="mediaplayer-volume" aria-label="Volume">
+							<i class="bi bi-volume-up-fill"></i>
+							<input id="mediaplayer-volume" type="range" min="0" max="1" value="1" step="0.01">
+						</label>
+					</div>
+				</div>
+			</section>
+			<aside id="mediaplayer-library" class="mediaplayer-library" aria-label="Media library">
+				<button type="button" data-track-id="startup" aria-current="true">Windows Startup</button>
+				<button type="button" data-track-id="ambient">Ambient Loop</button>
+				<button type="button" data-track-id="night-drive">Night Drive</button>
+			</aside>
 		</div>
 	</div>
 	<div class="window pdfviewer">
@@ -3269,6 +3309,7 @@ toggletheme() 切换主题
 	<script defer src="./src/data/tasks.js"></script>
 	<script defer src="./scripts/utils.js"></script>
 
+	<script defer src="./src/modules/mediaplayer-core.js"></script>
 	<script defer src="./src/modules/apps.js"></script>
 	<script defer src="./src/desktop.js"></script>
 	<script defer src="./src/modules/window.js"></script>
