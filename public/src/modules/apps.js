@@ -2008,8 +2008,7 @@ window.apps = {
         _bound: false,
         demoQueue: [
             { id: 'startup', title: 'Windows Startup', artist: 'Win12', source: 'assets/media/startup.mp3', type: 'audio', ownedUrl: false, artwork: '' },
-            { id: 'ambient', title: 'Ambient Loop', artist: 'Demo collection', source: '', type: 'audio', ownedUrl: false, artwork: '' },
-            { id: 'night-drive', title: 'Night Drive', artist: 'Demo collection', source: '', type: 'audio', ownedUrl: false, artwork: '' }
+            { id: 'background', title: 'Windows Background', artist: 'Win12', source: 'assets/media/Windows%20Background.wav', type: 'audio', ownedUrl: false, artwork: '' }
         ],
         init() {
             if (!this._bound) {
