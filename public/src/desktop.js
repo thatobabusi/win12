@@ -3049,8 +3049,12 @@ let autoUpdate = true;
 function checkUpdate() {
     const sha = localStorage.getItem('sha');
     api('repos/win12-online/win12/commits').then(res => {
+        // Bail on 404 / rate-limit etc. — there is nothing valid to compare against.
+        if (!res.ok) return;
         res.json().then(json => {
-            if (sha != json[0].sha && sha) {
+            // GitHub returns an array of commits on success, an object on error.
+            if (!Array.isArray(json) || json.length === 0) return;
+            if (sha && sha != json[0].sha) {
                 localStorage.setItem('update', true);
                 sendToSw({
                     head: 'update'
@@ -3058,7 +3062,7 @@ function checkUpdate() {
             }
             localStorage.setItem('sha', json[0].sha);
         });
-    });
+    }).catch(() => { /* offline / network error: ignore */ });
 }
 
 if (localStorage.getItem('autoUpdate') == undefined) {
@@ -3099,9 +3103,12 @@ if (!location.href.match(/((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|
     // navigator.serviceWorker.addEventListener('message', function (e) {
     // checkUpdate();
 
-    if (localStorage.getItem('autoUpdate') == 'true') {
-        checkUpdate();
-    }
+    // Auto update-check disabled: it polled api.github.com/repos/win12-online/win12,
+    // which 404s for this fork (no such upstream path) and threw on every load.
+    // Re-enable by pointing checkUpdate() at a real repo if upstream tracking is wanted.
+    // if (localStorage.getItem('autoUpdate') == 'true') {
+    //     checkUpdate();
+    // }
     if (localStorage.getItem('update') == 'true') {
         $('.msg.update>.main>.tit').html('<i class="bi bi-stars" style="background-image: linear-gradient(100deg, var(--theme-1), var(--theme-2));-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow:3px 3px 5px var(--shadow);filter:saturate(200%) brightness(0.9);"></i> ' + $('#win-about>.cnt.update>div>details:first-child>summary').text());
         $('.msg.update>.main>.cont').html($('#win-about>.cnt.update>div>details:first-child>p').html());
