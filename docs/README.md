@@ -87,6 +87,7 @@ See [Testing](en/testing/README.md) / [测试](zh/testing/README.md).
 
 ## 🔗 Related files
 
+- [CREDITS](../CREDITS.md) · [简体中文](../CREDITS_zh.md) · [Setswana](../CREDITS_tn.md) — attribution to the original authors of Windows 12 Online
 - [Main README](../README_zh_ch.md) — project overview
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — root contributing notes
 - [changelog.md](../changelog.md) — upstream changelog (Chinese)

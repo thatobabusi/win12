@@ -164,6 +164,8 @@ Core developers: tjy-gitnub([Bilibili](https://space.bilibili.com/2010692096/)),
 
 Project contributors: See [here](https://github.com/win12-online/win12/graphs/contributors) (Thank you to our excellent contributors!)
 
+Full attribution to the original authors is preserved in **[CREDITS.md](CREDITS.md)** ([简体中文](CREDITS_zh.md) · [Setswana](CREDITS_tn.md)) — kept in-repo because the upstream `win12-online/win12` and its contributor graph are no longer publicly available.
+
 ## Support Us
 
 You can donate to our [Afdian account](https://afdian.com/a/qstudio)
