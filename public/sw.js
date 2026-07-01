@@ -9,7 +9,7 @@
 // CACHE_VERSION is stamped into the cache name. Bumping it makes every client
 // drop all previous caches on activate. skipWaiting() + clients.claim() make a
 // new worker take over immediately instead of waiting for all tabs to close.
-const CACHE_VERSION = 'win12-2026-06-22-2';
+const CACHE_VERSION = 'win12-2026-07-01-1';
 
 // External hosts that must always hit the network and never be cached.
 const passthrough = [
