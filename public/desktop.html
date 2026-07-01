@@ -2771,8 +2771,8 @@ toggletheme() 切换主题
 				</div>
 				<div class="mediaplayer-now">
 					<div>
-						<p id="mediaplayer-now-title">Windows Startup</p>
-						<p id="mediaplayer-now-artist">Win12</p>
+						<p id="mediaplayer-now-title" data-i18n="mediaplayer.empty">Open a file to start playing</p>
+						<p id="mediaplayer-now-artist"></p>
 					</div>
 				</div>
 				<div class="mediaplayer-controls" aria-label="Media player controls">
@@ -2789,10 +2789,8 @@ toggletheme() 切换主题
 				</div>
 			</section>
 			<aside id="mediaplayer-library" class="mediaplayer-library" aria-label="Media library">
-				<button type="button" data-track-id="startup" aria-current="true">Windows Startup</button>
-				<button type="button" data-track-id="ambient">Ambient Loop</button>
-				<button type="button" data-track-id="night-drive">Night Drive</button>
-			</aside>
+				<!-- library rows are rendered dynamically by apps.mediaplayer.render() -->
+											</aside>
 		</div>
 	</div>
 	<div class="window pdfviewer">

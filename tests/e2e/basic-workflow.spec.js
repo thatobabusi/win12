@@ -38,25 +38,30 @@ test.describe('Win12 desktop & apps', () => {
   test('opens Calculator', async ({ page }) => { await openApp(page, 'calc'); });
   test('opens Terminal', async ({ page }) => { await openApp(page, 'terminal'); });
 
-  test('opens Media Player with a demo library from Start', async ({ page }) => {
+  test('opens Media Player as an empty file player from Start', async ({ page }) => {
     await page.evaluate(() => {
       document.querySelector('#loginback').style.display = 'none';
       window.openDockWidget('start-menu');
     });
     await page.locator('[data-app="mediaplayer"]').click();
     await expect(page.locator('.window.mediaplayer')).toBeVisible();
-    await expect(page.locator('#mediaplayer-library [data-track-id]')).toHaveCount(3);
+    // Real file player: no demo tracks — the library is empty until a file is opened.
+    await expect(page.locator('#mediaplayer-library [data-track-id]')).toHaveCount(0);
     await expect(page.locator('#mediaplayer-open-file')).toBeVisible();
-    await expect(page.locator('#mediaplayer-now-title')).toContainText('Windows Startup');
+    // Empty state prompts the user to open a file.
+    await expect(page.locator('#mediaplayer-now-title')).toContainText('Open a file');
   });
 
-  test('opening a video hides the Media Player artwork', async ({ page }) => {
+  test('opening a video plays it, populates the library, and hides the artwork', async ({ page }) => {
     await page.evaluate(() => {
       window.apps.mediaplayer.open('data:video/mp4;base64,', 'Regression video.mp4', 'video');
     });
 
     await expect(page.locator('#mediaplayer-video')).toBeVisible();
     await expect(page.locator('#mediaplayer-artwork')).toBeHidden();
+    // Opening a file adds exactly that file to the library and shows it as now-playing.
+    await expect(page.locator('#mediaplayer-library [data-track-id]')).toHaveCount(1);
+    await expect(page.locator('#mediaplayer-now-title')).toContainText('Regression video.mp4');
   });
 
   test('closes a window', async ({ page }) => {

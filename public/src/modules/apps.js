@@ -2006,22 +2006,29 @@ window.apps = {
         currentIndex: -1,
         activeItem: null,
         _bound: false,
-        demoQueue: [
-            { id: 'startup', title: 'Windows Startup', artist: 'Win12', source: 'assets/media/startup.mp3', type: 'audio', ownedUrl: false, artwork: '' },
-            { id: 'background', title: 'Windows Background', artist: 'Win12', source: 'assets/media/Windows%20Background.wav', type: 'audio', ownedUrl: false, artwork: '' }
-        ],
         init() {
             if (!this._bound) {
                 this.bindEvents();
                 this._bound = true;
             }
-            // Only seed the demo library when nothing has been queued yet; open()
-            // pre-populates the queue before openapp(), so init() must not clobber it.
+            // Real file player: nothing is queued until the user opens a file
+            // (via "Open file" or File Explorer). open() fills the queue before
+            // openapp(), so only fall back to the empty state when it is untouched.
             if (!this.queue.length) {
-                this.queue = this.demoQueue.map(item => ({ ...item }));
-                this.currentIndex = -1;
-                this.select(0, false);
+                this.showEmptyState();
             }
+        },
+        showEmptyState() {
+            this.currentIndex = -1;
+            this.activeItem = null;
+            $('#mediaplayer-video, #mediaplayer-audio').hide();
+            $('#mediaplayer-artwork').show();
+            $('#mediaplayer-now-title').text(lang('Open a file to start playing', 'mediaplayer.empty'));
+            $('#mediaplayer-now-artist').text('');
+            $('#mediaplayer-library').empty();
+            $('#mediaplayer-progress').val(0);
+            this._setPlayLabel(false);
+            this._showError('');
         },
         media() {
             return this.activeItem && this.activeItem.type === 'video'
