@@ -140,63 +140,7 @@ window.apps = {
             $('#win-msstore>.menu>list>a.' + name).addClass('check');
         }
     },
-    run: {
-        init: () => {
-            $('#win-run>.open>input').val(run_cmd);   //在 windows 中，运行输入的内容会被保留
-            window.setTimeout(() => {
-                $('#win-run>.open>input').focus();
-                $('#win-run>.open>input').select();
-            }, 300);
-        },
-        run: (cmd) => {
-            if (!runcmd(cmd)) {
-                if (cmd != '') {
-                    try {
-                        cmd = cmd.replace(/\/$/, '');
-                        var pathl = cmd.split('/');
-                        let tmp = apps.explorer.getPath();
-                        let valid = true;
-                        pathl.forEach(name => {
-                            if (Object.prototype.hasOwnProperty.call(tmp['folder'], name)) {
-                                tmp = tmp['folder'][name];
-                            }
-                            else {
-                                valid = false;
-                                return false;
-                            }
-                        });
-                        if (valid == true) {
-                            run_cmd = cmd;
-                            openapp('explorer');
-                            window.setTimeout(() => {
-                                apps.explorer.goto(cmd);
-                            }, 300);
-                        }
-                        else {
-                            nts['Can-not-open-file'] = {
-                                cnt: '<p class="tit">' + cmd + '</p><p>Windows cannot find the file \'' + cmd + '\'. Please verify the filename is correct and try again.</p> ',
-                                btn: [
-                                    { type: 'main', text: 'OK', js: 'closenotice();showwin(\'run\');$(\'#win-run>.open>input\').select();' },
-                                    { type: 'cancel', text: 'Search in Microsoft Edge', js: 'closenotice();openapp(\'edge\');window.setTimeout(() => {apps.edge.newtab();apps.edge.goto(\'https://www.bing.com/search?q=' + encodeURIComponent(cmd) + '\');}, 300);' }
-                                ]
-                            };
-                            shownotice('Can-not-open-file');
-                        }
-                    }
-                    catch {
-                        nts['Can-not-open-file'] = {
-                            cnt: '<p class="tit">' + cmd + '</p><p>Windows cannot find the file \'' + cmd + '\'. Please verify the filename is correct and try again.</p> ',
-                            btn: [
-                                { type: 'main', text: 'OK', js: 'closenotice();showwin(\'run\');$(\'#win-run>.open>input\').select();' },
-                                { type: 'cancel', text: 'Search in Microsoft Edge', js: 'closenotice();openapp(\'edge\');window.setTimeout(() => {apps.edge.newtab();apps.edge.goto(\'https://www.bing.com/search?q=' + encodeURIComponent(cmd) + '\');}, 300);' }
-                            ]
-                        };
-                        shownotice('Can-not-open-file');
-                    }
-                }
-            }
-        }
-    },
+    // run extracted to public/src/apps/run.js (registers via win12.apps)
     taskmgr: {
         sortType: 'cpu',
         sortOrder: 'up-down',
