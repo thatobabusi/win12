@@ -67,22 +67,23 @@ Click [here](https://win12.tech) to experience it.
 
 ## Feature Preview
 
-> The new version has many changes. This is for reference only. Please refer to the actual product (you can click [here](https://win12-online.github.io/win12/desktop.html) to see for yourself, no trouble `-_-)o` )
+> The new version has many changes. This is for reference only. Please refer to the actual product (you can click [here](https://github.com/thatobabusi/win12) to see for yourself, no trouble `-_-)o` )
 
-![image](https://win12-online.github.io/win12/img/start-menu.png)
+![Start Menu](img/start-menu.png)
 
 *Start Menu*
 
-![image](https://win12-online.github.io/win12/img/colorful-apps.png)
+![Rich Applications](img/colorful-apps.png)
 
 *Rich Applications*
 
-![image](https://win12-online.github.io/win12/img/dark-mode.png)
+![Dark Mode](img/dark-mode.png)
 
 *Dark Mode*
 
-![image](https://win12-online.github.io/win12/img/ai-copilot.png)
-*AI Copilot([Implementation Method](./scripts/AI%20Copilot%20service/README.md))*
+![Media Player](img/media-player.png)
+
+*Media Player*
 ## Future Planning
 
 Regarding the roadmap for this project:
