@@ -2169,24 +2169,7 @@ window.apps = {
             hidewin('mediaplayer');
         }
     },
-    pdfviewer: {
-        _blobUrl: null,
-        init: () => {},
-        open: (url, name) => {
-            openapp('pdfviewer');
-            apps.pdfviewer._blobUrl = url;
-            $('#pdfviewer-frame').attr('src', url);
-            $('.window.pdfviewer>.titbar>p').text(name || lang('PDF 查看器', 'pdfviewer.name'));
-        },
-        close: () => {
-            $('#pdfviewer-frame').attr('src', '');
-            if (apps.pdfviewer._blobUrl) {
-                URL.revokeObjectURL(apps.pdfviewer._blobUrl);
-                apps.pdfviewer._blobUrl = null;
-            }
-            hidewin('pdfviewer');
-        }
-    },
+    // pdfviewer extracted to public/src/apps/pdfviewer.js (registers via win12.apps)
     codeEditor: {
         editor: null,
         _fileHandle: null,
