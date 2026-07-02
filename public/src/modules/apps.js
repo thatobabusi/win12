@@ -1753,11 +1753,7 @@ window.apps = {
             apps.explorer.checkHistory(tab);
         }
     },
-    calc: {
-        init: () => {
-            document.getElementById('calc-input').innerHTML = '0';
-        }
-    },
+    // calc extracted to public/src/apps/calc.js (registers via win12.apps)
     about: {
         // Merged from upstream #845 (desktop About support), preserving our lang() i18n.
         repo: () => {
