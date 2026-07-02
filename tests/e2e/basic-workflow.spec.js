@@ -64,6 +64,22 @@ test.describe('Win12 desktop & apps', () => {
     await expect(page.locator('#mediaplayer-now-title')).toContainText('Regression video.mp4');
   });
 
+  test('core kernel is live and bridges the real app registry', async ({ page }) => {
+    const info = await page.evaluate(() => ({
+      hasRegistry: !!(window.win12 && window.win12.apps),
+      seesMediaplayer: window.win12.apps.has('mediaplayer'),
+      // The registry is a live view of the legacy `window.apps`, not a copy.
+      sameObject: window.win12.apps.get('mediaplayer') === window.apps.mediaplayer,
+      hasWindowFacade: typeof window.win12.windows.open === 'function',
+      hasLifecycle: typeof window.win12.lifecycle.onReady === 'function',
+    }));
+    expect(info.hasRegistry).toBe(true);
+    expect(info.seesMediaplayer).toBe(true);
+    expect(info.sameObject).toBe(true);
+    expect(info.hasWindowFacade).toBe(true);
+    expect(info.hasLifecycle).toBe(true);
+  });
+
   test('closes a window', async ({ page }) => {
     await openApp(page, 'calc');
     await page.evaluate(() => window.hidewin('calc'));
