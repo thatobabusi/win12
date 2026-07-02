@@ -1958,49 +1958,7 @@ window.apps = {
             hidewin('notepad-fonts', 'configs');
         }
     },
-    imgviewer: {
-        _blobUrl: null,
-        _scale: 1,
-        _rotate: 0,
-        init: () => {},
-        open: (url, name) => {
-            openapp('imgviewer');
-            apps.imgviewer._blobUrl = url;
-            apps.imgviewer._scale = 1;
-            apps.imgviewer._rotate = 0;
-            apps.imgviewer._applyTransform();
-            $('#win-imgviewer .preview-img').attr('src', url);
-            $('.window.imgviewer>.titbar>p').text(name || lang('图片查看器', 'imgviewer.name'));
-        },
-        close: () => {
-            if (apps.imgviewer._blobUrl) {
-                URL.revokeObjectURL(apps.imgviewer._blobUrl);
-                apps.imgviewer._blobUrl = null;
-            }
-            hidewin('imgviewer');
-        },
-        zoomIn: () => {
-            apps.imgviewer._scale = Math.min(apps.imgviewer._scale * 1.25, 10);
-            apps.imgviewer._applyTransform();
-        },
-        zoomOut: () => {
-            apps.imgviewer._scale = Math.max(apps.imgviewer._scale / 1.25, 0.1);
-            apps.imgviewer._applyTransform();
-        },
-        rotateRight: () => {
-            apps.imgviewer._rotate = (apps.imgviewer._rotate + 90) % 360;
-            apps.imgviewer._applyTransform();
-        },
-        resetView: () => {
-            apps.imgviewer._scale = 1;
-            apps.imgviewer._rotate = 0;
-            apps.imgviewer._applyTransform();
-        },
-        _applyTransform: () => {
-            $('#win-imgviewer .preview-img').css('transform',
-                `scale(${apps.imgviewer._scale}) rotate(${apps.imgviewer._rotate}deg)`);
-        }
-    },
+    // imgviewer extracted to public/src/apps/imgviewer.js (registers via win12.apps)
     mediaplayer: {
         queue: [],
         currentIndex: -1,

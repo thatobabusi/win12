@@ -37,6 +37,7 @@ test.describe('Win12 desktop & apps', () => {
   test('opens File Explorer', async ({ page }) => { await openApp(page, 'explorer'); });
   // pdfviewer was extracted from apps.js onto the kernel — verify it still opens.
   test('opens PDF Viewer (extracted app)', async ({ page }) => { await openApp(page, 'pdfviewer'); });
+  test('opens Image Viewer (extracted app)', async ({ page }) => { await openApp(page, 'imgviewer'); });
   test('opens Calculator', async ({ page }) => { await openApp(page, 'calc'); });
   test('opens Terminal', async ({ page }) => { await openApp(page, 'terminal'); });
 
