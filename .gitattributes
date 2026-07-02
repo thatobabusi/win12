@@ -1,0 +1,20 @@
+# Normalize line endings: store LF in the repo and check out LF everywhere,
+# so Windows checkouts stop rewriting files to CRLF (which produced a warning on
+# every commit and noisy diffs).
+* text=auto eol=lf
+
+# Binary assets — never normalize or diff as text.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+*.mp3 binary
+*.wav binary
+*.mp4 binary
+*.pdf binary
