@@ -9,7 +9,7 @@
 // CACHE_VERSION is stamped into the cache name. Bumping it makes every client
 // drop all previous caches on activate. skipWaiting() + clients.claim() make a
 // new worker take over immediately instead of waiting for all tabs to close.
-const CACHE_VERSION = 'win12-2026-07-01-1';
+const CACHE_VERSION = 'win12-2026-07-02-1';
 
 // External hosts that must always hit the network and never be cached.
 const passthrough = [
@@ -47,12 +47,15 @@ self.addEventListener('fetch', (event) => {
   if (passthrough.some(d => req.url.indexOf(d) > 0)) return;
 
   // Network-first: try the live file, fall back to cache only when offline.
-  // cache:'reload' forces the request past the BROWSER's own HTTP cache, so an
-  // edited file is never masked by a stale browser-cached copy (this was the
-  // bug where corrected CSS/JS still rendered stale until a manual cache clear).
+  // cache:'no-cache' still revalidates with the server on every request (so an
+  // edited file always shows on the next load — no stale-file trap), but an
+  // UNCHANGED file returns a tiny 304 and is served from cache instead of being
+  // fully re-downloaded. That is the difference between "revalidate" and the old
+  // cache:'reload' (which re-downloaded every byte every load and made loads
+  // drag). Use ?develop=1 to bypass this worker entirely during active editing.
   event.respondWith((async () => {
     try {
-      const res = await fetch(req, { cache: 'reload' });
+      const res = await fetch(req, { cache: 'no-cache' });
       // Cache fresh, cacheable, same-origin responses for offline use.
       if (res && res.status >= 200 && res.status < 300 && res.status !== 206 &&
           url.origin === self.location.origin) {
