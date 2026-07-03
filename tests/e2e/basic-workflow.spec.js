@@ -43,6 +43,7 @@ test.describe('Win12 desktop & apps', () => {
   test('opens Run (extracted app)', async ({ page }) => { await openApp(page, 'run'); });
   test('opens Notepad (extracted app)', async ({ page }) => { await openApp(page, 'notepad'); });
   test('opens Whiteboard (extracted app)', async ({ page }) => { await openApp(page, 'whiteboard'); });
+  test('opens Edge (extracted app)', async ({ page }) => { await openApp(page, 'edge'); });
   test('opens Code Editor (extracted app)', async ({ page }) => {
     // openapp('code-editor') resolves to apps.codeEditor via the name->key map;
     // guard the ACE load so a slow CDN can't flake the wiring check.
