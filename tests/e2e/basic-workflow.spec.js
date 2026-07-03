@@ -43,6 +43,12 @@ test.describe('Win12 desktop & apps', () => {
   test('opens Run (extracted app)', async ({ page }) => { await openApp(page, 'run'); });
   test('opens Notepad (extracted app)', async ({ page }) => { await openApp(page, 'notepad'); });
   test('opens Whiteboard (extracted app)', async ({ page }) => { await openApp(page, 'whiteboard'); });
+  test('opens Code Editor (extracted app)', async ({ page }) => {
+    // openapp('code-editor') resolves to apps.codeEditor via the name->key map;
+    // guard the ACE load so a slow CDN can't flake the wiring check.
+    await page.evaluate(() => { try { window.openapp('code-editor'); } catch (e) { /* ACE may be mid-load */ } });
+    await expect(page.locator('.window.code-editor')).toBeVisible({ timeout: 15000 });
+  });
 
   test('opens Media Player as an empty file player from Start', async ({ page }) => {
     await page.evaluate(() => {
