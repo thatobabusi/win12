@@ -41,6 +41,7 @@ test.describe('Win12 desktop & apps', () => {
   test('opens Calculator', async ({ page }) => { await openApp(page, 'calc'); });
   test('opens Terminal', async ({ page }) => { await openApp(page, 'terminal'); });
   test('opens Run (extracted app)', async ({ page }) => { await openApp(page, 'run'); });
+  test('opens Notepad (extracted app)', async ({ page }) => { await openApp(page, 'notepad'); });
 
   test('opens Media Player as an empty file player from Start', async ({ page }) => {
     await page.evaluate(() => {
