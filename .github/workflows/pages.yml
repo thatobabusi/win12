@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+# Publishes the app WITHOUT restructuring the repo: the site lives in public/,
+# and this workflow uploads public/ as the Pages site root. The app is served at
+#   https://thatobabusi.github.io/win12/            (index.html -> boot.html)
+#   https://thatobabusi.github.io/win12/boot.html   (direct)
+#
+# One-time setup: repo Settings -> Pages -> Source = "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Grant the deploy job permission to publish to Pages via OIDC.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; let an in-progress deploy finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # submodules: recursive is REQUIRED — public/lang (win12-locales) holds the
+      # translation .properties files; without it the UI loses all i18n.
+      - name: Checkout (with locale submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # Upload public/ as the site root — this is what avoids restructuring.
+      - name: Upload public/ as the Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
