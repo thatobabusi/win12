@@ -8,18 +8,25 @@
          index.html -> boot.html (BIOS progress bar, ~2s, F2 -> bios.html)
                     -> desktop.html (login overlay -> desktop)
          boot_kernel.js drives the boot.html -> desktop.html redirect.
-         No iframe / no competing timer here, so the boot runs exactly once. -->
-    <meta http-equiv="refresh" content="0; url=boot.html">
+
+         The redirect below is GUARDED to only run at the top level. If a static
+         host serves this page as a fallback for a missing path INSIDE an iframe
+         (e.g. a broken same-origin embed), an unconditional redirect to boot.html
+         loops forever (index -> boot -> fallback index -> boot -> ...). A meta
+         refresh cannot be guarded, so it is intentionally omitted; the app
+         requires JavaScript anyway. -->
     <style>
         html, body { margin: 0; padding: 0; background: #000; }
     </style>
 </head>
 <body>
     <script>
-        // Enter the boot sequence as a full-page navigation (not an iframe),
-        // so boot_kernel.js controls progress and the redirect to the desktop.
+        // Enter the boot sequence as a full-page navigation only. When framed
+        // (window.top !== window.self) do nothing, to avoid the fallback loop.
         // replace() keeps this entry page out of the back-history.
-        window.location.replace('boot.html');
+        if (window.top === window.self) {
+            window.location.replace('boot.html');
+        }
     </script>
 </body>
 </html>

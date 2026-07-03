@@ -47,7 +47,14 @@ window.apps = {
             return null;
         },
         load: () => {
-            $('#win-copilot')[0].insertAdjacentHTML('afterbegin', '<iframe src="/chatgh/copilot.html" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+            // The AI Copilot backend (/chatgh/) was part of the upstream service
+            // that is no longer hosted, so there is no copilot.html to embed.
+            // Embedding it 404s and — via the host's SPA fallback to index.html —
+            // used to spin an infinite boot-redirect loop inside this iframe.
+            // Show a message instead of loading a dead URL.
+            $('#win-copilot')[0].insertAdjacentHTML('afterbegin',
+                '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;opacity:0.7;">'
+                + 'AI Copilot is unavailable in this build (it required an upstream service that is no longer hosted).</div>');
         }
     },
     'minesweeper': {
