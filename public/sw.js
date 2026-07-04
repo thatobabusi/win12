@@ -16,7 +16,7 @@
 // be unit-tested with injected fetch/caches (this file was previously untestable,
 // which is a big part of why the boot/SW flow kept breaking).
 (function (scope) {
-  const CACHE_VERSION = 'win12-2026-07-02-swr-1';
+  const CACHE_VERSION = 'win12-2026-07-04-swr-2';
 
   // External hosts that must always hit the network and never be cached.
   const passthrough = [
