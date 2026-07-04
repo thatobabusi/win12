@@ -2973,7 +2973,12 @@ document.getElementsByTagName('body')[0].onload = () => {
     setTimeout(() => {
         $('#loadback').css('display', 'none');
     }, 1000);
-    apps.webapps.init();
+    // Do NOT eagerly preload the webapp iframes (vscode/bilibili/copilot/
+    // minesweeper) at boot: bilibili.com refuses framing (X-Frame-Options), so
+    // preloading logs a console error on every startup, and the preload path
+    // does not set `loaded`, so first-open would insert a SECOND iframe. openapp()
+    // already lazy-loads any app with a load() method once on first open, which
+    // is the correct behavior. (apps.webapps.init() intentionally left uncalled.)
     initLoginPassword();
     //getdata
     if (localStorage.getItem('theme') == 'dark') {
