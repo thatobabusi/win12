@@ -62,7 +62,10 @@ window.apps = {
             return null;
         },
         load: () => {
-            $('#win-minesweeper')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://win12-online.github.io/win12/games/minesweeper.html" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+            // Use the bundled local game, not the dead upstream host. The file
+            // ships at public/src/games/minesweeper.html (path is relative to the
+            // desktop.html document root).
+            $('#win-minesweeper')[0].insertAdjacentHTML('afterbegin', '<iframe src="src/games/minesweeper.html" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
     defender: {

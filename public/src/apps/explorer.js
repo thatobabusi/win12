@@ -495,6 +495,7 @@
         },
         add: (path, name_, type = 'file', command = '', icon = '') => { //type 为文件类型，只有文件夹 files 和文件 file
             var pathl = path.split('/');
+            var isMounted = !!apps.explorer.mounts[pathl[0]]; // real (FS Access) drive vs in-memory
             var icon_ = '';
             let files = apps.explorer.getPath();
             let tmp = files;
