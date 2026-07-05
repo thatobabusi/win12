@@ -11,6 +11,9 @@ readme/asw-*
 # Node modules
 node_modules/
 
+# Generated web root (mirrored from src/ by scripts/build.mjs)
+/public/
+
 # Test coverage
 coverage/
 .nyc_output/
