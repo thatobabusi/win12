@@ -141,6 +141,13 @@ win12/
     └── zh/testing/      # Docs de test en chinois
 ```
 
+## Ajouter une nouvelle application
+
+Voir [Développement d'applications](../app-development.md) pour l'API du
+registre, le cycle de vie du contrôleur (`init`/`load`/`remove`/`page`), et
+tous les endroits où une nouvelle application doit être câblée (fenêtre HTML,
+icône, menu Démarrer, barre des tâches, catalogue du Store).
+
 ## Problèmes courants
 
 ### « Les tests échouent en local mais passent en CI »

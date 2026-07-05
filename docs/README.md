@@ -15,6 +15,7 @@ Start here: **[English overview](en/index.md)** · **[中文总览](zh/index.md)
 | Configuration | [configuration](en/configuration.md) | [配置](zh/configuration.md) | [configuration](fr/configuration.md) | [thulaganyo](tn/configuration.md) |
 | Architecture | [architecture](en/architecture.md) | [架构](zh/architecture.md) | [architecture](fr/architecture.md) | [moago](tn/architecture.md) |
 | Usage | [usage](en/usage.md) | [使用](zh/usage.md) | [utilisation](fr/usage.md) | [tiriso](tn/usage.md) |
+| App development | [app-development](en/app-development.md) | [应用开发](zh/app-development.md) | [développement](fr/app-development.md) | [tlhamo ya di-app](tn/app-development.md) |
 | Testing | [testing](en/testing/README.md) | [测试](zh/testing/README.md) | [tests](fr/testing/README.md) | [diteko](tn/testing/README.md) |
 | Contributing | [contributing](en/contributing/README.md) | [贡献](zh/contributing/README.md) | [contribution](fr/contributing/README.md) | [go nna le seabe](tn/contributing/README.md) |
 | Localization | [localization](en/localization/README.md) | [本地化](zh/localization/README.md) | [localisation](fr/localization/README.md) | [localization](tn/localization/README.md) |
@@ -51,17 +52,18 @@ docs/
 │   ├── configuration.md
 │   ├── architecture.md
 │   ├── usage.md
+│   ├── app-development.md
 │   ├── changelog.md
 │   ├── license.md
 │   ├── testing/         README, QUICKSTART, DOCKER
 │   ├── contributing/    README
 │   └── localization/    README
 ├── zh/                  中文文档（与 en/ 结构镜像）
-│   └── …                index, installation, configuration, architecture, usage, changelog, license, testing/, contributing/, localization/
+│   └── …                index, installation, configuration, architecture, usage, app-development, changelog, license, testing/, contributing/, localization/
 ├── fr/                  Documentation française (miroir de en/)
-│   └── …                index, installation, configuration, architecture, usage, changelog, license, testing/, contributing/, localization/
+│   └── …                index, installation, configuration, architecture, usage, app-development, changelog, license, testing/, contributing/, localization/
 ├── tn/                  Ditokomane tsa Setswana (e tshwana le en/)
-│   └── …                index, installation, configuration, architecture, usage, changelog, license, testing/, contributing/, localization/
+│   └── …                index, installation, configuration, architecture, usage, app-development, changelog, license, testing/, contributing/, localization/
 ├── sync/                reference↔fork comparison tool (compare.mjs, path-map.json, REPORT.md)
 └── learning/            engineering post-mortems
 ```

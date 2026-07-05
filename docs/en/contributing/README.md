@@ -139,6 +139,12 @@ win12/
     └── zh/testing/      # Chinese testing docs
 ```
 
+## Adding a new app
+
+See [App development](../app-development.md) for the registry API, the
+controller lifecycle (`init`/`load`/`remove`/`page`), and everywhere a new
+app needs wiring in (window HTML, icon, Start Menu, taskbar, Store catalog).
+
 ## Common Issues
 
 ### "Tests fail locally but pass in CI"

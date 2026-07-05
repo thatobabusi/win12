@@ -139,6 +139,12 @@ win12/
     └── zh/testing/      # 中文测试文档
 ```
 
+## 添加新应用
+
+关于注册表 API、controller 生命周期（`init`/`load`/`remove`/`page`），以及
+新应用需要接入的所有位置（窗口 HTML、图标、开始菜单、任务栏、商店目录），
+参见 [应用开发](../app-development.md)。
+
 ## 常见问题
 
 ### "测试在本地失败但在 CI 中通过"

@@ -141,6 +141,13 @@ win12/
     └── zh/testing/      # Ditokomane tsa diteko tsa Sechaena
 ```
 
+## Go tsenya app e ntšha
+
+Bona [Tlhamo ya di-app](../app-development.md) bakeng sa API ya registry,
+bophelo jwa controller (`init`/`load`/`remove`/`page`), le mafelo otlhe a
+app e ntšha e tlhokang go kopanngwa mo go ona (window HTML, setshwantsho,
+Start Menu, taskbar, katalogo ya Store).
+
 ## Mathata a a tlwaelegileng
 
 ### "Diteko di palelwa mo komputareng mme di feta mo CI"
