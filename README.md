@@ -62,7 +62,7 @@ Thus this project was born (yes, the birth of this project was just that sudden)
 
 ## Online Experience
 
-Click [here](https://win12.tech) to experience it.
+Click [here](https://thatobabusi.github.io/win12/boot.html) to experience it.
 
 
 ## Feature Preview
