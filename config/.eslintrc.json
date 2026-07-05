@@ -19,6 +19,7 @@
     "playwright-report/",
     "test-results/",
     "public/**",
+    "src/**",
     "pwa/",
     "readme/",
     "lang/",

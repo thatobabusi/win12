@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import '../../public/js/core/registry.js';
-import '../../public/js/apps/imgviewer.js';
+import '../../src/js/core/registry.js';
+import '../../src/js/apps/imgviewer.js';
 
 const img = window.win12.apps.get('imgviewer');
 

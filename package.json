@@ -4,6 +4,9 @@
   "description": "Windows 12 Web Simulation - Open Source Project",
   "type": "module",
   "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/watch.mjs",
+    "pretest:e2e": "npm run build",
     "test": "vitest --config config/vitest.config.js",
     "test:ui": "vitest --ui --config config/vitest.config.js",
     "test:coverage": "vitest --coverage --config config/vitest.config.js",

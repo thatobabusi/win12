@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import '../../public/js/core/lifecycle.js';
+import '../../src/js/core/lifecycle.js';
 
 // Use the factory so each test gets a clean, un-auto-marked instance.
 const { createLifecycle } = window.win12;

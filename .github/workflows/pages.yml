@@ -30,17 +30,27 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # submodules: recursive is REQUIRED — public/lang (win12-locales) holds the
+      # submodules: recursive is REQUIRED — src/lang (win12-locales) holds the
       # translation .properties files; without it the UI loses all i18n.
       - name: Checkout (with locale submodule)
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
+      # Source lives in src/; public/ is the generated web root (git-ignored).
+      # The build mirrors src/ -> public/ (static site, no bundling).
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build public/ from src/
+        run: node scripts/build.mjs
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      # Upload public/ as the site root — this is what avoids restructuring.
+      # Upload the generated public/ as the site root.
       - name: Upload public/ as the Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

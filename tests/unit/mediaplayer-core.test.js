@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import '../../public/js/modules/mediaplayer-core.js';
+import '../../src/js/modules/mediaplayer-core.js';
 
 const {
   clampQueueIndex,

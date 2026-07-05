@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-// Validates the ACTUAL translation files under public/lang/lang (unlike i18n.test.js,
+// Validates the ACTUAL translation files under src/lang/lang (unlike i18n.test.js,
 // which exercises lang() logic against fixtures). This is the guard that keeps every
 // language — especially Setswana (tn) — at full key parity with English.
 
-const LANG_DIR = resolve(process.cwd(), 'public/lang/lang');
+const LANG_DIR = resolve(process.cwd(), 'src/lang/lang');
 const LANGS = ['en', 'en-US', 'zh_CN', 'zh_TW', 'tn'];
 // Languages whose values must NOT contain Chinese characters.
 const NON_CJK_LANGS = ['en', 'en-US', 'tn'];
@@ -39,12 +39,12 @@ const hasLangFiles = LANGS.every(code => data[code] !== undefined);
 if (!hasLangFiles) {
   // eslint-disable-next-line no-console
   console.warn(
-    '[lang-files.test] public/lang submodule not initialized — skipping locale validation. ' +
+    '[lang-files.test] src/lang submodule not initialized — skipping locale validation. ' +
     'Run: git submodule update --init --recursive'
   );
 }
 
-describe.skipIf(!hasLangFiles)('Translation files (public/lang/lang)', () => {
+describe.skipIf(!hasLangFiles)('Translation files (src/lang/lang)', () => {
   describe('Presence', () => {
     it.each(LANGS)('lang_%s.properties exists and is non-trivial', (code) => {
       expect(data[code], `lang_${code}.properties missing`).toBeDefined();

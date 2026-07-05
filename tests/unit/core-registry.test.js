@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import '../../public/js/core/registry.js';
+import '../../src/js/core/registry.js';
 
 const registry = window.win12.apps;
 

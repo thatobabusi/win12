@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import '../../public/js/core/registry.js';
-import '../../public/js/apps/run.js';
+import '../../src/js/core/registry.js';
+import '../../src/js/apps/run.js';
 
 const run = window.win12.apps.get('run');
 

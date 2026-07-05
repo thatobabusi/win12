@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import '../../public/sw.js';
+import '../../src/sw.js';
 
 const { bypass, networkFirst, staleWhileRevalidate } = self.__sw;
 

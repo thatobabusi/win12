@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import '../../public/js/core/registry.js';
-import '../../public/js/apps/pdfviewer.js';
+import '../../src/js/core/registry.js';
+import '../../src/js/apps/pdfviewer.js';
 
 // The extraction is correct if the app is reachable through the kernel exactly
 // as the legacy `apps` global expects (same object, right shape).

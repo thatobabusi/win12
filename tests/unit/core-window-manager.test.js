@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
-import '../../public/js/core/window-manager.js';
+import '../../src/js/core/window-manager.js';
 
 const windows = window.win12.windows;
 

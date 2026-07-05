@@ -1,25 +1,25 @@
 import { describe, expect, it } from 'vitest';
-import '../../public/js/core/registry.js';
+import '../../src/js/core/registry.js';
 
 // The final batch of small apps extracted from the apps.js monolith onto the
 // kernel. Each should register on win12.apps and be the same object legacy
 // inline handlers reach via window.apps.
-import '../../public/js/apps/msstore.js';
-import '../../public/js/apps/webapps.js';
-import '../../public/js/apps/vscode.js';
-import '../../public/js/apps/bilibili.js';
-import '../../public/js/apps/copilot.js';
-import '../../public/js/apps/minesweeper.js';
-import '../../public/js/apps/defender.js';
-import '../../public/js/apps/camera.js';
-import '../../public/js/apps/pythonEditor.js';
-import '../../public/js/apps/notepadFonts.js';
-import '../../public/js/apps/python.js';
-import '../../public/js/apps/search.js';
-import '../../public/js/apps/winver.js';
-import '../../public/js/apps/wsa.js';
-import '../../public/js/apps/word.js';
-import '../../public/js/apps/windows12.js';
+import '../../src/js/apps/msstore.js';
+import '../../src/js/apps/webapps.js';
+import '../../src/js/apps/vscode.js';
+import '../../src/js/apps/bilibili.js';
+import '../../src/js/apps/copilot.js';
+import '../../src/js/apps/minesweeper.js';
+import '../../src/js/apps/defender.js';
+import '../../src/js/apps/camera.js';
+import '../../src/js/apps/pythonEditor.js';
+import '../../src/js/apps/notepadFonts.js';
+import '../../src/js/apps/python.js';
+import '../../src/js/apps/search.js';
+import '../../src/js/apps/winver.js';
+import '../../src/js/apps/wsa.js';
+import '../../src/js/apps/word.js';
+import '../../src/js/apps/windows12.js';
 
 const NAMES = ['msstore', 'webapps', 'vscode', 'bilibili', 'copilot', 'minesweeper',
   'defender', 'camera', 'pythonEditor', 'notepadFonts', 'python', 'search',

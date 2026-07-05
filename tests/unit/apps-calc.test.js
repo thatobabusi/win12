@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import '../../public/js/core/registry.js';
-import '../../public/js/apps/calc.js';
+import '../../src/js/core/registry.js';
+import '../../src/js/apps/calc.js';
 
 const calc = window.win12.apps.get('calc');
 

@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import '../../public/js/core/registry.js';
-import '../../public/js/apps/codeEditor.js';
+import '../../src/js/core/registry.js';
+import '../../src/js/apps/codeEditor.js';
 
 const ed = window.win12.apps.get('codeEditor');
 

@@ -11,6 +11,10 @@ readme/asw-*
 # Node modules
 node_modules/
 
+# Build output — public/ is generated from src/ by `npm run build`
+# (Herd docroot, GitHub Pages artifact, and e2e all serve this built dir)
+/public/
+
 # Test coverage
 coverage/
 .nyc_output/

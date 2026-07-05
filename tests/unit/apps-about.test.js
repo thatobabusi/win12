@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import '../../public/js/core/registry.js';
-import '../../public/js/apps/about.js';
+import '../../src/js/core/registry.js';
+import '../../src/js/apps/about.js';
 
 const about = window.win12.apps.get('about');
 
