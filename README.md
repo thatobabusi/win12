@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./public/assets/icons/windows12.svg" width="100" height="100">
+    <img src="./src/assets/icons/windows12.svg" width="100" height="100">
 </p>
 <h1 align="center">Windows12 Online</h1>
 <p align="center" class="shields">
@@ -144,7 +144,35 @@ Related files fall within the scope of fair use. Please note that the use of rel
 
 For details, please see [Contribution Guide](./CONTRIBUTING.md).
 
-This project uses the i18n library to implement multi-language support. Translation work is conducted according to the [Translation Contribution Guide](lang/readme.md).
+This project uses the i18n library to implement multi-language support. Translation work is conducted according to the [Translation Contribution Guide](src/lang/readme.md).
+
+## Project Structure & Development
+
+The site is a static web app. Source lives in **`src/`** (the source of truth); the served web root **`public/`** is **generated** from it and is git-ignored.
+
+```
+src/            source of truth — edit here
+  desktop.html, boot.html, ...   HTML shells
+  js/           application modules (core/, apps/, modules/, data/, games/, utils/)
+  scripts/  styles/  assets/  apps/  pwa/  tauri/  sw.js
+  lang/         win12-locales git submodule (translations)
+public/         GENERATED web root (git-ignored) — Herd docroot & Pages artifact
+scripts/build.mjs   mirrors src/ -> public/ (no bundling; it's a static site)
+```
+
+Common commands:
+
+```bash
+npm run build      # assemble public/ from src/ (run once, or after pulling)
+npm run watch      # rebuild public/ automatically on any change in src/
+npm test           # unit tests (Vitest) — import from src/ directly
+npm run test:e2e   # Playwright e2e (auto-builds first, serves public/)
+npm run lint       # ESLint
+```
+
+For local dev with Herd (which serves `public/`), run `npm run watch` so the
+docroot always reflects your edits. CI (GitHub Pages) runs `npm run build`
+before deploying.
 
 ## Project Index
 Due to legacy issues, much of this project's content is scattered across different repositories or websites. For easier access, here are some links.

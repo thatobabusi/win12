@@ -12,7 +12,7 @@ services:
       - .:/app
       - /app/node_modules
     working_dir: /app
-    command: bash -c "python3 -m http.server 3000 --directory ./public > /tmp/server.log 2>&1 & sleep 2 && npm run test:all"
+    command: bash -c "npm run build && (python3 -m http.server 3000 --directory ./public > /tmp/server.log 2>&1 &) && sleep 2 && npm run test:all"
 
   test-unit:
     build: .
@@ -36,7 +36,7 @@ services:
       - .:/app
       - /app/node_modules
     working_dir: /app
-    command: bash -c "python3 -m http.server 3000 --directory ./public > /tmp/server.log 2>&1 & sleep 3 && npm run test:e2e"
+    command: bash -c "npm run build && (python3 -m http.server 3000 --directory ./public > /tmp/server.log 2>&1 &) && sleep 3 && npm run test:e2e"
 
   lint:
     build: .
