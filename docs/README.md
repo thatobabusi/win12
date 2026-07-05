@@ -23,7 +23,7 @@ Start here: **[English overview](en/index.md)** · **[中文总览](zh/index.md)
 
 ### Maintainer references (English)
 
-- **[sync/](sync/README.md)** ([中文](sync/README.zh-CN.md)) — reference↔fork path
+- **[sync/](sync/README.md)** ([中文](sync/README_zh.md)) — reference↔fork path
   map + `compare.mjs` for incorporating upstream changes (`npm run compare`).
 - **[learning/](../.claude/internal-affairs/learning/README.md)** — engineering post-mortems (boot / login /
   service-worker saga). Read before re-touching those flows.
@@ -87,9 +87,10 @@ See [Testing](en/testing/README.md) / [测试](zh/testing/README.md).
 
 ## 🔗 Related files
 
-- [CREDITS](../CREDITS.md) · [简体中文](../CREDITS_zh.md) · [Setswana](../CREDITS_tn.md) — attribution to the original authors of Windows 12 Online
-- [Main README](../README_zh_ch.md) — project overview
-- [CONTRIBUTING.md](../CONTRIBUTING.md) — root contributing notes
-- [changelog.md](../changelog.md) — upstream changelog (Chinese)
+- [CREDITS](CREDITS.md) · [简体中文](CREDITS_zh.md) · [Setswana](CREDITS_tn.md) — attribution to the original authors of Windows 12 Online
+- [Main README](README_zh.md) — project overview
+- Legacy language selector READMEs (moved from the old `readme/` folder): [English](README_en.md) · [Français](README_fr.md) · [繁體中文](README_zh_tw.md)
+- [CONTRIBUTING_upstream.md](CONTRIBUTING_upstream.md) — root contributing notes
+- [changelog_upstream.md](changelog_upstream.md) — upstream changelog (Chinese)
 - [LICENSE](../LICENSE) · [LICENSE-CC](../LICENSE-CC) — licensing
-- [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)

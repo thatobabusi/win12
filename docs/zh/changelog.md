@@ -2,8 +2,8 @@
 
 > 🌐 English: [../en/changelog.md](../en/changelog.md)
 
-本页记录**本分支**的重要变更。完整的上游历史见根目录
-[`changelog.md`](../../changelog.md)（中文）以及应用内的“关于 Windows 12 网页版”。
+本页记录**本分支**的重要变更。完整的上游历史见
+[`changelog_upstream.md`](../changelog_upstream.md)（中文）以及应用内的“关于 Windows 12 网页版”。
 
 ---
 
@@ -23,7 +23,7 @@
 - **资源** —— 恢复缺失的 `login.jpg`、`folder.png`、`office-newfile.png`；修复
   `bootstrap-icons` 的 `@font-face` 路径（`./fonts/` → `../assets/fonts/`），使所有 `bi`
   图标正常渲染，而非显示为空白方块（豆腐块）。
-- **工具** —— 新增 [`docs/sync/`](../sync/README.zh-CN.md)：参考项目 ↔ 分支的路径映射，
+- **工具** —— 新增 [`docs/sync/`](../sync/README_zh.md)：参考项目 ↔ 分支的路径映射，
   以及用于合并上游变更的 `compare.mjs`（`npm run compare`）。
 - **本地化（2026-06-23）** —— 完整的多语言界面。将约 230 个硬编码字符串接入 `data-i18n`
   键（设置、任务管理器、Word、Defender、记事本、白板、关于）；新增**茨瓦纳语（Setswana）**

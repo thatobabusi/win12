@@ -7,8 +7,8 @@ Guide complet des tests automatisés dans Win12 Online.
 ## 📚 Documentation des tests
 
 ### Références rapides
-- **[Démarrage rapide](QUICKSTART.md)** — configuration en 5 minutes et commandes de base
-- **[Tests Docker](DOCKER.md)** — tester avec des conteneurs Docker
+- **[Démarrage rapide](quickstart.md)** — configuration en 5 minutes et commandes de base
+- **[Tests Docker](docker.md)** — tester avec des conteneurs Docker
 
 ## 🎯 Vue d'ensemble des tests
 
@@ -103,7 +103,7 @@ docker-compose run --rm test-e2e
 docker-compose run --rm lint
 ```
 
-Voir le [Guide des tests Docker](DOCKER.md) pour les détails.
+Voir le [Guide des tests Docker](docker.md) pour les détails.
 
 ## 🔍 Tâches courantes
 
@@ -173,7 +173,7 @@ R : Utilisez `.skip` pour Vitest : `it.skip('nom du test', () => {})` ou
 
 ## 📝 Étapes suivantes
 
-1. ✅ [Lire le Démarrage rapide](QUICKSTART.md) — 5 minutes
+1. ✅ [Lire le Démarrage rapide](quickstart.md) — 5 minutes
 2. ✅ Lancer `npm run test:all` — vérifier la configuration
 3. ✅ Écrire des tests pour les nouvelles fonctionnalités
 4. ✅ Pousser en confiance !

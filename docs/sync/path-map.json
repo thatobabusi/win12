@@ -1,6 +1,6 @@
 {
   "description": "Maps REFERENCE project (Tools/win12-git, flat layout) paths to this WIP project (public/ + src/styles/assets layout). Used by compare.mjs. A rule whose 'ref' ends with '/' is a directory subtree; otherwise it is a single file. Add rules here when upstream introduces new top-level files/dirs that the comparison reports as UNMAPPED.",
-  "ignore": [".git", ".github", ".claude", "node_modules", ".idea", "readme"],
+  "ignore": [".git", ".github", ".claude", "node_modules", ".idea"],
   "rules": [
     { "ref": "desktop.js", "wip": "src/js/desktop.js" },
     { "ref": "sw.js", "wip": "src/sw.js" },
@@ -31,9 +31,9 @@
     { "ref": "pwa/", "wip": "src/pwa/" },
     { "ref": "tauri/", "wip": "src/tauri/" },
     { "ref": "README.md", "wip": "README.md" },
-    { "ref": "changelog.md", "wip": "changelog.md" },
-    { "ref": "CONTRIBUTING.md", "wip": "CONTRIBUTING.md" },
-    { "ref": "CODE_OF_CONDUCT.md", "wip": "CODE_OF_CONDUCT.md" },
+    { "ref": "changelog.md", "wip": "docs/changelog_upstream.md" },
+    { "ref": "CONTRIBUTING.md", "wip": "docs/CONTRIBUTING_upstream.md" },
+    { "ref": "CODE_OF_CONDUCT.md", "wip": "docs/CODE_OF_CONDUCT.md" },
     { "ref": "LICENSE", "wip": "LICENSE" },
     { "ref": "LICENSE-CC", "wip": "LICENSE-CC" }
   ]

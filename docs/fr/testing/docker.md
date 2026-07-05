@@ -1,6 +1,6 @@
 # Guide des tests Docker
 
-> 🌐 English : [../../en/testing/DOCKER.md](../../en/testing/DOCKER.md)
+> 🌐 English : [../../en/testing/docker.md](../../en/testing/docker.md)
 
 Lancez les tests de Win12 dans un environnement Docker cohérent, en local ou en CI/CD.
 

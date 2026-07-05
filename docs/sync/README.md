@@ -1,6 +1,6 @@
 # Reference ↔ WIP sync & comparison
 
-> 🌐 中文版见 [README.zh-CN.md](README.zh-CN.md)
+> 🌐 中文版见 [README_zh.md](README_zh.md)
 
 This folder contains tooling to **map and compare** the upstream **reference**
 project (`win12-online/win12`, checked out at `Tools/win12-git`) against this
@@ -25,7 +25,7 @@ you can make an evidence-based case to upstream for switching to a multilingual
 | `path-map.json` | The mapping rules: reference path → WIP path. **Edit this** when upstream adds new top-level files/folders. |
 | `compare.mjs` | The comparison script (Node, no dependencies). |
 | `REPORT.md` | Generated output. Overwritten on every run — do not edit by hand. |
-| `README.md` / `README.zh-CN.md` | This documentation (English / Chinese). |
+| `README.md` / `README_zh.md` | This documentation (English / Chinese). |
 
 ---
 

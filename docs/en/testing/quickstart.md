@@ -192,7 +192,7 @@ await page.waitForSelector('.element');  // Good
 
 - **Detailed testing patterns** → See [Unit Tests Guide](UNIT-TESTS.md)
 - **E2E testing details** → See [E2E Tests Guide](E2E-TESTS.md)
-- **Docker setup** → See [Docker Testing Guide](DOCKER.md)
+- **Docker setup** → See [Docker Testing Guide](docker.md)
 - **Vitest docs** → https://vitest.dev
 - **Playwright docs** → https://playwright.dev
 - **ESLint docs** → https://eslint.org

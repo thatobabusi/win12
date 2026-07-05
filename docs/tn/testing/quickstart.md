@@ -1,6 +1,6 @@
 # Tshimologo e e bonako ya Diteko
 
-> 🌐 English: [../../en/testing/QUICKSTART.md](../../en/testing/QUICKSTART.md)
+> 🌐 English: [../../en/testing/quickstart.md](../../en/testing/quickstart.md)
 
 Simolola go dirisa diteko tsa boitiriso tsa Win12 ka metsotso e 5.
 
@@ -193,7 +193,7 @@ await page.waitForSelector('.element');  // Go siame
 ## Dipotso?
 
 - **Dintlha tsa diteko tsa E2E** → bona [Kaedi ya Diteko](README.md)
-- **Go rulaganya Docker** → bona [Kaedi ya Diteko tsa Docker](DOCKER.md)
+- **Go rulaganya Docker** → bona [Kaedi ya Diteko tsa Docker](docker.md)
 - **Docs tsa Vitest** → https://vitest.dev
 - **Docs tsa Playwright** → https://playwright.dev
 - **Docs tsa ESLint** → https://eslint.org

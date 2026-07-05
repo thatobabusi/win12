@@ -53,7 +53,7 @@ index.html ──（整页重定向）──▶ boot.html ──（boot_kernel.j
 ## 目录结构与参考项目
 
 本项目把参考项目的扁平结构重组为 `public/` + `src` / `styles` / `assets`。映射关系
-（参考 → 本项目）与对比工具见 [`../sync/`](../sync/README.zh-CN.md)：
+（参考 → 本项目）与对比工具见 [`../sync/`](../sync/README_zh.md)：
 
 | 参考项目 | 本项目 |
 |----------|--------|

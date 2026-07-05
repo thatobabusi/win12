@@ -140,7 +140,7 @@ npm test -- --watch           # Start watching unit tests
 # Tests auto-rerun as you save
 ```
 
-For detailed testing patterns and examples, see [TESTING.md](TESTING.md) and [TESTING-QUICKSTART.md](TESTING-QUICKSTART.md).
+For detailed testing patterns and examples, see [Testing guide](en/testing/README.md) and [Testing quickstart](en/testing/quickstart.md).
 
 ### CI/CD Pipeline
 
@@ -161,4 +161,4 @@ Fix issues locally with `npm run test:all` and push again - tests will re-run au
 | `npm run lint` | Check code style |
 | `npm run lint:fix` | Auto-fix style issues |
 
-See [TESTING-QUICKSTART.md](TESTING-QUICKSTART.md) for more commands and help.
+See [Testing quickstart](en/testing/quickstart.md) for more commands and help.

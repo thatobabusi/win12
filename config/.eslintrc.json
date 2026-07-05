@@ -21,7 +21,6 @@
     "public/**",
     "src/**",
     "pwa/",
-    "readme/",
     "lang/",
     "docs/"
   ],

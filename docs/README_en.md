@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./icon/windows12.svg" width="100" height="100">
+    <img src="../src/assets/icons/windows12.svg" width="100" height="100">
 </p>
 <h1 align="center">Windows12 Online</h1>
 <p align="center" class="shields">
@@ -22,10 +22,10 @@
   </a>
 </p>
 <p align="center" class="language" title="Language selection">
-<a href="readme/README_en_us.md">English</a> | 
+<a href="README_en.md">English</a> | 
 <b>Simplified Chinese</b> | 
-<a href="readme/README_fr_fr.md">Français</a>|
-<a href="readme/README_zh_tw.md">Traditional Chinese</a>
+<a href="README_fr.md">Français</a>|
+<a href="README_zh_tw.md">Traditional Chinese</a>
 </p>
 <details align="center">
   <summary>Star History</summary>
@@ -82,7 +82,7 @@ Click [here](https://win12.tech) to experience it.
 *Dark Mode*
 
 ![image](https://win12-online.github.io/win12/img/ai-copilot.png)
-*AI Copilot([Implementation Method](./scripts/AI%20Copilot%20service/README.md))*
+*AI Copilot([Implementation Method](../src/scripts/AI%20Copilot%20service/README.md))*
 ## Future Planning
 
 Regarding the roadmap for this project:
@@ -141,9 +141,9 @@ Related files fall within the scope of fair use. Please note that the use of rel
 6. If you engage in infringing conduct, we will retain records in accordance with applicable laws and reserve the right to take legal action in any manner and pursue legal liability at any time (including but not limited to submitting reports to law enforcement agencies in accordance with law, filing complaints with judicial authorities, cooperating with law enforcement and judicial investigations, etc.).
 ## Contribution Guidelines
 
-For details, please see [Contribution Guide](./CONTRIBUTING.md).
+For details, please see [Contribution Guide](CONTRIBUTING_upstream.md).
 
-This project uses the i18n library to implement multi-language support. Translation work is conducted according to the [Translation Contribution Guide](lang/readme.md).
+This project uses the i18n library to implement multi-language support. Translation work is conducted according to the [Translation Contribution Guide](../src/lang/lang/readme.md).
 
 ## Project Index
 Due to legacy issues, much of this project's content is scattered across different repositories or websites. For easier access, here are some links.

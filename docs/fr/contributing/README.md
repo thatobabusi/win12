@@ -55,7 +55,7 @@ Lors de l'ajout de nouvelles fonctionnalités :
 - Fonctions : 50 %+
 - Lignes : 50 %+
 
-Voir le [Guide des tests](../testing/QUICKSTART.md) pour les commandes.
+Voir le [Guide des tests](../testing/quickstart.md) pour les commandes.
 
 ## Qualité du code
 
@@ -122,7 +122,7 @@ docker-compose run --rm test-e2e
 docker-compose run --rm lint
 ```
 
-Voir le [Guide des tests Docker](../testing/DOCKER.md) pour les détails.
+Voir le [Guide des tests Docker](../testing/docker.md) pour les détails.
 
 ## Structure du projet
 
@@ -159,8 +159,8 @@ local avec `python -m http.server 3000` dans un autre terminal, ou utilisez Dock
 
 ## Des questions ?
 
-- **Aide sur les tests** → [Démarrage rapide des tests](../testing/QUICKSTART.md)
-- **Aide Docker** → [Guide Docker](../testing/DOCKER.md)
+- **Aide sur les tests** → [Démarrage rapide des tests](../testing/quickstart.md)
+- **Aide Docker** → [Guide Docker](../testing/docker.md)
 - **Patrons de code** → voir le code existant dans le dossier `tests/`
 - **Questions sur un ticket** → créez une issue sur GitHub
 

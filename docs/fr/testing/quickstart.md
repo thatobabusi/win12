@@ -1,6 +1,6 @@
 # Démarrage rapide des tests
 
-> 🌐 English : [../../en/testing/QUICKSTART.md](../../en/testing/QUICKSTART.md)
+> 🌐 English : [../../en/testing/quickstart.md](../../en/testing/quickstart.md)
 
 Soyez opérationnel avec les tests automatisés de Win12 en 5 minutes.
 
@@ -193,7 +193,7 @@ await page.waitForSelector('.element');  // Bien
 ## Des questions ?
 
 - **Détails des tests E2E** → voir le [Guide des tests](README.md)
-- **Configuration Docker** → voir le [Guide des tests Docker](DOCKER.md)
+- **Configuration Docker** → voir le [Guide des tests Docker](docker.md)
 - **Docs Vitest** → https://vitest.dev
 - **Docs Playwright** → https://playwright.dev
 - **Docs ESLint** → https://eslint.org

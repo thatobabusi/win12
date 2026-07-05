@@ -1,6 +1,6 @@
 # Kaedi ya Diteko tsa Docker
 
-> 🌐 English: [../../en/testing/DOCKER.md](../../en/testing/DOCKER.md)
+> 🌐 English: [../../en/testing/docker.md](../../en/testing/docker.md)
 
 Dirisa diteko tsa Win12 mo tikologong e e tshwanang ya Docker mo komputareng kgotsa mo CI/CD.
 

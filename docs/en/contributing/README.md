@@ -53,7 +53,7 @@ When adding new features:
 - Functions: 50%+
 - Lines: 50%+
 
-See [Testing Guide](../testing/QUICKSTART.md) for commands.
+See [Testing Guide](../testing/quickstart.md) for commands.
 
 ## Code Quality
 
@@ -120,7 +120,7 @@ docker-compose run --rm test-e2e
 docker-compose run --rm lint
 ```
 
-See [Docker Testing Guide](../testing/DOCKER.md) for details.
+See [Docker Testing Guide](../testing/docker.md) for details.
 
 ## Project Structure
 
@@ -155,8 +155,8 @@ win12/
 
 ## Questions?
 
-- **Testing help** → [Testing Quick Start](../testing/QUICKSTART.md)
-- **Docker help** → [Docker Guide](../testing/DOCKER.md)
+- **Testing help** → [Testing Quick Start](../testing/quickstart.md)
+- **Docker help** → [Docker Guide](../testing/docker.md)
 - **Code patterns** → See existing code in `tests/` folder
 - **Issue questions** → Create an issue on GitHub
 

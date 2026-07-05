@@ -21,7 +21,7 @@
 | `path-map.json` | 映射规则：参考项目路径 → WIP 路径。上游新增顶层文件/目录时**编辑此文件**。 |
 | `compare.mjs` | 对比脚本（Node，无依赖）。 |
 | `REPORT.md` | 生成的报告。每次运行都会覆盖——请勿手动编辑。 |
-| `README.md` / `README.zh-CN.md` | 本说明文档（英文 / 中文）。 |
+| `README.md` / `README_zh.md` | 本说明文档（英文 / 中文）。 |
 
 ---
 

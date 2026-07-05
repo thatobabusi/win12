@@ -33,7 +33,7 @@ middle-school students at the time** — were:
 
 ## Contributors
 
-Compiled from the project's own `changelog.md`, since the upstream GitHub
+Compiled from the project's own [`changelog_upstream.md`](changelog_upstream.md), since the upstream GitHub
 contributor graph is no longer reachable. Thank you to everyone who built this:
 
 - [@tjy-gitnub](https://github.com/tjy-gitnub)
@@ -59,9 +59,9 @@ and would prefer not to be — please let us know and we'll correct it.
 The original project was released under open-source licenses, which this fork
 continues to respect:
 
-- **Source code:** Eclipse Public License 2.0 (EPL-2.0) — see [LICENSE](LICENSE)
+- **Source code:** Eclipse Public License 2.0 (EPL-2.0) — see [LICENSE](../LICENSE)
 - **Artwork, icons & other assets:** Creative Commons Attribution-ShareAlike 4.0
-  International (CC BY-SA 4.0) — see [LICENSE-CC](LICENSE-CC)
+  International (CC BY-SA 4.0) — see [LICENSE-CC](../LICENSE-CC)
 
 Microsoft, Windows, and the Windows logo are trademarks of Microsoft
 Corporation. This project is an independent, non-commercial concept/homage and

@@ -53,7 +53,7 @@ npm run test:all
 - 函数：50%+
 - 行：50%+
 
-见[测试指南](../testing/QUICKSTART.md)了解命令。
+见[测试指南](../testing/quickstart.md)了解命令。
 
 ## 代码质量
 
@@ -120,7 +120,7 @@ docker-compose run --rm test-e2e
 docker-compose run --rm lint
 ```
 
-详见[Docker 测试指南](../testing/DOCKER.md)。
+详见[Docker 测试指南](../testing/docker.md)。
 
 ## 项目结构
 
@@ -155,8 +155,8 @@ win12/
 
 ## 疑问？
 
-- **测试帮助** → [测试快速入门](../testing/QUICKSTART.md)
-- **Docker 帮助** → [Docker 指南](../testing/DOCKER.md)
+- **测试帮助** → [测试快速入门](../testing/quickstart.md)
+- **Docker 帮助** → [Docker 指南](../testing/docker.md)
 - **代码模式** → 见 `tests/` 文件夹中的现有代码
 - **问题提问** → 在 GitHub 上创建问题
 

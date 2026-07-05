@@ -192,7 +192,7 @@ await page.waitForSelector('.element');  // 好的
 
 - **详细测试模式** → 见[单元测试指南](UNIT-TESTS.md)
 - **端到端测试详情** → 见[端到端测试指南](E2E-TESTS.md)
-- **Docker 设置** → 见[Docker 测试指南](DOCKER.md)
+- **Docker 设置** → 见[Docker 测试指南](docker.md)
 - **Vitest 文档** → https://vitest.dev
 - **Playwright 文档** → https://playwright.dev
 - **ESLint 文档** → https://eslint.org

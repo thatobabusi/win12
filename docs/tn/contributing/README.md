@@ -55,7 +55,7 @@ Fa o oketsa di-feature tse di ntšhwa:
 - Functions: 50%+
 - Lines: 50%+
 
-Bona [Kaedi ya Diteko](../testing/QUICKSTART.md) bakeng sa ditaelo.
+Bona [Kaedi ya Diteko](../testing/quickstart.md) bakeng sa ditaelo.
 
 ## Boleng jwa khoutu
 
@@ -122,7 +122,7 @@ docker-compose run --rm test-e2e
 docker-compose run --rm lint
 ```
 
-Bona [Kaedi ya Diteko tsa Docker](../testing/DOCKER.md) bakeng sa dintlha.
+Bona [Kaedi ya Diteko tsa Docker](../testing/docker.md) bakeng sa dintlha.
 
 ## Sebopego sa porojeke
 
@@ -159,8 +159,8 @@ Docker: `docker-compose run --rm test-e2e`.
 
 ## Dipotso?
 
-- **Thuso ya diteko** → [Tshimologo e e bonako ya Diteko](../testing/QUICKSTART.md)
-- **Thuso ya Docker** → [Kaedi ya Docker](../testing/DOCKER.md)
+- **Thuso ya diteko** → [Tshimologo e e bonako ya Diteko](../testing/quickstart.md)
+- **Thuso ya Docker** → [Kaedi ya Docker](../testing/docker.md)
 - **Mekgwa ya khoutu** → bona khoutu e e leng teng mo foletereng ya `tests/`
 - **Dipotso tsa issue** → dira issue mo GitHub
 

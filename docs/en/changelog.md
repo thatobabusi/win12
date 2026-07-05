@@ -3,7 +3,7 @@
 > 🌐 中文版：[../zh/changelog.md](../zh/changelog.md)
 
 This page tracks notable changes **in this fork**. For the full upstream history,
-see the root [`changelog.md`](../../changelog.md) (Chinese) and the "About
+see [`changelog_upstream.md`](../changelog_upstream.md) (Chinese) and the "About
 Windows 12 Online" in-app page.
 
 ---

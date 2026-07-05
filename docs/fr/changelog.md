@@ -3,7 +3,7 @@
 > 🌐 English : [../en/changelog.md](../en/changelog.md)
 
 Cette page suit les changements notables **de ce fork**. Pour l'historique amont
-complet, voir le [`changelog.md`](../../changelog.md) racine (en chinois) et la
+complet, voir [`changelog_upstream.md`](../changelog_upstream.md) (en chinois) et la
 page « À propos de Windows 12 Online » dans l'application.
 
 ---

@@ -22,10 +22,10 @@
   </a>
 </p>
 <p align="center" class="language" title="Language selection">
-<a href="readme/README_en_us.md">English</a> | 
+<a href="docs/README_en.md">English</a> | 
 <b>Simplified Chinese</b> | 
-<a href="readme/README_fr_fr.md">Français</a>|
-<a href="readme/README_zh_tw.md">Traditional Chinese</a>
+<a href="docs/README_fr.md">Français</a>|
+<a href="docs/README_zh_tw.md">Traditional Chinese</a>
 </p>
 <details align="center">
   <summary>Star History</summary>
@@ -142,9 +142,9 @@ Related files fall within the scope of fair use. Please note that the use of rel
 6. If you engage in infringing conduct, we will retain records in accordance with applicable laws and reserve the right to take legal action in any manner and pursue legal liability at any time (including but not limited to submitting reports to law enforcement agencies in accordance with law, filing complaints with judicial authorities, cooperating with law enforcement and judicial investigations, etc.).
 ## Contribution Guidelines
 
-For details, please see [Contribution Guide](./CONTRIBUTING.md).
+For details, please see [Contribution Guide](docs/CONTRIBUTING_upstream.md).
 
-This project uses the i18n library to implement multi-language support. Translation work is conducted according to the [Translation Contribution Guide](src/lang/readme.md).
+This project uses the i18n library to implement multi-language support. Translation work is conducted according to the [Translation Contribution Guide](src/lang/lang/readme.md).
 
 ## Project Structure & Development
 
@@ -193,7 +193,7 @@ Core developers: tjy-gitnub([Bilibili](https://space.bilibili.com/2010692096/)),
 
 Project contributors: See [here](https://github.com/win12-online/win12/graphs/contributors) (Thank you to our excellent contributors!)
 
-Full attribution to the original authors is preserved in **[CREDITS.md](CREDITS.md)** ([简体中文](CREDITS_zh.md) · [Setswana](CREDITS_tn.md)) — kept in-repo because the upstream `win12-online/win12` and its contributor graph are no longer publicly available.
+Full attribution to the original authors is preserved in **[CREDITS.md](docs/CREDITS.md)** ([简体中文](docs/CREDITS_zh.md) · [Setswana](docs/CREDITS_tn.md)) — kept in-repo because the upstream `win12-online/win12` and its contributor graph are no longer publicly available.
 
 ## Support Us
 

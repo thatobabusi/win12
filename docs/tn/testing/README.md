@@ -7,8 +7,8 @@ Kaedi e e feletseng ya diteko tsa boitiriso mo Win12 Online.
 ## 📚 Ditokomane tsa diteko
 
 ### Ditshupiso tse di bonako
-- **[Tshimologo e e bonako](QUICKSTART.md)** — go rulaganya ka metsotso e 5 le ditaelo tsa motheo
-- **[Diteko tsa Docker](DOCKER.md)** — go leka ka di-container tsa Docker
+- **[Tshimologo e e bonako](quickstart.md)** — go rulaganya ka metsotso e 5 le ditaelo tsa motheo
+- **[Diteko tsa Docker](docker.md)** — go leka ka di-container tsa Docker
 
 ## 🎯 Kakaretso ya diteko
 
@@ -103,7 +103,7 @@ docker-compose run --rm test-e2e
 docker-compose run --rm lint
 ```
 
-Bona [Kaedi ya Diteko tsa Docker](DOCKER.md) bakeng sa dintlha.
+Bona [Kaedi ya Diteko tsa Docker](docker.md) bakeng sa dintlha.
 
 ## 🔍 Ditiro tse di tlwaelegileng
 
@@ -171,7 +171,7 @@ K: Dirisa `.skip` bakeng sa Vitest: `it.skip('leina la teko', () => {})` kgotsa
 
 ## 📝 Dikgato tse di latelang
 
-1. ✅ [Bala Tshimologo e e bonako](QUICKSTART.md) — metsotso e 5
+1. ✅ [Bala Tshimologo e e bonako](quickstart.md) — metsotso e 5
 2. ✅ Dirisa `npm run test:all` — netefatsa go rulaganya
 3. ✅ Kwala diteko tsa di-feature tse di ntšhwa
 4. ✅ Push ka tshepo!

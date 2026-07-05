@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./icon/windows12.svg" width="100" height="100">
+    <img src="../src/assets/icons/windows12.svg" width="100" height="100">
 </p>
 <h1 align="center">Windows 12 version Web</h1>
 <p align="center" class="shields">
@@ -22,10 +22,10 @@
   </a>
 </p>
 <p align="center" class="language" title="Sélection de la langue 语言选择">
-<a href="readme/README_en_us.md">English</a> | 
+<a href="README_en.md">English</a> | 
   <b>简体中文</b> | 
-  <a href="readme/README_fr_fr.md">Français</a>|
-  <a href="readme/README_zh_tw.md">繁體中文</a>
+  <a href="README_fr.md">Français</a>|
+  <a href="README_zh_tw.md">繁體中文</a>
 </p>
 <details align="center">
   <summary>Historique des étoiles</summary>
@@ -82,7 +82,7 @@ La nouvelle version comporte de nombreux changements, à titre indicatif seuleme
 *Mode sombre*
 
 ![image](https://win12-online.github.io/win12/img/ai-copilot.png)
-*AI Copilot([Méthode de réalisation](./scripts/AI%20Copilot%20service/README.md))*
+*AI Copilot([Méthode de réalisation](../src/scripts/AI%20Copilot%20service/README.md))*
 ## Planification future
 
 Concernant la feuille de route de ce projet :
@@ -141,9 +141,9 @@ Les fichiers concernés relèvent de l'utilisation raisonnable ; il convient de 
 6. Si vous commettez un acte de contrefaçon, nous conserverons des enregistrements conformément aux dispositions légales et nous réservons le droit, à tout moment et par tous moyens, d'engager des actions en justice et de demander réparation (y compris, sans s'y limiter, signaler l'affaire aux organismes chargés de l'application de la loi, porter plainte devant les autorités judiciaires, collaborer aux enquêtes des autorités compétentes, etc.).
 ## Instructions pour les contributions
 
-Pour plus de détails, veuillez consulter le [guide de contribution](./CONTRIBUTING.md).
+Pour plus de détails, veuillez consulter le [guide de contribution](CONTRIBUTING_upstream.md).
 
-Ce projet utilise la bibliothèque i18n pour fournir la fonctionnalité multilingue; le travail de traduction suit le [guide de contribution pour les traductions](lang/readme.md).
+Ce projet utilise la bibliothèque i18n pour fournir la fonctionnalité multilingue; le travail de traduction suit le [guide de contribution pour les traductions](../src/lang/lang/readme.md).
 
 ## Index du projet
 En raison de problèmes hérités, une grande partie du contenu de ce projet est dispersée dans différents dépôts ou sites web. Voici quelques liens pour vous y retrouver.
