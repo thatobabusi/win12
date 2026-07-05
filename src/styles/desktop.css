@@ -660,6 +660,11 @@ list>span.focs.cl {
     left: 3.2px;
 }
 
+/* Pinned apps that aren't currently running: no running-indicator dot. */
+#taskbar>a.pinned:not(.running)::after {
+    display: none;
+}
+
 .dock.date {
     width: 100px;
     padding: 0px 5px;

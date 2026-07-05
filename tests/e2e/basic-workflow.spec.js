@@ -179,3 +179,76 @@ test.describe('Win12 system pages', () => {
     expect(body).not.toContain('404');
   });
 });
+
+test.describe('Taskbar pinning', () => {
+  test.beforeEach(async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => {
+      localStorage.removeItem('taskbar_pinned');
+      document.querySelector('#loginback').style.display = 'none';
+    });
+  });
+
+  test('pinning shows a persistent icon even when the app is not running', async ({ page }) => {
+    await page.evaluate(() => window.pinToTaskbar('calc'));
+    const icon = page.locator('#taskbar>a.calc');
+    await expect(icon).toHaveCount(1);
+    await expect(icon).toHaveClass(/pinned/);
+    await expect(icon).not.toHaveClass(/running/);
+  });
+
+  test('clicking a pinned icon opens the app', async ({ page }) => {
+    await page.evaluate(() => window.pinToTaskbar('calc'));
+    await page.locator('#taskbar>a.calc').click();
+    await expect(page.locator('.window.calc')).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('#taskbar>a.calc')).toHaveClass(/running/);
+  });
+
+  test('closing a pinned app keeps the icon, but drops the running state', async ({ page }) => {
+    await page.evaluate(() => window.pinToTaskbar('calc'));
+    await openApp(page, 'calc');
+    await page.evaluate(() => window.hidewin('calc'));
+    const icon = page.locator('#taskbar>a.calc');
+    await expect(icon).toHaveCount(1);
+    await expect(icon).not.toHaveClass(/running/);
+  });
+
+  test('unpinning a non-running app removes its icon', async ({ page }) => {
+    await page.evaluate(() => window.pinToTaskbar('calc'));
+    await page.evaluate(() => window.unpinFromTaskbar('calc'));
+    await expect(page.locator('#taskbar>a.calc')).toHaveCount(0);
+  });
+
+  test('pinned apps survive a reload (persisted to localStorage)', async ({ page }) => {
+    await page.evaluate(() => window.pinToTaskbar('notepad'));
+    await page.reload();
+    await page.waitForFunction(() => typeof window.openapp === 'function', { timeout: 25000 });
+    await expect(page.locator('#taskbar>a.notepad.pinned')).toHaveCount(1);
+  });
+});
+
+test.describe('Microsoft Store — real app catalog', () => {
+  test.beforeEach(async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => {
+      localStorage.removeItem('store_installed');
+      document.querySelector('#loginback').style.display = 'none';
+    });
+  });
+
+  test('the Apps and Gaming pages render real, launchable catalog entries', async ({ page }) => {
+    await openApp(page, 'msstore');
+    await page.evaluate(() => window.apps.msstore.page('apps'));
+    await expect(page.locator('#win-msstore .cnt.apps .calc')).toHaveCount(1);
+    await page.evaluate(() => window.apps.msstore.page('game'));
+    await expect(page.locator('#win-msstore .cnt.game .minesweeper')).toHaveCount(1);
+  });
+
+  test('Get pins the app to the Start Menu and flips the button to Open', async ({ page }) => {
+    await openApp(page, 'msstore');
+    await page.evaluate(() => window.apps.msstore.page('apps'));
+    await page.locator('#win-msstore .cnt.apps .calc .store-btn').click();
+    await expect(page.locator('#startmenu-r .pinned .apps .sm-app.calc')).toHaveCount(1);
+    await expect(page.locator('#win-msstore .cnt.apps .calc .store-btn')).toHaveClass(/installed/);
+  });
+});

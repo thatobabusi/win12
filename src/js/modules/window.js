@@ -36,7 +36,11 @@ function hidewin(name, arg = 'window') {
       closeVideo()
     }
     if (arg == 'window') {
-        $('#taskbar>.' + name).remove();
+        if (isTaskbarPinned(name)) {
+            $('#taskbar>.' + name).removeClass('running foc min').attr('onclick', `openapp('${name}')`);
+        } else {
+            $('#taskbar>.' + name).remove();
+        }
         syncTaskbarLayout();
         setTimeout(() => {
             syncTaskbarLayout();

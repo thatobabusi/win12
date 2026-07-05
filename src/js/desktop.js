@@ -827,6 +827,24 @@ const cms = {
     ],
     'taskbar': [
         arg => {
+            if (isTaskbarPinned(arg)) {
+                return ['<i class="bi bi-pin-angle-fill"></i> ' + lang('Unpin from taskbar', 'taskbar.unpin'), `unpinFromTaskbar('${arg}')`];
+            }
+            return ['<i class="bi bi-pin-angle"></i> ' + lang('Pin to taskbar', 'taskbar.pin'), `pinToTaskbar('${arg}')`];
+        },
+        arg => {
+            const pinned = getTaskbarPinned();
+            const idx = pinned.indexOf(arg);
+            if (idx <= 0) return 'null';
+            return ['<i class="bi bi-arrow-left"></i> ' + lang('Move left', 'taskbar.moveleft'), `moveTaskbarPin('${arg}', -1)`];
+        },
+        arg => {
+            const pinned = getTaskbarPinned();
+            const idx = pinned.indexOf(arg);
+            if (idx == -1 || idx >= pinned.length - 1) return 'null';
+            return ['<i class="bi bi-arrow-right"></i> ' + lang('Move right', 'taskbar.moveright'), `moveTaskbarPin('${arg}', 1)`];
+        },
+        arg => {
             return ['<i class="bi bi-window-x"></i> ' + lang('Close', 'close'), `hidewin('${arg}')`];
         }
     ],
@@ -890,6 +908,12 @@ const cms = {
         },
         arg => {
             return ['<i class="bi bi-x"></i> 取消固定', `$('#startmenu-r>.pinned>.apps>.sm-app.${arg[0]}').remove()`];
+        },
+        arg => {
+            if (isTaskbarPinned(arg[0])) {
+                return ['<i class="bi bi-pin-angle-fill"></i> ' + lang('Unpin from taskbar', 'taskbar.unpin'), `unpinFromTaskbar('${arg[0]}')`];
+            }
+            return ['<i class="bi bi-pin-angle"></i> ' + lang('Pin to taskbar', 'taskbar.pin'), `pinToTaskbar('${arg[0]}')`];
         }
     ],
     'smlapp': [
@@ -901,6 +925,26 @@ const cms = {
         },
         arg => {
             return ['<i class="bi bi-pin-angle"></i> 固定到开始菜单', 'pinapp(\'' + arg[0] + '\', \'' + arg[1] + '\', \'openapp(&quot;' + arg[0] + '&quot;);hide_startmenu();\')'];
+        },
+        arg => {
+            if (isTaskbarPinned(arg[0])) {
+                return ['<i class="bi bi-pin-angle-fill"></i> ' + lang('Unpin from taskbar', 'taskbar.unpin'), `unpinFromTaskbar('${arg[0]}')`];
+            }
+            return ['<i class="bi bi-pin-angle"></i> ' + lang('Pin to taskbar', 'taskbar.pin'), `pinToTaskbar('${arg[0]}')`];
+        }
+    ],
+    'store-card': [
+        arg => {
+            if (apps.msstore.isInstalled(arg[0])) {
+                return ['<i class="bi bi-window"></i> ' + lang('Open', 'open'), `openapp('${arg[0]}')`];
+            }
+            return 'null';
+        },
+        arg => {
+            if (apps.msstore.isInstalled(arg[0])) {
+                return ['<i class="bi bi-trash3"></i> ' + lang('Uninstall', 'msstore.uninstall'), `apps.msstore.uninstall('${arg[0]}')`];
+            }
+            return ['<i class="bi bi-download"></i> ' + lang('Get', 'msstore.get'), `apps.msstore.install('${arg[0]}')`];
         }
     ],
     'msgupdate': [
@@ -2452,11 +2496,94 @@ function syncTaskbarLayout() {
     $('#taskbar').css('width', 4 + count * (34 + 4));
 }
 
+// Taskbar pinning: pinned apps get a persistent icon even when not running.
+// Order of the persisted array is also the display order (see moveTaskbarPin).
+function getTaskbarPinned() {
+    const raw = localStorage.getItem('taskbar_pinned');
+    if (raw === null) return [];
+    try {
+        const arr = JSON.parse(raw);
+        return Array.isArray(arr) ? arr : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function setTaskbarPinned(ids) {
+    localStorage.setItem('taskbar_pinned', JSON.stringify(ids));
+}
+
+function isTaskbarPinned(name) {
+    return getTaskbarPinned().includes(name);
+}
+
+function taskbarIconTitle(name) {
+    // Called from body.onload (renderPinnedTaskbarIcons) as well as user
+    // interaction, so it can't assume taskmgrTasks (a separate script) has
+    // already loaded — fall back to the raw id rather than throwing.
+    if (typeof taskmgrTasks === 'undefined') return name;
+    const task = taskmgrTasks.find(elt => elt.link == name);
+    return task ? task.name : name;
+}
+
+function taskbarIconHtml(name) {
+    return `<a class="${name} pinned" onclick="openapp('${name}')" win12_title="${taskbarIconTitle(name)}" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)" oncontextmenu="return showcm(event, 'taskbar', '${name}')"><img src="assets/icons/${geticon(name)}"></a>`;
+}
+
+function renderPinnedTaskbarIcons() {
+    getTaskbarPinned().forEach(name => {
+        if ($('#taskbar>.' + name).length == 0) {
+            $('#taskbar').append(taskbarIconHtml(name));
+        }
+    });
+    syncTaskbarLayout();
+}
+
+function pinToTaskbar(name) {
+    const pinned = getTaskbarPinned();
+    if (pinned.includes(name)) return;
+    pinned.push(name);
+    setTaskbarPinned(pinned);
+    if ($('#taskbar>.' + name).length == 0) {
+        $('#taskbar').append(taskbarIconHtml(name));
+        syncTaskbarLayout();
+    } else {
+        $('#taskbar>.' + name).addClass('pinned');
+    }
+}
+
+function unpinFromTaskbar(name) {
+    setTaskbarPinned(getTaskbarPinned().filter(id => id !== name));
+    const $icon = $('#taskbar>.' + name);
+    if ($icon.hasClass('running')) {
+        $icon.removeClass('pinned');
+    } else {
+        $icon.remove();
+        syncTaskbarLayout();
+    }
+}
+
+function moveTaskbarPin(name, direction) {
+    const pinned = getTaskbarPinned();
+    const idx = pinned.indexOf(name);
+    if (idx == -1) return;
+    const swapIdx = idx + direction;
+    if (swapIdx < 0 || swapIdx >= pinned.length) return;
+    [pinned[idx], pinned[swapIdx]] = [pinned[swapIdx], pinned[idx]];
+    setTaskbarPinned(pinned);
+    const $icon = $('#taskbar>.' + name);
+    if (direction < 0) {
+        $icon.insertBefore($icon.prev());
+    } else {
+        $icon.insertAfter($icon.next());
+    }
+}
+
 function openapp(name) {
     if (taskmgrTasks.findIndex(elt => elt.link == name) > -1 && apps.taskmgr.tasks.findIndex(elt => elt.link == name) == -1) {
         apps.taskmgr.tasks.splice(apps.taskmgr.tasks.length, 0, taskmgrTasks.find(elt => elt.link == name));
     }
-    if ($('#taskbar>.' + name).length != 0) {
+    if ($('#taskbar>.' + name + '.running').length != 0) {
         if ($('.window.' + name).hasClass('min')) {
             minwin(name);
         }
@@ -2465,7 +2592,12 @@ function openapp(name) {
     }
     $('.window.' + name).addClass('load');
     showwin(name);
-    $('#taskbar').append(`<a class="${name}" onclick="taskbarclick('${name}\')" win12_title="${$(`.window.${name}>.titbar>p`).text()}" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)" oncontextmenu="return showcm(event, 'taskbar', '${name}')"><img src="assets/icons/${icon[name] || (name + '.svg')}"></a>`);
+    const taskbarTitle = $(`.window.${name}>.titbar>p`).text();
+    if ($('#taskbar>.' + name).length != 0) {
+        $('#taskbar>.' + name).addClass('running').attr({ onclick: `taskbarclick('${name}')`, win12_title: taskbarTitle });
+    } else {
+        $('#taskbar').append(`<a class="${name} running" onclick="taskbarclick('${name}\')" win12_title="${taskbarTitle}" onmouseenter="showdescp(event)" onmouseleave="hidedescp(event)" oncontextmenu="return showcm(event, 'taskbar', '${name}')"><img src="assets/icons/${icon[name] || (name + '.svg')}"></a>`);
+    }
     syncTaskbarLayout();
     $('#taskbar>.' + name).addClass('foc');
     setTimeout(() => {
@@ -2997,6 +3129,7 @@ document.getElementsByTagName('body')[0].onload = () => {
         $(':root').css('--theme-2', localStorage.getItem('color2'));
     }
     setIcon();//加载桌面图标
+    renderPinnedTaskbarIcons();
 
     // 所以这个东西为啥要在开机的时候加载？
     // 不应该在 python.init 里面吗？
