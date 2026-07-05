@@ -45,7 +45,7 @@ jobs:
           node-version: '22'
 
       - name: Build public/ from src/
-        run: node scripts/build.mjs
+        run: node src/tools/build.mjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

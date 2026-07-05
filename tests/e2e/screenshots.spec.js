@@ -4,7 +4,7 @@ import { test } from '@playwright/test';
 // The upstream image host (win12-online.github.io) is gone, so we regenerate
 // these locally. Run explicitly:
 //   CAPTURE_SCREENSHOTS=1 npx playwright test --config config/playwright.config.js --project chromium screenshots
-// Output: ./img/*.png (repo root), referenced by README.md.
+// Output: ./src/assets/images/*.png, referenced by README.md.
 
 const CAPTURE = !!process.env.CAPTURE_SCREENSHOTS;
 const URL = '/desktop.html?skip_login=1&develop=1';
@@ -25,7 +25,7 @@ test.describe('README screenshots', () => {
     await boot(page);
     await page.evaluate(() => window.openDockWidget('start-menu'));
     await page.waitForTimeout(900);
-    await page.screenshot({ path: 'img/start-menu.png' });
+    await page.screenshot({ path: 'src/assets/images/start-menu.png' });
   });
 
   test('colorful-apps', async ({ page }) => {
@@ -36,14 +36,14 @@ test.describe('README screenshots', () => {
     await page.waitForTimeout(600);
     await page.evaluate(() => { try { window.openapp('explorer'); } catch (e) { /* noop */ } });
     await page.waitForTimeout(1500);
-    await page.screenshot({ path: 'img/colorful-apps.png' });
+    await page.screenshot({ path: 'src/assets/images/colorful-apps.png' });
   });
 
   test('dark-mode', async ({ page }) => {
     await boot(page);
     await page.evaluate(() => { if (typeof window.toggletheme === 'function') window.toggletheme(); });
     await page.waitForTimeout(1200);
-    await page.screenshot({ path: 'img/dark-mode.png' });
+    await page.screenshot({ path: 'src/assets/images/dark-mode.png' });
   });
 
   // The upstream AI Copilot needs an external API service that no longer exists
@@ -52,6 +52,6 @@ test.describe('README screenshots', () => {
     await boot(page);
     await page.evaluate(() => { try { window.openapp('mediaplayer'); } catch (e) { /* noop */ } });
     await page.waitForTimeout(1200);
-    await page.screenshot({ path: 'img/media-player.png' });
+    await page.screenshot({ path: 'src/assets/images/media-player.png' });
   });
 });

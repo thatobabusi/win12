@@ -69,19 +69,19 @@ Click [here](https://win12.tech) to experience it.
 
 > The new version has many changes. This is for reference only. Please refer to the actual product (you can click [here](https://github.com/thatobabusi/win12) to see for yourself, no trouble `-_-)o` )
 
-![Start Menu](img/start-menu.png)
+![Start Menu](src/assets/images/start-menu.png)
 
 *Start Menu*
 
-![Rich Applications](img/colorful-apps.png)
+![Rich Applications](src/assets/images/colorful-apps.png)
 
 *Rich Applications*
 
-![Dark Mode](img/dark-mode.png)
+![Dark Mode](src/assets/images/dark-mode.png)
 
 *Dark Mode*
 
-![Media Player](img/media-player.png)
+![Media Player](src/assets/images/media-player.png)
 
 *Media Player*
 ## Future Planning

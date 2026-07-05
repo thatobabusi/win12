@@ -8,11 +8,12 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const here = dirname(fileURLToPath(import.meta.url));
+const root = resolve(here, '..', '..');
 const SRC = resolve(root, 'src');
 
 function build() {
-  const r = spawnSync(process.execPath, [resolve(root, 'scripts', 'build.mjs')], {
+  const r = spawnSync(process.execPath, [resolve(here, 'build.mjs')], {
     stdio: 'inherit',
   });
   return r.status === 0;
