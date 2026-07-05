@@ -275,3 +275,25 @@ test.describe('Settings — Run at startup (Tauri autostart)', () => {
     await expect(toggle).not.toHaveClass(/checked/);
   });
 });
+
+test.describe('Personalization — bundled Ubuntu theme', () => {
+  test.beforeEach(async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
+  });
+
+  test('the Ubuntu swatch renders without a network call and applies its palette', async ({ page }) => {
+    await openApp(page, 'setting');
+    await page.evaluate(() => {
+      window.apps.setting.page('appearance');
+      $('.dp.theme').addClass('show');
+      apps.setting.theme_get();
+    });
+    const swatch = page.locator('#set-theme a', { hasText: 'Ubuntu' });
+    await expect(swatch).toHaveCount(1);
+
+    await swatch.click();
+    const theme1 = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--theme-1').trim());
+    expect(theme1).toBe('#E95420');
+  });
+});

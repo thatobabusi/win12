@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" overflow="hidden">
+  <defs>
+    <linearGradient id="ubuntu-base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2C0736" />
+      <stop offset="0.55" stop-color="#4A1942" />
+      <stop offset="1" stop-color="#77216F" />
+    </linearGradient>
+    <radialGradient id="ubuntu-orange-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#E95420" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#E95420" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="ubuntu-warm-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FF8B5A" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#FF8B5A" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="ubuntu-aubergine-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#AE2069" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#AE2069" stop-opacity="0" />
+    </radialGradient>
+    <filter id="ubuntu-soft-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="90" />
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#ubuntu-base)" />
+
+  <g filter="url(#ubuntu-soft-blur)">
+    <ellipse cx="1500" cy="230" rx="620" ry="520" fill="url(#ubuntu-orange-glow)" />
+    <ellipse cx="1780" cy="120" rx="360" ry="300" fill="url(#ubuntu-warm-glow)" />
+    <ellipse cx="220" cy="900" rx="560" ry="440" fill="url(#ubuntu-aubergine-glow)" />
+    <ellipse cx="720" cy="1180" rx="700" ry="360" fill="url(#ubuntu-orange-glow)" opacity="0.5" />
+  </g>
+</svg>

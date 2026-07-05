@@ -6,6 +6,20 @@
 // helper and lang() from desktop.js, and window.win12Native (Tauri, guarded).
 // No window ops. Loaded AFTER apps.js.
 (function (global) {
+  // Bundled themes: no network call, so they render even if the GitHub API
+  // (used by theme_get() below for community themes) is rate-limited or
+  // offline. Same shape as a remote theme.json (bg/color1/color2/href).
+  var localThemes = [
+    {
+      id: 'ubuntu',
+      nameKey: 'setting.psnl.theme-ubuntu',
+      bg: 'assets/images/wallpaper-ubuntu.svg',
+      color1: '#E95420',
+      color2: '#77216F',
+      href: '#E95420',
+    },
+  ];
+
   var setting = {
         init: () => {
             $('#win-setting>.menu>list>a.home')[0].click();
@@ -21,7 +35,12 @@
             $('#win-setting>.menu>list>a.' + name).addClass('check');
         },
         theme_get: () => {
-            $('#set-theme').html(`<loading><svg width="30px" height="30px" viewBox="0 0 16 16">
+            // Bundled themes render immediately, no network required. Community
+            // themes (below) are appended once fetched; only the loading spinner
+            // gets removed, so a slow/rate-limited GitHub API never hides these.
+            $('#set-theme').html(localThemes.map(t =>
+                `<a class="a act" onclick="apps.setting.theme_set_local('${t.id}')" style="background-image:url('${t.bg}')">${lang(t.id, t.nameKey)}</a>`
+            ).join('') + `<loading><svg width="30px" height="30px" viewBox="0 0 16 16">
             <circle cx="8px" cy="8px" r="7px" style="stroke:#7f7f7f50;fill:none;stroke-width:3px;"></circle>
             <circle cx="8px" cy="8px" r="7px" style="stroke:#2983cc;stroke-width:3px;"></circle></svg></loading>`);
             // 实时获取主题
@@ -32,13 +51,12 @@
                         if (c.type == 'dir') {
                             api(c.url, true).then(res => {
                                 res.json().then(cnt => {
-                                    $('#set-theme').html('');
+                                    $('#set-theme>loading').remove();
                                     cnt.forEach(cn => {
                                         if (cn.name == 'theme.json') {
                                             $.getJSON('https://tjy-gitnub.github.io/win12-theme/' + cn.path).then(inf => {
                                                 // let infjs = inf;
-                                                if ($('#set-theme>loading').length)
-                                                    $('#set-theme').html('');
+                                                $('#set-theme>loading').remove();
                                                 $('#set-theme').append(`<a class="a act" onclick="apps.setting.theme_set('${c.name}')" style="background-image:url('https://tjy-gitnub.github.io/win12-theme/${c.name}/view.jpg')">${c.name}</a>`);
                                             });
                                         }
@@ -49,6 +67,17 @@
                     });
                 })
             });
+        },
+        theme_set_local: (id) => {
+            const t = localThemes.find(th => th.id === id);
+            if (!t) return;
+            // url() inside a custom property resolves against the stylesheet that
+            // *uses* var(--bgul) (styles/desktop.css), not this file — same reason
+            // the :root defaults below are '../assets/...' rather than 'assets/...'.
+            $(':root').css('--bgul', `url('../${t.bg}')`);
+            $(':root').css('--theme-1', t.color1);
+            $(':root').css('--theme-2', t.color2);
+            $(':root').css('--href', t.href);
         },
         theme_set: (infp) => {
             api('repos/tjy-gitnub/win12-theme/contents/' + infp).then(res => {

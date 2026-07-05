@@ -6,12 +6,13 @@ const setting = window.win12.apps.get('setting');
 
 beforeEach(() => {
   window.lang = (txt) => txt;
-  // Chainable jQuery stub covering every call in checkUpdate's/autostart's web branch.
+  // Chainable jQuery stub covering every call in checkUpdate's/autostart's/
+  // theme_get's/theme_set_local's web branch.
   window.$ = () => {
     const o = {
       find: () => o, text: () => o, addClass: () => o, removeClass: () => o,
       removeAttr: () => o, attr: () => o, html: () => o, click: () => o, scrollTop: () => o,
-      hasClass: () => false,
+      hasClass: () => false, css: () => o, remove: () => o,
     };
     return o;
   };
@@ -25,8 +26,16 @@ describe('apps/setting (extracted onto the kernel)', () => {
   });
 
   it('exposes the expected controller surface', () => {
-    ['init', 'page', 'theme_get', 'theme_set', 'checkUpdate', 'initAutostart', 'toggleAutostart']
+    ['init', 'page', 'theme_get', 'theme_set', 'theme_set_local', 'checkUpdate', 'initAutostart', 'toggleAutostart']
       .forEach((m) => expect(typeof setting[m]).toBe('function'));
+  });
+
+  it('theme_set_local is a no-op for an unknown id (no throw)', () => {
+    expect(() => setting.theme_set_local('does-not-exist')).not.toThrow();
+  });
+
+  it('theme_set_local applies the bundled Ubuntu palette without throwing', () => {
+    expect(() => setting.theme_set_local('ubuntu')).not.toThrow();
   });
 
   it('checkUpdate stays inert (no throw) on the web build', async () => {
