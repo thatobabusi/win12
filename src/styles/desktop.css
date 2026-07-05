@@ -18,16 +18,18 @@
     --hover-b: #1111110f;
     --bggrey: #eee;
     --fill: #d3d3d370;
-    --bgul: url('../assets/images/bg.svg');
+    /* theme-ubuntu branch default: Yaru palette (Ubuntu Orange / Aubergine)
+       and the bundled Ubuntu wallpaper, instead of upstream's purple/blue. */
+    --bgul: url('../assets/images/wallpaper-ubuntu.svg');
     --mm: #ffffffc0;
     --contextmeu: #f7f7f7bb;
     --bar: #efefef37;
     --hr: #ccc;
     --unfoc: #eaeaea;
     --msg: #ffffffe7;
-    --theme-1: #ad6eca;
-    --theme-2: #3b91d8;
-    --href: #2983cc;
+    --theme-1: #E95420;
+    --theme-2: #77216F;
+    --href: #E95420;
     --bd: #8f8f8f30;
     --s3d: #99999947;
     --mica: linear-gradient(215deg, #ffe7f6, #a9c3ff);
@@ -46,7 +48,8 @@
     --hover-b: #eeeeee0f;
     --bggrey: #444;
     --fill: #99999970;
-    --bgul: url('../assets/images/bg-dark.svg');
+    /* Ubuntu keeps the same wallpaper in dark mode (it's already aubergine). */
+    --bgul: url('../assets/images/wallpaper-ubuntu.svg');
     --mm: #ffffff50;
     --contextmeu: #292929bb;
     --bar: #7272722a;
@@ -616,6 +619,30 @@ list>span.focs.cl {
     padding: 3px 0;
 }
 
+/* GNOME ordering: running/pinned apps at the top of the dock, the launcher
+   group (Show Applications grid, search, widgets, copilot) pinned to the
+   bottom — with the grid button as the very last item, like Ubuntu's dock. */
+#dock-box>.dock-start {
+    order: 3;
+    margin-top: auto;
+    border-top: 1px solid #ffffff2a;
+    padding-top: 4px;
+}
+
+#dock-box>.dock-start>#start-btn {
+    order: 9;
+}
+
+.show-apps-grid {
+    font-size: 20px;
+    color: #fff;
+    line-height: 1;
+}
+
+#start-btn.show>.show-apps-grid {
+    color: var(--theme-1);
+}
+
 .dock.control:hover,
 .dock.theme:hover,
 .dock.date:hover {
@@ -632,7 +659,6 @@ list>span.focs.cl {
     transition: 80ms;
     overflow: hidden;
     height: 0;
-    border-top: 1px solid #ffffff2a;
 }
 
 #taskbar>a {

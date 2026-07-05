@@ -282,6 +282,25 @@ test.describe('Personalization — bundled Ubuntu theme', () => {
     await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
   });
 
+  test('the desktop boots with the Ubuntu palette by default (no clicks needed)', async ({ page }) => {
+    const theme1 = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--theme-1').trim());
+    expect(theme1.toLowerCase()).toBe('#e95420');
+    const bg = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--bgul'));
+    expect(bg).toContain('wallpaper-ubuntu');
+  });
+
+  test('the dock shows the Show Applications grid pinned at the bottom', async ({ page }) => {
+    await expect(page.locator('#start-btn .show-apps-grid')).toBeVisible();
+    const isLast = await page.evaluate(() => {
+      const dock = document.querySelector('#dock-box');
+      const btn = document.querySelector('#start-btn');
+      const items = [...dock.querySelectorAll('.dock-btn, #taskbar>a')];
+      const sorted = items.slice().sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
+      return sorted[sorted.length - 1] === btn;
+    });
+    expect(isLast).toBe(true);
+  });
+
   test('the Ubuntu swatch renders without a network call and applies its palette', async ({ page }) => {
     await openApp(page, 'setting');
     await page.evaluate(() => {

@@ -38,6 +38,23 @@ describe('apps/setting (extracted onto the kernel)', () => {
     expect(() => setting.theme_set_local('ubuntu')).not.toThrow();
   });
 
+  it('theme_set_local persists the choice so it survives reloads', () => {
+    // tests/setup.js replaces localStorage with no-op vi.fn() mocks; install a
+    // real map-backed fake (same pattern as apps-msstore.test.js).
+    let store = {};
+    global.localStorage = {
+      getItem: (k) => (k in store ? store[k] : null),
+      setItem: (k, v) => { store[k] = String(v); },
+      removeItem: (k) => { delete store[k]; },
+      clear: () => { store = {}; },
+    };
+    setting.theme_set_local('ubuntu');
+    expect(localStorage.getItem('localTheme')).toBe('ubuntu');
+    // unknown ids must not clobber the stored choice
+    setting.theme_set_local('does-not-exist');
+    expect(localStorage.getItem('localTheme')).toBe('ubuntu');
+  });
+
   it('checkUpdate stays inert (no throw) on the web build', async () => {
     await expect(setting.checkUpdate()).resolves.toBeUndefined();
   });

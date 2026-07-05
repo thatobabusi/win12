@@ -78,6 +78,7 @@
             $(':root').css('--theme-1', t.color1);
             $(':root').css('--theme-2', t.color2);
             $(':root').css('--href', t.href);
+            localStorage.setItem('localTheme', id);
         },
         theme_set: (infp) => {
             api('repos/tjy-gitnub/win12-theme/contents/' + infp).then(res => {
@@ -204,4 +205,12 @@
   } else {
     (global.apps = global.apps || {}).setting = setting;
   }
+
+  // Re-apply a previously chosen bundled theme on every load so the choice
+  // survives reloads. Guarded: under Vitest this file is imported before the
+  // jQuery stub exists, and there's nothing to re-apply there anyway.
+  try {
+    const saved = global.localStorage && global.localStorage.getItem('localTheme');
+    if (saved && typeof $ === 'function') setting.theme_set_local(saved);
+  } catch (e) { /* non-browser context */ }
 })(typeof window !== 'undefined' ? window : globalThis);
