@@ -836,13 +836,13 @@ const cms = {
             const pinned = getTaskbarPinned();
             const idx = pinned.indexOf(arg);
             if (idx <= 0) return 'null';
-            return ['<i class="bi bi-arrow-left"></i> ' + lang('Move left', 'taskbar.moveleft'), `moveTaskbarPin('${arg}', -1)`];
+            return ['<i class="bi bi-arrow-up"></i> ' + lang('Move up', 'taskbar.moveup'), `moveTaskbarPin('${arg}', -1)`];
         },
         arg => {
             const pinned = getTaskbarPinned();
             const idx = pinned.indexOf(arg);
             if (idx == -1 || idx >= pinned.length - 1) return 'null';
-            return ['<i class="bi bi-arrow-right"></i> ' + lang('Move right', 'taskbar.moveright'), `moveTaskbarPin('${arg}', 1)`];
+            return ['<i class="bi bi-arrow-down"></i> ' + lang('Move down', 'taskbar.movedown'), `moveTaskbarPin('${arg}', 1)`];
         },
         arg => {
             return ['<i class="bi bi-window-x"></i> ' + lang('Close', 'close'), `hidewin('${arg}')`];
@@ -2493,7 +2493,10 @@ function syncTaskbarLayout() {
     const count = $('#taskbar>a').length;
     $('#taskbar').attr('count', count);
     $('#taskbar').css('display', count == 0 ? 'none' : 'flex');
-    $('#taskbar').css('width', 4 + count * (34 + 4));
+    // Ubuntu shell: the dock is a vertical column, so the animated dimension
+    // is height (icons are 34px + 4px gap, plus 4px padding).
+    $('#taskbar').css('width', '');
+    $('#taskbar').css('height', 4 + count * (34 + 4));
 }
 
 // Taskbar pinning: pinned apps get a persistent icon even when not running.

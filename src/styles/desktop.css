@@ -427,27 +427,38 @@ list>span.focs.cl {
 
 /*** 以下任务栏 ***/
 
+/* Ubuntu shell: the dock is a full-height vertical bar on the left, sitting
+   below the top bar. Same dark Yaru chrome as #top-bar; the inner .dock
+   containers lose their own pill styling (see #dock-box>.dock below). */
 #dock-box {
     position: fixed;
-    bottom: 10px;
-    height: 40px;
+    left: 0;
+    top: 28px;
+    bottom: 0;
+    width: 58px;
+    height: auto;
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
     z-index: 92;
-    padding: 0 5px;
-    justify-content: center;
-    transition: bottom 400ms;
+    padding: 6px 0;
+    justify-content: flex-start;
+    background-color: #1b0e17cc;
+    backdrop-filter: blur(20px) saturate(2);
+    -webkit-backdrop-filter: blur(20px) saturate(2);
+    transition: left 400ms;
 }
 
 #dock-box.hide {
-    bottom: -60px;
+    left: -70px;
 }
 
 #open-dock {
     animation: none;
     opacity: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     position: fixed;
     height: 32px;
     aspect-ratio: 1/1;
@@ -471,13 +482,13 @@ list>span.focs.cl {
 
 @keyframes open-dock-bounce {
     0% {
-        bottom: 10px;
+        left: 10px;
     }
     50% {
-        bottom: 20px;
+        left: 20px;
     }
     100% {
-        bottom: 10px;
+        left: 10px;
     }
 }
 
@@ -489,6 +500,72 @@ list>span.focs.cl {
 #open-dock>* {
     font-family: SettingsIcons;
     font-size: 20px;
+}
+
+/* GNOME/Ubuntu-style top bar: Activities (left), clock (true center, taken
+   out of flex flow so it isn't pushed off-center by the tray's width),
+   system tray (right). Stays dark in both light/dark theme, matching
+   Yaru's top bar, which never follows the light/dark toggle. */
+#top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    z-index: 93;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1b0e17e6;
+    backdrop-filter: blur(20px) saturate(2);
+    -webkit-backdrop-filter: blur(20px) saturate(2);
+    color: #fff;
+    font-size: 13px;
+}
+
+.top-bar-activities {
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.top-bar-activities:hover {
+    background-color: #ffffff1a;
+}
+
+#top-bar-tray {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#top-bar-tray .dock {
+    height: 100%;
+    margin: 0;
+    padding: 0 8px;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+}
+
+#top-bar-tray .dock:hover {
+    background-color: #ffffff1a !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+#top-bar-tray .dock.date {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
 }
 
 .dock {
@@ -518,6 +595,27 @@ list>span.focs.cl {
     padding-right: 3px;
 }
 
+/* Inside the vertical dock the inner .dock groups are plain columns — the
+   bar itself (#dock-box) carries the chrome. */
+#dock-box>.dock {
+    flex-direction: column;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    outline: none;
+    border-radius: 0;
+    margin: 3px 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    align-items: center;
+}
+
+#dock-box>.dock>* {
+    padding: 3px 0;
+}
+
 .dock.control:hover,
 .dock.theme:hover,
 .dock.date:hover {
@@ -530,10 +628,11 @@ list>span.focs.cl {
 }
 
 #taskbar {
-    padding: 3px 2px;
+    padding: 2px 3px;
     transition: 80ms;
     overflow: hidden;
-    width: 0;
+    height: 0;
+    border-top: 1px solid #ffffff2a;
 }
 
 #taskbar>a {
@@ -543,6 +642,7 @@ list>span.focs.cl {
     transition: 100ms;
     padding: 4px 5px;
     display: block;
+    position: relative; /* anchor for the ::after running pip */
     margin: 0;
     background-clip: padding-box;
     border-left: 2px solid transparent;
@@ -626,38 +726,40 @@ list>span.focs.cl {
     }
 }
 
+/* Ubuntu-style running indicator: a vertical pip on the left edge of the
+   icon (Yaru's dock dot), instead of the Windows underline. */
 #taskbar>a::after {
     content: '';
     display: block;
-    width: 18px;
-    background: linear-gradient(90deg, var(--theme-1), var(--theme-2));
-    height: 4px;
+    width: 4px;
+    background: linear-gradient(180deg, var(--theme-1), var(--theme-2));
+    height: 18px;
     border-radius: 2px;
-    position: relative;
-    bottom: 4px;
-    left: 3.2px;
+    position: absolute;
+    top: 8px;
+    left: -4px;
     transition: 150ms;
 }
 
 #taskbar>a:not(.foc)::after {
-    background: linear-gradient(90deg, #7f7f7f, #7f7f7f);
-    width: 12px;
-    left: 6px;
+    background: linear-gradient(180deg, #7f7f7f, #7f7f7f);
+    height: 12px;
+    top: 11px;
 }
 
 #taskbar>a:not(.foc):hover:after {
-    width: 16px;
-    left: 4.2px;
+    height: 16px;
+    top: 9px;
 }
 
 #taskbar>a.foc:hover:after {
-    width: 22px;
-    left: 1.2px;
+    height: 22px;
+    top: 6px;
 }
 
 #taskbar>a.min:hover:after {
-    width: 18px;
-    left: 3.2px;
+    height: 18px;
+    top: 8px;
 }
 
 /* Pinned apps that aren't currently running: no running-indicator dot. */
@@ -1688,12 +1790,40 @@ input-before {
 
 #control {
     height: 250px;
-    transform: translateY(320px);
+    transform: translateY(-320px);
 }
 
 #datebox{
     height: 450px;
-    transform: translateY(520px);
+    transform: translateY(-520px);
+}
+
+/* Their triggers (.dock.control/.dock.date) moved into #top-bar, so these
+   open downward from the top bar instead of upward from the old bottom
+   dock. Same specificity as the #start-menu/#search-win/#widgets/#datebox/
+   #control base rule above; placed later in the cascade to win for just
+   these two. */
+#datebox,
+#control {
+    bottom: auto;
+    top: 60px;
+}
+
+/* Launcher panels re-anchored for the left-dock shell: the Start Menu opens
+   beside the dock (GNOME dash style); search and widgets drop from the top
+   bar. Their hidden-state slide directions flip to match. */
+#start-menu {
+    left: 66px;
+    top: 40px;
+    bottom: auto;
+    transform: translateY(-30px);
+}
+
+#search-win,
+#widgets {
+    bottom: auto;
+    top: 40px;
+    transform: translateY(-30px);
 }
 
 .dock.control * {
@@ -1887,10 +2017,12 @@ input-before {
 
 #desktop {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 50px);
+    /* Clear the top bar (28px) and the left dock (58px) so desktop icons
+       aren't hidden underneath either. */
+    top: 28px;
+    left: 58px;
+    width: calc(100% - 58px);
+    height: calc(100% - 38px);
     z-index: 0;
     display: flex;
     flex-direction: column;
@@ -2600,12 +2732,13 @@ github-red2026 */
 /* 定义当窗口处于最大状态时的样式 */
 .window.max {
     width: 100% !important;
-    height: 100% !important;
+    /* GNOME: maximized windows sit below the always-visible top bar. */
+    height: calc(100% - 28px) !important;
 
 
     /* 定位属性，确保窗口从屏幕的左上角开始 */
     left: 0 !important;
-    top: 0 !important;
+    top: 28px !important;
     /* 移除圆角和边框，使窗口边缘与屏幕边缘无缝对接 */
     border-radius: 0;
     border: none;

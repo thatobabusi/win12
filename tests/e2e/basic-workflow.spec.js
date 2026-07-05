@@ -287,7 +287,7 @@ test.describe('Personalization — bundled Ubuntu theme', () => {
     await page.evaluate(() => {
       window.apps.setting.page('appearance');
       $('.dp.theme').addClass('show');
-      apps.setting.theme_get();
+      window.apps.setting.theme_get();
     });
     const swatch = page.locator('#set-theme a', { hasText: 'Ubuntu' });
     await expect(swatch).toHaveCount(1);
