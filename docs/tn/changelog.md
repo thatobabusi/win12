@@ -3,7 +3,7 @@
 > 🌐 English: [../en/changelog.md](../en/changelog.md)
 
 Tsebe e e latedisa diphetogo tse di botlhokwa **tsa fork e**. Bakeng sa hisetori e
-e feletseng ya upstream, bona [`changelog_upstream.md`](../changelog_upstream.md) (Sechaena)
+e feletseng ya upstream, bona [`changelog_upstream.md`](../zh/changelog_upstream.md) (Sechaena)
 le tsebe ya "About Windows 12 Online" mo teng ga app.
 
 ---

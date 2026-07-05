@@ -87,10 +87,10 @@ See [Testing](en/testing/README.md) / [测试](zh/testing/README.md).
 
 ## 🔗 Related files
 
-- [CREDITS](CREDITS.md) · [简体中文](CREDITS_zh.md) · [Setswana](CREDITS_tn.md) — attribution to the original authors of Windows 12 Online
-- [Main README](README_zh.md) — project overview
-- Legacy language selector READMEs (moved from the old `readme/` folder): [English](README_en.md) · [Français](README_fr.md) · [繁體中文](README_zh_tw.md)
-- [CONTRIBUTING_upstream.md](CONTRIBUTING_upstream.md) — root contributing notes
-- [changelog_upstream.md](changelog_upstream.md) — upstream changelog (Chinese)
+- [CREDITS](en/CREDITS.md) · [简体中文](zh/CREDITS_zh.md) · [Setswana](tn/CREDITS_tn.md) — attribution to the original authors of Windows 12 Online
+- [Main README](zh/README_zh.md) — project overview
+- Legacy language selector READMEs (moved from the old `readme/` folder): [English](en/README_en.md) · [Français](fr/README_fr.md) · [繁體中文](zh/README_zh_tw.md)
+- [CONTRIBUTING_upstream.md](zh/CONTRIBUTING_upstream.md) — root contributing notes
+- [changelog_upstream.md](zh/changelog_upstream.md) — upstream changelog (Chinese)
 - [LICENSE](../LICENSE) · [LICENSE-CC](../LICENSE-CC) — licensing
-- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [CODE_OF_CONDUCT.md](zh/CODE_OF_CONDUCT.md)

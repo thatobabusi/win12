@@ -31,9 +31,9 @@
     { "ref": "pwa/", "wip": "src/pwa/" },
     { "ref": "tauri/", "wip": "src/tauri/" },
     { "ref": "README.md", "wip": "README.md" },
-    { "ref": "changelog.md", "wip": "docs/changelog_upstream.md" },
-    { "ref": "CONTRIBUTING.md", "wip": "docs/CONTRIBUTING_upstream.md" },
-    { "ref": "CODE_OF_CONDUCT.md", "wip": "docs/CODE_OF_CONDUCT.md" },
+    { "ref": "changelog.md", "wip": "docs/zh/changelog_upstream.md" },
+    { "ref": "CONTRIBUTING.md", "wip": "docs/zh/CONTRIBUTING_upstream.md" },
+    { "ref": "CODE_OF_CONDUCT.md", "wip": "docs/zh/CODE_OF_CONDUCT.md" },
     { "ref": "LICENSE", "wip": "LICENSE" },
     { "ref": "LICENSE-CC", "wip": "LICENSE-CC" }
   ]

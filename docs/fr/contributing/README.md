@@ -166,7 +166,7 @@ local avec `python -m http.server 3000` dans un autre terminal, ou utilisez Dock
 
 ## Code de conduite
 
-Nous avons un [Code de conduite](../../CODE_OF_CONDUCT.md). Veuillez le respecter
+Nous avons un [Code de conduite](../../zh/CODE_OF_CONDUCT.md). Veuillez le respecter
 dans toutes vos interactions.
 
 ---

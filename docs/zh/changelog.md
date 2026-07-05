@@ -3,7 +3,7 @@
 > 🌐 English: [../en/changelog.md](../en/changelog.md)
 
 本页记录**本分支**的重要变更。完整的上游历史见
-[`changelog_upstream.md`](../changelog_upstream.md)（中文）以及应用内的“关于 Windows 12 网页版”。
+[`changelog_upstream.md`](changelog_upstream.md)（中文）以及应用内的“关于 Windows 12 网页版”。
 
 ---
 

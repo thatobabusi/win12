@@ -162,7 +162,7 @@ win12/
 
 ## Code of Conduct
 
-We have a [Code of Conduct](../../CODE_OF_CONDUCT.md). Please follow it in all interactions.
+We have a [Code of Conduct](../../zh/CODE_OF_CONDUCT.md). Please follow it in all interactions.
 
 ---
 

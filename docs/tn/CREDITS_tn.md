@@ -1,6 +1,6 @@
 # Ditebogo
 
-[English](CREDITS.md) · [简体中文](CREDITS_zh.md) · **Setswana**
+[English](../en/CREDITS.md) · [简体中文](../zh/CREDITS_zh.md) · **Setswana**
 
 Porojeke e ke pheto (fork) ya porojeke ya go bulega ya **Windows 12 Online**
 (Windows 12 网页版). Thadiso ya ntlha le bontsi jwa khoutu ya porojeke e di
@@ -33,7 +33,7 @@ Go ya ka README ya porojeke ya ntlha ka boyona, batlhami ba bararo ba konokono �
 
 ## Baabi
 
-E kgobokantswe go tswa mo [`changelog_upstream.md`](changelog_upstream.md) ya porojeke ka boyona, ka gonne kerafo
+E kgobokantswe go tswa mo [`changelog_upstream.md`](../zh/changelog_upstream.md) ya porojeke ka boyona, ka gonne kerafo
 ya baabi ya GitHub ya kwa godimo ga e sa tlhole e fitlhelelwa. Re leboga mongwe
 le mongwe yo o agileng se:
 
@@ -60,9 +60,9 @@ batle go umakiwa — re itsise mme re tla baakanya.
 Porojeke ya ntlha e ne ya ntshiwa ka fa tlase ga ditumalano tsa tetla tsa go
 bulega, tse pheto e e tswelelang go di tlotla:
 
-- **Khoutu ya motswedi:** Eclipse Public License 2.0 (EPL-2.0) — bona [LICENSE](../LICENSE)
+- **Khoutu ya motswedi:** Eclipse Public License 2.0 (EPL-2.0) — bona [LICENSE](../../LICENSE)
 - **Ditshwantsho, di-aekhoni le dilwana tse dingwe:** Creative Commons
-  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — bona [LICENSE-CC](../LICENSE-CC)
+  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — bona [LICENSE-CC](../../LICENSE-CC)
 
 Microsoft, Windows, le logo ya Windows ke dithejemake tsa Microsoft Corporation.
 Porojeke e ke ya boikemelo, e seng ya kgwebo, e le tlotlo, mme **ga e amane le

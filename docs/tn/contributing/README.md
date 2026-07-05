@@ -166,7 +166,7 @@ Docker: `docker-compose run --rm test-e2e`.
 
 ## Molao wa Boitshwaro
 
-Re na le [Molao wa Boitshwaro](../../CODE_OF_CONDUCT.md). Tsweetswee o o latele mo
+Re na le [Molao wa Boitshwaro](../../zh/CODE_OF_CONDUCT.md). Tsweetswee o o latele mo
 ditirisanong tsotlhe.
 
 ---

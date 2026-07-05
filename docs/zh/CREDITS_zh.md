@@ -1,6 +1,6 @@
 # 鸣谢
 
-[English](CREDITS.md) · **简体中文** · [Setswana](CREDITS_tn.md)
+[English](../en/CREDITS.md) · **简体中文** · [Setswana](../tn/CREDITS_tn.md)
 
 本项目是开源项目 **Windows 12 网页版（Windows 12 Online）** 的一个分支（fork）。
 本项目的原始设计和绝大部分代码，均由下方列出的原作者及社区所创作。本分支仅用于
@@ -53,9 +53,9 @@
 
 原项目以开源许可证发布，本分支继续遵守：
 
-- **源代码：** Eclipse Public License 2.0（EPL-2.0）—— 见 [LICENSE](../LICENSE)
+- **源代码：** Eclipse Public License 2.0（EPL-2.0）—— 见 [LICENSE](../../LICENSE)
 - **美术、图标及其他资源：** 知识共享 署名-相同方式共享 4.0 国际
-  （CC BY-SA 4.0）—— 见 [LICENSE-CC](../LICENSE-CC)
+  （CC BY-SA 4.0）—— 见 [LICENSE-CC](../../LICENSE-CC)
 
 Microsoft、Windows 及 Windows 徽标是 Microsoft Corporation 的商标。本项目是独立的、
 非商业性质的概念 / 致敬作品，**与 Microsoft 无任何隶属、认可或赞助关系**。
