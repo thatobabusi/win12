@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import '../../public/src/core/registry.js';
-import '../../public/src/apps/explorer.js';
+import '../../public/js/core/registry.js';
+import '../../public/js/apps/explorer.js';
 
 // Legacy inline handlers reach the app as `apps.explorer`; the kernel bridges
 // window.win12.apps -> window.apps, so both must point at the same object.

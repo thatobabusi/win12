@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeAll } from 'vitest';
-import '../../public/src/core/registry.js';
+import '../../public/js/core/registry.js';
 
 // taskmgr.js evaluates structuredClone(taskmgrTasks) at object-creation time, so
 // the global must exist before the module is imported. Seed it, then dynamic-import.
@@ -11,7 +11,7 @@ const seed = [
 
 beforeAll(async () => {
   globalThis.taskmgrTasks = seed;
-  await import('../../public/src/apps/taskmgr.js');
+  await import('../../public/js/apps/taskmgr.js');
   taskmgr = window.win12.apps.get('taskmgr');
 });
 

@@ -96,7 +96,7 @@ describe('i18n Translation System', () => {
 
   describe('Language code normalization', () => {
     it('should normalize browser language codes', () => {
-      // Mirrors the real langc map in public/src/desktop.js (incl. Setswana).
+      // Mirrors the real langc map in public/js/desktop.js (incl. Setswana).
       const normalize = (code) => ({
         'zh-CN': 'zh_CN',
         'zh-cn': 'zh_CN',

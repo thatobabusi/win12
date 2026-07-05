@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import '../../public/src/core/registry.js';
-import '../../public/src/apps/notepad.js';
+import '../../public/js/core/registry.js';
+import '../../public/js/apps/notepad.js';
 
 const np = window.win12.apps.get('notepad');
 

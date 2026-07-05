@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import '../../public/src/core/registry.js';
-import '../../public/src/apps/terminal.js';
+import '../../public/js/core/registry.js';
+import '../../public/js/apps/terminal.js';
 
 const term = window.win12.apps.get('terminal');
 let inputVal;

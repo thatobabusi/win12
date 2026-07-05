@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import '../../public/src/core/registry.js';
-import '../../public/src/apps/mediaplayer.js';
+import '../../public/js/core/registry.js';
+import '../../public/js/apps/mediaplayer.js';
 
 // Deep playback behaviour is covered by mediaplayer-core.test.js (pure helpers)
 // and the e2e suite (open/play/library). Here we just assert the extraction
