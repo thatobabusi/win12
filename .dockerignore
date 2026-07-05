@@ -4,8 +4,8 @@ package-lock.json
 yarn.lock
 .git
 .gitignore
-README_zh_ch.md
-LICENSE
+docs/zh/README_zh.md
+docs/en/LICENSE
 .env
 .env.local
 .DS_Store

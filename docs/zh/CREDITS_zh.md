@@ -53,9 +53,9 @@
 
 原项目以开源许可证发布，本分支继续遵守：
 
-- **源代码：** Eclipse Public License 2.0（EPL-2.0）—— 见 [LICENSE](../../LICENSE)
+- **源代码：** Eclipse Public License 2.0（EPL-2.0）—— 见 [LICENSE](../en/LICENSE)
 - **美术、图标及其他资源：** 知识共享 署名-相同方式共享 4.0 国际
-  （CC BY-SA 4.0）—— 见 [LICENSE-CC](../../LICENSE-CC)
+  （CC BY-SA 4.0）—— 见 [LICENSE-CC](LICENSE-CC)
 
 Microsoft、Windows 及 Windows 徽标是 Microsoft Corporation 的商标。本项目是独立的、
 非商业性质的概念 / 致敬作品，**与 Microsoft 无任何隶属、认可或赞助关系**。

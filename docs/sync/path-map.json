@@ -34,7 +34,7 @@
     { "ref": "changelog.md", "wip": "docs/zh/changelog_upstream.md" },
     { "ref": "CONTRIBUTING.md", "wip": "docs/zh/CONTRIBUTING_upstream.md" },
     { "ref": "CODE_OF_CONDUCT.md", "wip": "docs/zh/CODE_OF_CONDUCT.md" },
-    { "ref": "LICENSE", "wip": "LICENSE" },
-    { "ref": "LICENSE-CC", "wip": "LICENSE-CC" }
+    { "ref": "LICENSE", "wip": "docs/en/LICENSE" },
+    { "ref": "LICENSE-CC", "wip": "docs/zh/LICENSE-CC" }
   ]
 }

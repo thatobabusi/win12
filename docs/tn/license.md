@@ -6,8 +6,8 @@ win12 e na le dilaesense tse pedi, e latela porojeke ya upstream:
 
 | Selo | Laesense | Faele |
 |------|----------|-------|
-| Khoutu ya motswedi | **Eclipse Public License 2.0 (EPL-2.0)** | [`LICENSE`](../../LICENSE) |
-| Botaki / di-asset / diteng | **Creative Commons** | [`LICENSE-CC`](../../LICENSE-CC) |
+| Khoutu ya motswedi | **Eclipse Public License 2.0 (EPL-2.0)** | [`LICENSE`](../en/LICENSE) |
+| Botaki / di-asset / diteng | **Creative Commons** | [`LICENSE-CC`](../zh/LICENSE-CC) |
 
 - Dirisa melawana ya **EPL-2.0** bakeng sa lenaneo/khoutu ya motswedi.
 - Dirisa melawana ya **Creative Commons** (bona `LICENSE-CC`) bakeng sa botaki,
@@ -18,4 +18,4 @@ laesense le tlotlego (attribution) e di e tlhokang. Maina a kgwebo a Microsoft l
 la "Windows" ke a Microsoft; e ke papadi ya barati/ya thuto, ga e a golagana le Microsoft.
 
 Bakeng sa melawana ya nnete, ka metlha supa kwa mokwalong o o feletseng mo
-[`LICENSE`](../../LICENSE) le [`LICENSE-CC`](../../LICENSE-CC).
+[`LICENSE`](../en/LICENSE) le [`LICENSE-CC`](../zh/LICENSE-CC).

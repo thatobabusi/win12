@@ -60,9 +60,9 @@ batle go umakiwa — re itsise mme re tla baakanya.
 Porojeke ya ntlha e ne ya ntshiwa ka fa tlase ga ditumalano tsa tetla tsa go
 bulega, tse pheto e e tswelelang go di tlotla:
 
-- **Khoutu ya motswedi:** Eclipse Public License 2.0 (EPL-2.0) — bona [LICENSE](../../LICENSE)
+- **Khoutu ya motswedi:** Eclipse Public License 2.0 (EPL-2.0) — bona [LICENSE](../en/LICENSE)
 - **Ditshwantsho, di-aekhoni le dilwana tse dingwe:** Creative Commons
-  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — bona [LICENSE-CC](../../LICENSE-CC)
+  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — bona [LICENSE-CC](../zh/LICENSE-CC)
 
 Microsoft, Windows, le logo ya Windows ke dithejemake tsa Microsoft Corporation.
 Porojeke e ke ya boikemelo, e seng ya kgwebo, e le tlotlo, mme **ga e amane le
