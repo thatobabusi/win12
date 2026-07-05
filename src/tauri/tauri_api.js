@@ -24,6 +24,18 @@ window.win12Native = {
     }
     return await window.__TAURI__.core.invoke("check_app_update");
   },
+  // Backend (win12-desktop, Tauri autostart plugin) registers/unregisters this
+  // app with the OS so it can launch at login. Web build: no-op, unavailable.
+  async getAutostart() {
+    if (!this.isTauri()) return false;
+    return await window.__TAURI__.core.invoke("get_autostart_enabled");
+  },
+  async setAutostart(enabled) {
+    if (!this.isTauri()) {
+      throw new Error("Run at startup is only available in the Tauri desktop app");
+    }
+    return await window.__TAURI__.core.invoke("set_autostart_enabled", { enabled });
+  },
   async pingHost(host, ipv6 = false, onOutput = null) {
     if (!this.isTauri()) {
       throw new Error("ping/ping6 is only supported in desktop version");

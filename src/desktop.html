@@ -1533,7 +1533,11 @@ toggletheme() 切换主题
 						<a><icon></icon><div><p data-i18n="setting.apps.optional">可选内容</p><p data-i18n="setting.apps.optional-desc">为您的设备提供额外功能</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p data-i18n="setting.apps.websites">可打开的网站Apps</p><p data-i18n="setting.apps.websites-desc">可以在Apps程序而不是浏览器中打开的网站</p></div><i class="bi bi-chevron-right"></i></a>
 						<a><icon></icon><div><p data-i18n="setting.apps.video">视频播放</p><p data-i18n="setting.apps.video-desc">视频格式调整、HDR 流媒体、电池选项</p></div><i class="bi bi-chevron-right"></i></a>
-						<a><icon></icon><div><p data-i18n="setting.apps.startup">启动</p><p data-i18n="setting.apps.startup-desc">Login时自动启动的Apps程序</p></div><i class="bi bi-chevron-right"></i></a>
+						<div><icon></icon><div><p data-i18n="setting.apps.startup">启动</p><p class="startup-desc" data-i18n="setting.apps.startup-desc">Login时自动启动的Apps程序</p></div>
+							<div class="alr">
+								<a class="checkbox a disabled" id="setting-startup-toggle" onclick="apps.setting.toggleAutostart()"></a>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- Apps end -->

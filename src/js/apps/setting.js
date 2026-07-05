@@ -11,6 +11,7 @@
             $('#win-setting>.menu>list>a.home')[0].click();
             $('#win-setting>.page>.cnt.update>.setting-list>div:last-child>.alr>a.checkbox')[localStorage.getItem('autoUpdate') == 'true' ? 'addClass' : 'removeClass']('checked');
             apps.setting.checkUpdate();
+            apps.setting.initAutostart();
         },
         page: (name) => {
             $('#win-setting>.page>.cnt.' + name).scrollTop(0);
@@ -131,6 +132,40 @@
                 $button.removeClass('disabled').text(manual
                     ? lang('Check again', 'setting.upd.recheck')
                     : lang('Check for updates', 'setting.upd.check'));
+            }
+        },
+        // Run-at-startup, backed by the Tauri autostart plugin (win12-desktop).
+        // Tauri-only, same as checkUpdate; inert and clearly marked on the web build.
+        initAutostart: async () => {
+            const $toggle = $('#setting-startup-toggle');
+            const $desc = $('#win-setting>.page>.cnt.apps .startup-desc');
+
+            if (!(window.win12Native && window.win12Native.isTauri())) {
+                $desc.text(lang('Available in the Tauri desktop app only', 'setting.upd.tauri-only'));
+                $toggle.addClass('disabled');
+                return;
+            }
+
+            try {
+                const enabled = await window.win12Native.getAutostart();
+                $toggle.removeClass('disabled')[enabled ? 'addClass' : 'removeClass']('checked');
+            } catch (e) {
+                $desc.text(String(e));
+                $toggle.addClass('disabled');
+            }
+        },
+        toggleAutostart: async () => {
+            const $toggle = $('#setting-startup-toggle');
+            const $desc = $('#win-setting>.page>.cnt.apps .startup-desc');
+            if ($toggle.hasClass('disabled')) return;
+            const enabling = !$toggle.hasClass('checked');
+            $toggle.addClass('disabled');
+            try {
+                await window.win12Native.setAutostart(enabling);
+                $toggle[enabling ? 'addClass' : 'removeClass']('checked');
+                $toggle.removeClass('disabled');
+            } catch (e) {
+                $desc.text(String(e));
             }
         },
   };

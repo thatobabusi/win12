@@ -252,3 +252,26 @@ test.describe('Microsoft Store — real app catalog', () => {
     await expect(page.locator('#win-msstore .cnt.apps .calc .store-btn')).toHaveClass(/installed/);
   });
 });
+
+test.describe('Settings — Run at startup (Tauri autostart)', () => {
+  test.beforeEach(async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
+  });
+
+  test('the web build clearly shows the toggle is unavailable (no window.__TAURI__)', async ({ page }) => {
+    await openApp(page, 'setting');
+    await page.evaluate(() => window.apps.setting.page('apps'));
+    const toggle = page.locator('#setting-startup-toggle');
+    await expect(toggle).toHaveClass(/disabled/);
+    await expect(page.locator('.cnt.apps .startup-desc')).toContainText('Tauri desktop app');
+  });
+
+  test('clicking the disabled toggle on the web build is a no-op', async ({ page }) => {
+    await openApp(page, 'setting');
+    await page.evaluate(() => window.apps.setting.page('apps'));
+    const toggle = page.locator('#setting-startup-toggle');
+    await toggle.click({ force: true });
+    await expect(toggle).not.toHaveClass(/checked/);
+  });
+});

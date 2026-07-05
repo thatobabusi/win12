@@ -98,8 +98,8 @@ Regarding the roadmap for this project:
 - [x] Add tabs for more applications
 - [x] Improve widgets and add desktop widget functionality
 - [x] Dynamic wallpaper
-- [ ] More taskbar customization
-- [ ] Enrich app ecosystem, add Microsoft Store
+- [x] More taskbar customization
+- [x] Enrich app ecosystem, add Microsoft Store
 - [x] Improve Settings and Windows Update
 
 Here are some... uh... wild... ideas `~o~)/`:
@@ -111,7 +111,7 @@ Here are some... uh... wild... ideas `~o~)/`:
 - [x] Built-in browser kernel, become an application
 - [ ] Rename the project to "Windows 12"
 - [ ] Package into the Windows system
-- [ ] Set the startup program to this application
+- [x] Set the startup program to this application
 - [ ] Remove redundant system functions and package them into an independent operating system
 - [ ] Rename the project to "Doswin 1.0"
 - [ ] Adapt to quantum computers
