@@ -612,6 +612,16 @@ function win12FinishLogin() {
     $('#login-welc').css('opacity', '1');
     setTimeout(() => {
         $('#loginback').addClass('close');
+        // Show UI elements after login
+        $('#top-bar').css('display', '');
+        $('#dock-box').css('display', '');
+        // Load desktop icons after login
+        try {
+            setIcon();
+        } catch (error) {
+            console.error('Error loading desktop icons:', error);
+        }
+        renderPinnedTaskbarIcons();
         setTimeout(() => {
             $('#loginback').css('opacity', '0');
         }, 500);
@@ -3109,10 +3119,10 @@ function setIcon() {
 document.getElementsByTagName('body')[0].onload = () => {
     setTimeout(() => {
         $('#loadback').addClass('hide');
-    }, 500);
+    }, 0);
     setTimeout(() => {
         $('#loadback').css('display', 'none');
-    }, 1000);
+    }, 500);
     // Do NOT eagerly preload the webapp iframes (vscode/bilibili/copilot/
     // minesweeper) at boot: bilibili.com refuses framing (X-Frame-Options), so
     // preloading logs a console error on every startup, and the preload path
@@ -3136,8 +3146,13 @@ document.getElementsByTagName('body')[0].onload = () => {
         $(':root').css('--theme-1', localStorage.getItem('color1'));
         $(':root').css('--theme-2', localStorage.getItem('color2'));
     }
-    setIcon();//加载桌面图标
-    renderPinnedTaskbarIcons();
+    // Don't load desktop icons until user logs in
+    // try {
+    //     setIcon();//加载桌面图标
+    // } catch (error) {
+    //     console.error('Error loading desktop icons:', error);
+    // }
+    // renderPinnedTaskbarIcons();
 
     // 所以这个东西为啥要在开机的时候加载？
     // 不应该在 python.init 里面吗？

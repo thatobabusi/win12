@@ -176,6 +176,7 @@ toggletheme() 切换主题
 			}, 100);
 		</script>
 	</div>
+	<script>$('#loadback').css('display','none');</script>
 	<div class="container" id="orientation-warning">
         <div class="image-container">
             <img src="assets/icons/ls.svg" alt="Semi-transparent icon" class="svg translucent">
@@ -785,7 +786,7 @@ toggletheme() 切换主题
 			</div>
 		</div>
 	</div>
-	<div id="top-bar">
+	<div id="top-bar" style="display:none">
 		<a class="a top-bar-activities" win12_title="Activities" onclick="toggleOverview()" data-i18n="topbar.activities">Activities</a>
 		<div id="top-bar-tray">
 		<div class="a dock theme" win12_title="Toggle Theme" onclick="toggletheme()">
@@ -811,7 +812,7 @@ toggletheme() 切换主题
 		</div>
 		</div>
 	</div>
-	<div id="dock-box">
+	<div id="dock-box" style="display:none">
 		<!-- Dock(任务) 栏 -->
 		<div class="dock dock-start">
 			<a class="dock-btn" id="start-btn" win12_title="Show Applications (Ctrl+Win)" onclick="openDockWidget('start-menu')" oncontextmenu="return showcm(event,'winx',null)">
@@ -845,7 +846,6 @@ toggletheme() 切换主题
 		<i class="bi bi-arrow-bar-right"></i>
 	</div>
 	<div id="desktop">
-		<h1>Cannot process desktop icons, please use a relatively normal browser to access</h1>
 		<span class="selection">
 		</span>
 		<p style="background-color: rgba(11,45,14,0);z-index:1;position: absolute;top:0px;left:0px;height:100%;width:100%" oncontextmenu="return showcm(event,'desktop');"></p>

@@ -529,6 +529,7 @@ list>span.focs.cl {
 .top-bar-activities {
     height: 100%;
     padding: 0 10px;
+    margin-left: 48px;
     display: flex;
     align-items: center;
     color: #fff;
@@ -616,7 +617,7 @@ list>span.focs.cl {
 }
 
 #dock-box>.dock>* {
-    padding: 3px 0;
+    padding: 8px 0;
 }
 
 /* GNOME ordering: running/pinned apps at the top of the dock, the launcher
@@ -1099,6 +1100,8 @@ list>span.focs.cl {
 #control{
     display: none;
     position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 20px;
     background: var(--bg50);
     /* backdrop-filter: blur(60px) saturate(3) contrast(0.8); */
@@ -1888,7 +1891,7 @@ input-before {
 
 #datebox.show,
 #control.show {
-    transform: none;
+    transform: translateX(-50%);
     opacity: 1;
 }
 
