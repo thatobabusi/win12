@@ -5,10 +5,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+    background-image: url('../../assets/images/wallpaper-macos-light.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    background-attachment: fixed;
     transition: filter 500ms, background-color 500ms, opacity 1500ms ease-in-out;
     position: absolute;
     width: 100%;
@@ -16,6 +17,10 @@
     opacity: 0;
     display: flex;
     z-index: 101;
+}
+
+:root.dark #loginback {
+    background-image: url('../../assets/images/wallpaper-macos-dark.svg');
 }
 
 #login {

@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1920 1200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="darkglow1" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" style="stop-color:#6b4c9a;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#4a3a7a;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#1d1d1f;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="darkglow2" cx="80%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:#3d5a8c;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#2a3f5f;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#1d1d1f;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="darkglow3" cx="50%" cy="70%" r="70%">
+      <stop offset="0%" style="stop-color:#5a4a7a;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#3a2a5a;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#1d1d1f;stop-opacity:0" />
+    </radialGradient>
+    <filter id="darkblur1">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
+    </filter>
+    <filter id="darkblur2">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="60" />
+    </filter>
+  </defs>
+
+  <!-- Base dark background -->
+  <rect width="1920" height="1200" fill="#1d1d1f"/>
+
+  <!-- Subtle dark gradient base -->
+  <defs>
+    <linearGradient id="darkBaseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#262628;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#darkBaseGradient)"/>
+
+  <!-- Soft purple glow in upper left -->
+  <circle cx="300" cy="200" r="800" fill="url(#darkglow1)" filter="url(#darkblur2)"/>
+
+  <!-- Soft blue glow in upper right -->
+  <circle cx="1600" cy="150" r="700" fill="url(#darkglow2)" filter="url(#darkblur2)"/>
+
+  <!-- Subtle purple glow in bottom center -->
+  <circle cx="960" cy="1000" r="600" fill="url(#darkglow3)" filter="url(#darkblur1)"/>
+
+  <!-- Very subtle horizontal light effect for dark mode -->
+  <defs>
+    <linearGradient id="darkRayGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.05" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.04" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#darkRayGradient)"/>
+
+  <!-- Subtle texture overlay for depth -->
+  <rect width="1920" height="1200" fill="url(#darkBaseGradient)" opacity="0.2"/>
+</svg>

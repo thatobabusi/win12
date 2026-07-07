@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1920 1200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow1" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" style="stop-color:#e8d5ff;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#d4a5ff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#f5f5f7;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:#c5e1ff;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#a8d5ff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#f5f5f7;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="70%" r="70%">
+      <stop offset="0%" style="stop-color:#f0e5ff;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#e8d5ff;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#f5f5f7;stop-opacity:0" />
+    </radialGradient>
+    <filter id="blur1">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="60" />
+    </filter>
+  </defs>
+
+  <!-- Base light gray background -->
+  <rect width="1920" height="1200" fill="#f5f5f7"/>
+
+  <!-- Subtle gradient base -->
+  <defs>
+    <linearGradient id="baseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f9f9fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ececf1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#baseGradient)"/>
+
+  <!-- Soft aurora-like glow in upper left -->
+  <circle cx="300" cy="200" r="800" fill="url(#glow1)" filter="url(#blur2)"/>
+
+  <!-- Soft blue glow in upper right -->
+  <circle cx="1600" cy="150" r="700" fill="url(#glow2)" filter="url(#blur2)"/>
+
+  <!-- Subtle purple glow in bottom center -->
+  <circle cx="960" cy="1000" r="600" fill="url(#glow3)" filter="url(#blur1)"/>
+
+  <!-- Very subtle horizontal light ray effect -->
+  <defs>
+    <linearGradient id="rayGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.08" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#rayGradient)"/>
+
+  <!-- Subtle noise texture overlay for depth -->
+  <rect width="1920" height="1200" fill="url(#baseGradient)" opacity="0.3"/>
+</svg>

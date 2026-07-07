@@ -18,7 +18,7 @@
     --hover-b: #1111110f;
     --bggrey: #eee;
     --fill: #d3d3d370;
-    --bgul: url('../assets/images/bg.svg');
+    --bgul: url('../assets/images/wallpaper-macos-light.svg');
     --mm: #ffffffc0;
     --contextmeu: #f7f7f7bb;
     --bar: #efefef37;
@@ -46,7 +46,7 @@
     --hover-b: #eeeeee0f;
     --bggrey: #444;
     --fill: #99999970;
-    --bgul: url('../assets/images/bg-dark.svg');
+    --bgul: url('../assets/images/wallpaper-macos-dark.svg');
     --mm: #ffffff50;
     --contextmeu: #292929bb;
     --bar: #7272722a;
@@ -92,8 +92,9 @@ html {
 }
 
 body {
-    background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+    background: var(--bgul) center;
     background-size: cover;
+    background-attachment: fixed;
     height: 100%;
     font-size: 15.5px;
     color: var(--text);
