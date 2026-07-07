@@ -7,14 +7,17 @@
     <!-- theme-mac: macOS Sequoia-style boot screen with glossy design -->
     <style>
         html {
-            background-image: url('assets/images/macos-wallpaper.jpg');
+            background-image: url('assets/images/macos-boot-light.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
         :root.dark {
-            background: #000000;
+            background-image: url('assets/images/macos-boot-dark.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         * {
@@ -34,7 +37,7 @@
         }
 
         body {
-            background-image: url('assets/images/macos-wallpaper.jpg');
+            background-image: url('assets/images/macos-boot-light.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -48,7 +51,10 @@
         }
 
         :root.dark body {
-            background: #000000;
+            background-image: url('assets/images/macos-boot-dark.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .boot-container {
