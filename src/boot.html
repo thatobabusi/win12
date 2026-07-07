@@ -7,10 +7,11 @@
     <!-- theme-mac: macOS Sequoia-style boot screen with glossy design -->
     <style>
         html {
-            background-image: url('assets/images/wallpaper-plant.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: #f5f5f7;
+        }
+
+        :root.dark {
+            background: #000000;
         }
 
         * {
@@ -30,10 +31,7 @@
         }
 
         body {
-            background-image: url('assets/images/wallpaper-plant.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: #f5f5f7;
             color: #000;
             cursor: none;
             height: 100vh;
@@ -43,14 +41,30 @@
             justify-content: center;
         }
 
+        :root.dark body {
+            background: #000000;
+            color: #ffffff;
+        }
+
         .boot-container {
             text-align: center;
         }
 
         .boot-logo {
-            font-size: 72px;
-            margin-bottom: 20px;
-            opacity: 0.8;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .boot-logo svg {
+            width: 100%;
+            height: 100%;
+            color: #1d1d1f;
+        }
+
+        :root.dark .boot-logo svg {
+            color: #ffffff;
         }
 
         .boot-text {
@@ -58,6 +72,10 @@
             color: #666;
             margin-bottom: 30px;
             letter-spacing: 0.5px;
+        }
+
+        :root.dark .boot-text {
+            color: #999;
         }
 
         .loading {
@@ -102,7 +120,12 @@
 
 <body id="body" scroll="no">
     <div class="boot-container">
-        <div class="boot-logo">🍎</div>
+        <div class="boot-logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 83.1 65.7 C 83.1 75.5 77.2 82.7 68.7 82.7 C 64.1 82.7 60.2 80.8 57.6 77.8 C 55.7 80.8 51.9 82.7 47.6 82.7 C 38.2 82.7 32.4 75.5 32.4 65.7 C 32.4 54.5 39.3 45.8 51.5 40.2 C 54.5 35.7 57.4 30.8 57.4 26.2 C 57.4 17.1 50.5 10.2 41.4 10.2 C 35.6 10.2 30.4 13.3 27.5 18.1 C 24.7 22.6 23.8 28.5 23.8 35.2 L 18.2 35.2 C 18.2 26.8 19.4 19.6 22.9 13.9 C 26.4 8.2 33.3 4.1 41.4 4.1 C 54.6 4.1 64.3 14.0 64.3 26.2 C 64.3 32.2 61.6 37.5 58.2 42.5 C 48.7 47.3 42.8 54.4 42.8 65.7 C 42.8 71.4 46.7 76.2 52.4 76.2 C 57.0 76.2 60.7 73.2 61.4 69.1 L 67.2 69.1 C 67.9 73.2 71.6 76.2 76.2 76.2 C 81.9 76.2 85.8 71.4 85.8 65.7 L 83.1 65.7 Z" fill="currentColor" stroke="none"/>
+                <circle cx="85" cy="20" r="8" fill="currentColor"/>
+            </svg>
+        </div>
         <div class="boot-text">macOS Boot</div>
         <div class="loading">
             <div class="progress-bar">
