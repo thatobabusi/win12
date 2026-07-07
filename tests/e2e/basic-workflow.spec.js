@@ -172,6 +172,14 @@ test.describe('Win12 system pages', () => {
     expect(body).not.toContain('404'); // not the fallback page
   });
 
+  test('boot screen shows the Ubuntu splash and still reaches the desktop', async ({ page }) => {
+    await page.goto('/boot.html');
+    await expect(page.locator('.wordmark')).toHaveText('ubuntu');
+    await expect(page.locator('.dots span')).toHaveCount(4);
+    // boot_kernel.js drives #load/#back and then redirects (~2.1s of progress).
+    await page.waitForURL('**/desktop.html', { timeout: 10000 });
+  });
+
   test('shutdown screen (shutdown.html) serves real content', async ({ page }) => {
     const resp = await page.goto('/shutdown.html');
     expect(resp?.status()).toBe(200);

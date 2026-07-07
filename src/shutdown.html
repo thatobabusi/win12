@@ -2,6 +2,7 @@
 <html style="height:100%;">
 
 <head>
+    <!-- theme-ubuntu: Plymouth-style shutdown screen (orange spinner, wordmark). -->
     <style>
         body {
             background: #000;
@@ -13,10 +14,19 @@
             width: 100%;
             padding: 0;
             margin: 0;
+            font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .wordmark {
+            color: #fff;
+            font-size: 34px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 26px;
         }
 
         loading>svg>circle:first-child {
-            stroke: #fff;
+            stroke: #E95420;
             fill: none;
             stroke-width: 2px;
             stroke-linecap: round;
@@ -36,7 +46,7 @@
         @keyframes spin-infinite {
             0% {
                 stroke-dasharray: .01px, 43.97px;
-                tansform: rotate(0deg)
+                transform: rotate(0deg)
             }
 
             50% {
@@ -52,30 +62,31 @@
     </style>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在关机...</title>
+    <title>Shutting down...</title>
 </head>
 
 <body onload="
 setTimeout(()=>{
     document.getElementById('ld').remove();
-    document.getElementById('ldt').textContent='按 Enter 键开机。';
+    document.getElementById('wm').style.opacity=0.35;
+    document.getElementById('ldt').textContent='Press Enter to power on.';
     document.getElementById('ldt').style.opacity=0.5;
-    document.title='已关机';
+    document.title='Powered off';
     document.body.onkeydown=e=>{
         if(e.key==='Enter') {
             location.href='boot.html';
         }
     };
 },3000);">
-    </div>
+    <div class="wordmark" id="wm">ubuntu</div>
     <loading id="ld">
         <svg width="50px" height="50px" viewBox="0 0 16 16">
             <circle cx="8px" cy="8px" r="7px"></circle>
             <circle cx="8px" cy="8px" r="6px"></circle>
         </svg>
     </loading>
-    <p id="ldt" style="text-align:center;color:#fff;font-size:20px">
-        正在关机
+    <p id="ldt" style="text-align:center;color:#aea79f;font-size:18px;margin-top:14px">
+        Shutting down
     </p>
 </body>
 

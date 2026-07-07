@@ -21,44 +21,49 @@
     z-index: 101;
 }
 
+/* GDM-style: pill-shaped controls, Ubuntu Orange action button. */
 #login {
-    background-color: #eeeeee40;
-    width: 100px;
-    padding: 5.5px 8px;
+    background-color: #E95420;
+    width: 110px;
+    padding: 7px 8px;
     color: #fff;
-    border-radius: 6px;
+    border-radius: 18px;
     font-size: 15.8px;
     text-align: center;
     border: 3px solid #00000000;
     transition: 50ms;
     margin-bottom: -40px;
     z-index: 1;
+    font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
 }
 
 #login:hover {
-    border-color: #ffffff50;
+    background-color: #f06438;
     transition: 50ms;
 }
 
 #login:active {
-    filter: brightness(2);
     scale: 0.97;
     border-color: #00000000;
-    background-color: #eeeeee70;
+    background-color: #c74619;
     transition: 80ms;
 }
 
 #login-password {
     display: none;
-    width: 220px;
+    width: 230px;
     margin-bottom: 10px;
-    padding: 7px 10px;
+    padding: 8px 14px;
     color: #fff;
-    background-color: #eeeeee40;
-    border: 2px solid #ffffff50;
-    border-radius: 6px;
+    background-color: #00000055;
+    border: 2px solid #ffffff40;
+    border-radius: 18px;
     outline: none;
     text-align: center;
+}
+
+#login-password:focus {
+    border-color: #E95420;
 }
 
 #login-password::placeholder {
@@ -101,6 +106,8 @@
     background-repeat: no-repeat;
     margin-bottom: 10px;
     background-color: #ddd;
+    outline: 4px solid #ffffff30;
+    outline-offset: 3px;
     transition: filter 500ms;
     margin-top: -35px;
 }
@@ -108,7 +115,8 @@
 #loginback>div.name {
     color: #fefefe;
     font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+    font-weight: 300;
     margin-bottom: 15px;
     transition: color 500ms;
 }
