@@ -183,15 +183,15 @@ await page.waitForSelector('.element');  // 好的
 
 1. ✅ 运行 `npm run test:all` 验证设置
 2. 📖 阅读[测试指南](README.md)了解详细模式
-3. 📖 阅读[单元测试指南](UNIT-TESTS.md)了解测试模式
+3. 📖 阅读[单元测试指南](../../../tests/unit)了解测试模式
 4. ✍️ 为新功能编写测试
 5. 📊 检查覆盖率：`npm run test:coverage`
 6. 🚀 自信地提交！
 
 ## 疑问？
 
-- **详细测试模式** → 见[单元测试指南](UNIT-TESTS.md)
-- **端到端测试详情** → 见[端到端测试指南](E2E-TESTS.md)
+- **详细测试模式** → 见[单元测试指南](../../../tests/unit)
+- **端到端测试详情** → 见[端到端测试指南](../../../tests/e2e)
 - **Docker 设置** → 见[Docker 测试指南](docker.md)
 - **Vitest 文档** → https://vitest.dev
 - **Playwright 文档** → https://playwright.dev

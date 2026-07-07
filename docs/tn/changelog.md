@@ -11,7 +11,7 @@ le tsebe ya "About Windows 12 Online" mo teng ga app.
 ## Fork — 2026-06
 
 Phetišo ya go tlhomamisa go busetsa runtime ya fork e mo go dumalaneng le reference le
-go oketsa didirisiwa. Bona [`../learning/`](../learning/README.md) bakeng sa dipegelo
+go oketsa didirisiwa. Bona [`../learning/`](../../.claude/internal-affairs/learning/README.md) bakeng sa dipegelo
 tse di tletseng.
 
 - **Login/desktop** — go busediwa thadiso ya reference: desktop e agiwa ka metlha mme e

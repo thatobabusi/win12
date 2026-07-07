@@ -6,8 +6,8 @@ Complete guide to automated testing in Win12 Online.
 
 ### Quick References
 - **[Quick Start](quickstart.md)** - 5-minute setup and basic commands
-- **[Unit Tests](UNIT-TESTS.md)** - Writing and running unit tests  
-- **[E2E Tests](E2E-TESTS.md)** - End-to-end testing guide
+- **[Unit Tests](../../../tests/unit)** - Writing and running unit tests  
+- **[E2E Tests](../../../tests/e2e)** - End-to-end testing guide
 - **[Docker Testing](docker.md)** - Testing with Docker containers
 
 ## 🎯 Testing Overview
@@ -109,8 +109,8 @@ See [Docker Testing Guide](docker.md) for details.
 Choose your topic:
 
 - **First time testing?** → [Quick Start](quickstart.md)
-- **Writing unit tests?** → [Unit Tests Guide](UNIT-TESTS.md)
-- **E2E testing workflow?** → [E2E Tests Guide](E2E-TESTS.md)
+- **Writing unit tests?** → [Unit Tests Guide](../../../tests/unit)
+- **E2E testing workflow?** → [E2E Tests Guide](../../../tests/e2e)
 - **Docker setup?** → [Docker Testing](docker.md)
 
 ## 🔍 Common Tasks
@@ -177,7 +177,7 @@ A: Use `.skip` for Vitest tests: `it.skip('test name', () => {})` or `test.skip(
 
 1. ✅ [Read Quick Start](quickstart.md) - 5 minutes
 2. ✅ Run `npm run test:all` - Verify setup
-3. ✅ Review test patterns in [Unit Tests Guide](UNIT-TESTS.md)
+3. ✅ Review test patterns in [Unit Tests Guide](../../../tests/unit)
 4. ✅ Write tests for new features
 5. ✅ Push with confidence!
 

@@ -75,5 +75,5 @@ le se se tlhokang go kopanngwa morago ga go goga go tswa upstream.
 ## Dithuto tse re di ithutileng
 
 Dipegelo tsa nnete tsa boenjeniri (saga ya boot/login/service worker) di mo
-[`../learning/`](../learning/README.md). Di bale pele o ka ama gape phologelo ya boot
+[`../learning/`](../../.claude/internal-affairs/learning/README.md). Di bale pele o ka ama gape phologelo ya boot
 kgotsa ya login.

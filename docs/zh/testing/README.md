@@ -6,8 +6,8 @@ Win12 Online 的自动化测试完整指南。
 
 ### 快速参考
 - **[快速入门](quickstart.md)** - 5分钟设置和基本命令
-- **[单元测试](UNIT-TESTS.md)** - 编写和运行单元测试  
-- **[端到端测试](E2E-TESTS.md)** - 端到端测试指南
+- **[单元测试](../../../tests/unit)** - 编写和运行单元测试  
+- **[端到端测试](../../../tests/e2e)** - 端到端测试指南
 - **[Docker 测试](docker.md)** - 使用 Docker 容器进行测试
 
 ## 🎯 测试概述
@@ -107,8 +107,8 @@ docker-compose run --rm lint
 选择你的主题：
 
 - **第一次测试？** → [快速入门](quickstart.md)
-- **编写单元测试？** → [单元测试指南](UNIT-TESTS.md)
-- **端到端测试工作流？** → [端到端测试指南](E2E-TESTS.md)
+- **编写单元测试？** → [单元测试指南](../../../tests/unit)
+- **端到端测试工作流？** → [端到端测试指南](../../../tests/e2e)
 - **Docker 设置？** → [Docker 测试](docker.md)
 
 ## 🔍 常见任务
@@ -175,7 +175,7 @@ open coverage/index.html
 
 1. ✅ [阅读快速入门](quickstart.md) - 5 分钟
 2. ✅ 运行 `npm run test:all` - 验证设置
-3. ✅ 在 [单元测试指南](UNIT-TESTS.md) 中查看测试模式
+3. ✅ 在 [单元测试指南](../../../tests/unit) 中查看测试模式
 4. ✅ 为新功能编写测试
 5. ✅ 推送代码！
 

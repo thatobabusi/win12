@@ -183,15 +183,15 @@ await page.waitForSelector('.element');  // Good
 
 1. ✅ Run `npm run test:all` to verify setup works
 2. 📖 Read [Testing Guide](README.md) for detailed patterns
-3. 📖 Read [Unit Tests Guide](UNIT-TESTS.md) for test patterns
+3. 📖 Read [Unit Tests Guide](../../../tests/unit) for test patterns
 4. ✍️ Write tests for new features
 5. 📊 Check coverage: `npm run test:coverage`
 6. 🚀 Commit with confidence!
 
 ## Questions?
 
-- **Detailed testing patterns** → See [Unit Tests Guide](UNIT-TESTS.md)
-- **E2E testing details** → See [E2E Tests Guide](E2E-TESTS.md)
+- **Detailed testing patterns** → See [Unit Tests Guide](../../../tests/unit)
+- **E2E testing details** → See [E2E Tests Guide](../../../tests/e2e)
 - **Docker setup** → See [Docker Testing Guide](docker.md)
 - **Vitest docs** → https://vitest.dev
 - **Playwright docs** → https://playwright.dev
