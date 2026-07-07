@@ -92,8 +92,12 @@ html {
 }
 
 body {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #f0f0f2 100%);
+    background-image: url('../assets/images/wallpaper-plant.jpg');
+    background-size: cover;
     background-attachment: fixed;
+    background-position: center;
+    background-color: #f8f8f8;
+    background-repeat: no-repeat;
     height: 100%;
     font-size: 15.5px;
     color: var(--text);
@@ -101,7 +105,7 @@ body {
 }
 
 :root.dark body {
-    background: linear-gradient(135deg, #1d1d1f 0%, #2a2a2c 50%, #202020 100%);
+    background: linear-gradient(180deg, #1d1d1f 0%, #252527 30%, #2a2a2c 70%, #1a1a1c 100%);
 }
 
 html.night {
