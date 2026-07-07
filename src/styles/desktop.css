@@ -3180,6 +3180,27 @@ body>.container>.image-container>.svg {
         height: 75vh;
     }
 
+    /* Left-dock shell on small screens: slim the dock, and shift the desktop
+       and Start Menu accordingly (they clear a 58px dock on desktop). */
+    #dock-box {
+        width: 46px;
+    }
+
+    #taskbar>a,
+    .dock-btn {
+        transform: scale(0.9);
+    }
+
+    #desktop {
+        left: 46px;
+        width: calc(100% - 46px);
+    }
+
+    #start-menu {
+        left: 50px;
+        width: calc(100vw - 58px);
+    }
+
 
     body .taskbar-icon {
         padding: 0 10px;

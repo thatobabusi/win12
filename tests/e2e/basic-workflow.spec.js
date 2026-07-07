@@ -387,3 +387,38 @@ test.describe('Activities overview (GNOME window picker)', () => {
     await expect(page.locator(':root.overview')).toHaveCount(0);
   });
 });
+
+test.describe('Ubuntu shell panels (re-anchored for the top bar)', () => {
+  test.beforeEach(async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
+  });
+
+  test('the Search panel opens below the top bar', async ({ page }) => {
+    await page.evaluate(() => window.openDockWidget('search-win'));
+    await expect(page.locator('#search-win')).toBeVisible();
+    // wait for the slide-in transform to settle: mid-transition the panel sits
+    // up to 30px above its resting spot, which would flake the position check
+    await page.waitForFunction(() => {
+      const t = getComputedStyle(document.querySelector('#search-win')).transform;
+      return t === 'none' || t === 'matrix(1, 0, 0, 1, 0, 0)';
+    });
+    const top = await page.evaluate(() => document.querySelector('#search-win').getBoundingClientRect().top);
+    expect(top).toBeGreaterThanOrEqual(28); // clears the top bar
+    expect(top).toBeLessThan(200);          // anchored near it, not at the old bottom position
+  });
+
+  test('the Widgets panel opens below the top bar', async ({ page }) => {
+    await page.evaluate(() => window.openDockWidget('widgets'));
+    await expect(page.locator('#widgets')).toBeVisible();
+    // wait for the slide-in transform to settle: mid-transition the panel sits
+    // up to 30px above its resting spot, which would flake the position check
+    await page.waitForFunction(() => {
+      const t = getComputedStyle(document.querySelector('#widgets')).transform;
+      return t === 'none' || t === 'matrix(1, 0, 0, 1, 0, 0)';
+    });
+    const top = await page.evaluate(() => document.querySelector('#widgets').getBoundingClientRect().top);
+    expect(top).toBeGreaterThanOrEqual(28);
+    expect(top).toBeLessThan(200);
+  });
+});
