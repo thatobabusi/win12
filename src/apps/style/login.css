@@ -5,7 +5,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('../../assets/images/login.jpg');
+    /* theme-ubuntu: GDM-style aubergine login backdrop (bundled wallpaper,
+       no Canonical assets) instead of the Windows login photo. */
+    background-image: url('../../assets/images/wallpaper-ubuntu.svg');
+    background-color: #2C0736;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;

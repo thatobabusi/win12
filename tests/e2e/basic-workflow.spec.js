@@ -282,6 +282,15 @@ test.describe('Personalization — bundled Ubuntu theme', () => {
     await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
   });
 
+  test('the login overlay uses the Ubuntu backdrop, not the Windows photo', async ({ page }) => {
+    // boot() uses skip_login=1, so navigate plainly to get the real overlay.
+    await page.goto('/desktop.html?develop=1');
+    await page.waitForSelector('#loginback', { timeout: 20000 });
+    const bg = await page.evaluate(() => getComputedStyle(document.querySelector('#loginback')).backgroundImage);
+    expect(bg).toContain('wallpaper-ubuntu');
+    expect(bg).not.toContain('login.jpg');
+  });
+
   test('the desktop boots with the Ubuntu palette by default (no clicks needed)', async ({ page }) => {
     const theme1 = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--theme-1').trim());
     expect(theme1.toLowerCase()).toBe('#e95420');
