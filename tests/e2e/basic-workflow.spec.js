@@ -275,3 +275,25 @@ test.describe('Settings — Run at startup (Tauri autostart)', () => {
     await expect(toggle).not.toHaveClass(/checked/);
   });
 });
+
+test.describe('Window z-order integrity (focwin(null) regression)', () => {
+  test('minimizing does not corrupt the wo order array', async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
+    await openApp(page, 'notepad');
+    await openApp(page, 'calc');
+    // minwin -> focwin(null): before the fix this dropped the LAST wo entry
+    // (notepad) and inserted null at the front.
+    await page.evaluate(() => window.minwin('calc'));
+    const order = await page.evaluate(() => wo.slice());
+    expect(order).not.toContain(null);
+    expect(order).toContain('notepad');
+    expect(order).toContain('calc');
+    expect(order).toHaveLength(2);
+    // and a second minimize round-trip stays clean too
+    await page.evaluate(() => { window.minwin('calc'); window.minwin('notepad'); });
+    const order2 = await page.evaluate(() => wo.slice());
+    expect(order2.filter(Boolean)).toHaveLength(2);
+    expect(order2).not.toContain(null);
+  });
+});

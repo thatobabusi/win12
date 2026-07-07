@@ -479,10 +479,21 @@ function focwin(name, arg = 'window') {
     // if(wo[0]==name)return;
     if (arg == 'window') {
         $('#taskbar>.' + wo[0]).removeClass('foc');
-        $('#taskbar>.' + name).addClass('foc');
     }
     $('.window.' + wo[0]).removeClass('foc');
-    wo.splice(wo.indexOf(name), 1);
+    // focwin(null) means "unfocus" (minwin uses it). Without this guard,
+    // wo.indexOf(null) === -1 made the splice below silently REMOVE THE LAST
+    // wo entry and insert null at the front — corrupting the window z-order
+    // on every minimize.
+    if (name == null) {
+        orderwin();
+        return;
+    }
+    if (arg == 'window') {
+        $('#taskbar>.' + name).addClass('foc');
+    }
+    const woIdx = wo.indexOf(name);
+    if (woIdx !== -1) wo.splice(woIdx, 1);
     wo.splice(0, 0, name);
     orderwin();
     $('.window.' + name).addClass('foc');
