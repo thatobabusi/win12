@@ -622,6 +622,12 @@ function win12FinishLogin() {
             document.querySelector('audio#startup-music').play();
         }
     }, 2000);
+    try {
+        setIcon();
+    } catch (error) {
+        console.error('Error loading desktop icons:', error);
+    }
+    renderPinnedTaskbarIcons();
 }
 
 function setLoginError(text) {
@@ -3128,8 +3134,8 @@ document.getElementsByTagName('body')[0].onload = () => {
         $(':root').css('--theme-1', localStorage.getItem('color1'));
         $(':root').css('--theme-2', localStorage.getItem('color2'));
     }
-    setIcon();//加载桌面图标
-    renderPinnedTaskbarIcons();
+    // setIcon();//加载桌面图标 - deferred until after login
+    // renderPinnedTaskbarIcons(); - deferred until after login
 
     // 所以这个东西为啥要在开机的时候加载？
     // 不应该在 python.init 里面吗？

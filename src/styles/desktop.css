@@ -92,7 +92,7 @@ html {
 }
 
 body {
-    background: var(--bgul) center;
+    background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
     background-size: cover;
     height: 100%;
     font-size: 15.5px;
@@ -429,12 +429,12 @@ list>span.focs.cl {
 
 #dock-box {
     position: fixed;
-    bottom: 10px;
-    height: 40px;
+    bottom: 12px;
+    height: 50px;
     display: flex;
     width: 100%;
     z-index: 92;
-    padding: 0 5px;
+    padding: 0 10px;
     justify-content: center;
     transition: bottom 400ms;
 }
@@ -449,17 +449,17 @@ list>span.focs.cl {
     left: 50%;
     transform: translateX(-50%);
     position: fixed;
-    height: 32px;
+    height: 40px;
     aspect-ratio: 1/1;
-    background-color: var(--contextmeu);
-    backdrop-filter: blur(20px) saturate(2);
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px) saturate(1.8) brightness(1.1);
     text-align: center;
     z-index: 91;
-    line-height:32px;
-    border-radius: 10px;
-    -webkit-backdrop-filter: blur(20px) saturate(2);
-    box-shadow: 0 1px 2px #44444460, 0px 3px 25px 1px var(--shadow);
-    outline: 1px solid #99999950;
+    line-height: 40px;
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(30px) saturate(1.8) brightness(1.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    outline: 1px solid rgba(255, 255, 255, 0.3);
     transition: 200ms, transform 300ms cubic-bezier(0.14, 1.02, 0.17, 0.03), backdrop-filter, -webkit-backdrop-filter 0ms;
 }
 
@@ -492,20 +492,18 @@ list>span.focs.cl {
 }
 
 .dock {
-    border-radius: 10px;
+    border-radius: 18px;
     height: 100%;
-    background-color: var(--contextmeu);
-    backdrop-filter: blur(20px) saturate(2);
-    -webkit-backdrop-filter: blur(20px) saturate(2);
-    box-shadow: 0 1px 2px #44444460, 0px 3px 25px 1px var(--shadow);
-    padding: 7px 6px;
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(30px) saturate(1.8) brightness(1.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    padding: 8px 8px;
     margin: 0 3px;
-    outline: 1px solid #99999950;
+    outline: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     transition: 200ms, transform 300ms cubic-bezier(0.14, 1.02, 0.17, 0.03), backdrop-filter, -webkit-backdrop-filter 0ms;
     bottom: 0;
-    /* transform: scale(1); */
-    /* border: 1.5px solid #6f6f6f30; */
 }
 
 :root.corner_squ .dock {
@@ -514,15 +512,17 @@ list>span.focs.cl {
 }
 
 .dock>* {
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    transition: transform 150ms ease-out;
 }
 
 .dock.control:hover,
 .dock.theme:hover,
 .dock.date:hover {
-    backdrop-filter: blur(20px) saturate(1.5) brightness(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.5) brightness(1.2);
+    backdrop-filter: blur(30px) saturate(2) brightness(1.2);
+    -webkit-backdrop-filter: blur(30px) saturate(2) brightness(1.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 1px 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 #toolbar {

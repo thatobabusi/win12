@@ -2,22 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Windows 12 Web Version</title> <!-- 优化：更具描述性的页面标题 -->
+    <title>macOS Boot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- 优化：添加 viewport meta 标签，确保在移动设备上的适配性 -->
+    <!-- theme-mac: macOS Sequoia-style boot screen with glossy design -->
     <style>
-        @font-face {
-            font-family: 'dos';
-            src: url(./fonts/dos.ttf);
-        }
-
         html {
-            background-color: #000000;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
         }
 
         * {
-            font-family: 'dos';
-            margin: 0; /* 优化：合并重复的 CSS 属性 */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
             padding: 0;
             border: 0;
             user-select: none;
@@ -32,34 +27,85 @@
         }
 
         body {
-            background-color: black;
-            color: white;
-            cursor: none; /* 优化：使用 CSS 属性来隐藏鼠标指针 */
-        }
-
-        .loading {
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            color: #000;
+            cursor: none;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
+        .boot-container {
+            text-align: center;
+        }
+
+        .boot-logo {
+            font-size: 72px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .boot-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 3px;
+            background: linear-gradient(90deg, #007AFF, #5856D6);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #load {
+            height: 100%;
+            background: linear-gradient(90deg, #007AFF, #5856D6);
+            border-radius: 2px;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 100%; }
+        }
+
         #info {
             position: absolute;
-            bottom: 10px;
+            bottom: 30px;
             width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
         }
     </style>
 </head>
 
 <body id="body" scroll="no">
-    <div id="info">
+    <div class="boot-container">
+        <div class="boot-logo">🍎</div>
+        <div class="boot-text">macOS Boot</div>
         <div class="loading">
-            <p>Starting</p>
-            <div id="load" style="background-color: #acabac; width: 200px; height: 20px;"></div>
-            <div id="back" style="background-color: #565656; width: 200px; height: 20px;"></div>
-            <br>
+            <div class="progress-bar">
+                <div id="load"></div>
+            </div>
         </div>
-        <p style="text-align: center;">Press F2 or touch screen to enter SETUP</p>
+    </div>
+    <div id="info">
+        <p>Press F2 or touch screen to enter SETUP</p>
     </div>
     <script src="./scripts/jq.min.js"></script>
     <script src="./scripts/boot_kernel.js"></script>
