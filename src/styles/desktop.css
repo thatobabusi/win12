@@ -92,10 +92,8 @@ html {
 }
 
 body {
-    background-image: url('../assets/images/wallpaper-macos-light-botanical.svg');
-    background-size: cover;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #f0f0f2 100%);
     background-attachment: fixed;
-    background-position: center;
     height: 100%;
     font-size: 15.5px;
     color: var(--text);
@@ -103,7 +101,7 @@ body {
 }
 
 :root.dark body {
-    background-image: url('../assets/images/wallpaper-macos-dark-botanical.svg');
+    background: linear-gradient(135deg, #1d1d1f 0%, #2a2a2c 50%, #202020 100%);
 }
 
 html.night {

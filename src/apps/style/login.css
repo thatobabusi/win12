@@ -5,11 +5,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('../../assets/images/wallpaper-macos-light-botanical.svg');
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #f0f0f2 100%);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: 50% 50%;
     transition: filter 500ms, background-color 500ms, opacity 1500ms ease-in-out;
     position: absolute;
     width: 100%;
@@ -20,7 +19,7 @@
 }
 
 :root.dark #loginback {
-    background-image: url('../../assets/images/wallpaper-macos-dark-botanical.svg');
+    background: linear-gradient(135deg, #1d1d1f 0%, #2a2a2c 50%, #202020 100%);
 }
 
 #login {
