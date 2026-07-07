@@ -5,9 +5,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(135deg, #87ceeb 0%, #e0f6ff 100%);
+    background-image: url('../../assets/images/macos-wallpaper.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     transition: filter 500ms, background-color 500ms, opacity 1500ms ease-in-out;
     position: absolute;
     width: 100%;
@@ -18,7 +19,8 @@
 }
 
 :root.dark #loginback {
-    background: #1a1a1a;
+    background-image: none;
+    background: #000000;
 }
 
 #login {

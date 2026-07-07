@@ -7,7 +7,10 @@
     <!-- theme-mac: macOS Sequoia-style boot screen with glossy design -->
     <style>
         html {
-            background: #000000;
+            background-image: url('assets/images/macos-wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         :root.dark {
@@ -31,7 +34,10 @@
         }
 
         body {
-            background: #000000;
+            background-image: url('assets/images/macos-wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #ffffff;
             cursor: none;
             height: 100vh;
@@ -39,6 +45,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+
+        :root.dark body {
+            background: #000000;
         }
 
         .boot-container {
