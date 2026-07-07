@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('../../assets/images/macos-boot-light.jpg');
+    background-image: url('../../assets/images/macos-boot-dark.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
