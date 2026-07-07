@@ -29,6 +29,7 @@ test-results/
 # Environment
 .env
 .env.local
+/.claude/
 /.claude/internal-affairs/
 /.claude/worktrees/
 /.worktrees/
