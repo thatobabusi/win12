@@ -92,11 +92,11 @@ html {
 }
 
 body {
-    background-image: url('../assets/images/wallpaper-plant.jpg');
+    background-image: url('../assets/images/macos-boot-dark.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    background-color: #f8f8f8;
+    background-color: #000000;
     background-repeat: no-repeat;
     height: 100%;
     font-size: 15.5px;
