@@ -786,7 +786,7 @@ toggletheme() 切换主题
 		</div>
 	</div>
 	<div id="top-bar">
-		<a class="a top-bar-activities" win12_title="Activities" onclick="openDockWidget('start-menu')">Activities</a>
+		<a class="a top-bar-activities" win12_title="Activities" onclick="toggleOverview()">Activities</a>
 		<div id="top-bar-tray">
 		<div class="a dock theme" win12_title="Toggle Theme" onclick="toggletheme()">
 			<!--切换主题-->
@@ -840,6 +840,7 @@ toggletheme() 切换主题
 
 		</div>
 	</div>
+	<div id="overview-labels"></div>
 	<div id="open-dock">
 		<i class="bi bi-arrow-bar-right"></i>
 	</div>
@@ -3332,6 +3333,7 @@ toggletheme() 切换主题
 	<script defer src="./js/apps/windows12.js"></script>
 	<script defer src="./js/desktop.js"></script>
 	<script defer src="./js/modules/window.js"></script>
+	<script defer src="./js/modules/overview.js"></script>
 	<script defer src="./js/modules/widget.js"></script>
 	<script defer src="./js/modules/tab.js"></script>
 

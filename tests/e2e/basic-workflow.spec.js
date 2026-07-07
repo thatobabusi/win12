@@ -325,3 +325,57 @@ test.describe('Personalization — bundled Ubuntu theme', () => {
     expect(theme1).toBe('#E95420');
   });
 });
+
+test.describe('Activities overview (GNOME window picker)', () => {
+  test.beforeEach(async ({ page }) => {
+    await boot(page);
+    await page.evaluate(() => { document.querySelector('#loginback').style.display = 'none'; });
+  });
+
+  test('shows open windows as scaled thumbnails with labels', async ({ page }) => {
+    await openApp(page, 'notepad');
+    await openApp(page, 'calc');
+    await page.locator('.top-bar-activities').click();
+    await expect(page.locator(':root.overview')).toHaveCount(1);
+    await expect(page.locator('.window.ov-item')).toHaveCount(2);
+    await expect(page.locator('#overview-labels .ov-label')).toHaveCount(2);
+  });
+
+  test('clicking a thumbnail exits the overview and focuses that window', async ({ page }) => {
+    await openApp(page, 'notepad');
+    await openApp(page, 'calc'); // calc now focused
+    await page.locator('.top-bar-activities').click();
+    await page.locator('.window.notepad.ov-item').click();
+    await expect(page.locator(':root.overview')).toHaveCount(0);
+    await expect(page.locator('.window.notepad')).toHaveClass(/foc/);
+    await expect(page.locator('.window.ov-item')).toHaveCount(0);
+  });
+
+  test('Escape exits the overview without changing focus', async ({ page }) => {
+    await openApp(page, 'calc');
+    await page.locator('.top-bar-activities').click();
+    await expect(page.locator(':root.overview')).toHaveCount(1);
+    await page.keyboard.press('Escape');
+    await expect(page.locator(':root.overview')).toHaveCount(0);
+    await expect(page.locator('.window.calc')).toHaveClass(/foc/);
+  });
+
+  test('includes minimized windows and restores them on pick', async ({ page }) => {
+    await openApp(page, 'notepad');
+    await page.evaluate(() => window.minwin('notepad'));
+    await expect(page.locator('.window.notepad')).toHaveClass(/min/);
+    await page.locator('.top-bar-activities').click();
+    await expect(page.locator('.window.notepad.ov-item')).toHaveCount(1);
+    await page.locator('.window.notepad.ov-item').click();
+    await expect(page.locator(':root.overview')).toHaveCount(0);
+    await expect(page.locator('.window.notepad')).not.toHaveClass(/min/);
+    await expect(page.locator('.window.notepad')).toHaveClass(/foc/);
+  });
+
+  test('with no windows open it shows the empty hint and exits on click', async ({ page }) => {
+    await page.locator('.top-bar-activities').click();
+    await expect(page.locator('#overview-labels .ov-empty')).toBeVisible();
+    await page.mouse.click(700, 400);
+    await expect(page.locator(':root.overview')).toHaveCount(0);
+  });
+});

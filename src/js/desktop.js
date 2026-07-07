@@ -2583,6 +2583,11 @@ function moveTaskbarPin(name, direction) {
 }
 
 function openapp(name) {
+    // Launching from the dock while the Activities overview is up: leave the
+    // overview first so the new/focused window isn't stuck mid-transform.
+    if (typeof exitOverview === 'function' && window.win12 && window.win12.overview && window.win12.overview.isActive()) {
+        exitOverview();
+    }
     if (taskmgrTasks.findIndex(elt => elt.link == name) > -1 && apps.taskmgr.tasks.findIndex(elt => elt.link == name) == -1) {
         apps.taskmgr.tasks.splice(apps.taskmgr.tasks.length, 0, taskmgrTasks.find(elt => elt.link == name));
     }

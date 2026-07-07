@@ -643,6 +643,84 @@ list>span.focs.cl {
     color: var(--theme-1);
 }
 
+/* ---- Activities overview (GNOME window picker) ----
+   Windows are transformed IN PLACE into a grid. Placement flows through
+   --ov-top/--ov-left/--ov-scale custom properties set by overview.js: a
+   plain inline style can't beat .window.min / .window.max (both position
+   with !important), but this higher-specificity !important rule can. */
+:root.overview .window.ov-item {
+    /* display:flex resurrects minimized windows (they lose .show-begin and
+       collapse to display:none) so they appear in the picker too. */
+    display: flex !important;
+    top: var(--ov-top) !important;
+    left: var(--ov-left) !important;
+    transform: scale(var(--ov-scale)) !important;
+    transform-origin: top left !important;
+    opacity: 1 !important;
+    border-radius: 12px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* one transition rule for both directions; beats .window.notrans */
+:root.overview .window,
+:root.ov-closing .window {
+    transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        top 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        left 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 200ms !important;
+}
+
+/* thumbnails are pick targets, not live UI */
+:root.overview .window.ov-item * {
+    pointer-events: none;
+}
+
+:root.overview .window.ov-item:hover {
+    outline: 3px solid var(--theme-1);
+    outline-offset: 3px;
+}
+
+:root.overview #desktop {
+    opacity: 0.35;
+    transition: opacity 260ms;
+}
+
+#overview-labels {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+}
+
+#overview-labels.show {
+    display: block;
+}
+
+#overview-labels .ov-label {
+    position: absolute;
+    pointer-events: auto;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    text-shadow: 0 1px 3px #000000c0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 2px 6px;
+}
+
+#overview-labels .ov-empty {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    text-align: center;
+    color: #ffffffd0;
+    font-size: 20px;
+    text-shadow: 0 1px 4px #000000c0;
+}
+
 .dock.control:hover,
 .dock.theme:hover,
 .dock.date:hover {
