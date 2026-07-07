@@ -1902,15 +1902,17 @@ input-before {
 }
 
 #desktop>div {
-    width: 85px;
-    height: 84px;
+    width: 90px;
+    height: 100px;
     text-overflow: ellipsis;
-    border-radius: 7px;
+    border-radius: 12px;
     text-align: center;
-    margin: 8px 10px 2px 10px;
-    padding: 0 3px 3px 3px;
+    margin: 12px 16px 8px 16px;
+    padding: 6px 4px 4px 4px;
     z-index: 3;
-    transition: 80ms;
+    transition: 150ms;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 
@@ -1920,16 +1922,20 @@ input-before {
 }
 
 #desktop>div:hover {
-    background-color: var(--hover);
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 #desktop>div:active {
-    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.15);
+    scale: 0.95;
 }
 
 #desktop>div>img {
-    width: 65px;
-    height: 65px;
+    width: 64px;
+    height: 64px;
 }
 
 #desktop>div.b>img {
@@ -1940,18 +1946,18 @@ input-before {
 
 #desktop>div>p {
     line-height: 15px;
-    font-size: 13px;
-    color: #fff;
-    text-shadow: 2px 2px 4px var(--shadow), 0 0 3px #000;
-    margin-top: -6px;
+    font-size: 12px;
+    color: #000;
+    text-shadow: none;
+    margin-top: 4px;
+    font-weight: 500;
 }
 
 #desktop>.selection {
     position: fixed;
-    border: 2px solid var(--href);
-    /* border-image: linear-gradient(120deg, var(--theme-1), var(--theme-2)) 4; */
-    border-radius: 5px;
-    background-color: var(--hover-half);
+    border: 2px solid #007AFF;
+    border-radius: 8px;
+    background-color: rgba(0, 122, 255, 0.1);
     display: none;
 }
 
@@ -2417,14 +2423,14 @@ input-before {
     height: 80%;
     width: 70%;
     transform: scale(0.7);
-    background-color: var(--unfoc);
-    border-radius: 10px;
-    border: 1.5px solid #6f6f6f30;
+    background-color: rgba(245, 245, 247, 0.6);
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     display: none;
     opacity: 0;
     transition: cubic-bezier(0.1, 0.9, 0.2, 1) 200ms;
     overflow: hidden;
-    box-shadow: 2px 2px 5px var(--shadow);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     z-index: 90;
 }
 
@@ -2442,11 +2448,11 @@ input-before {
 }
 
 .window.foc {
-    background: var(--bg70);
-    backdrop-filter: saturate(4) contrast(0.8) blur(60px);
+    background: rgba(245, 245, 247, 0.8);
+    backdrop-filter: blur(20px) saturate(1.5) brightness(1.05);
     filter: none;
-    -webkit-backdrop-filter: saturate(5) contrast(0.8) blur(60px);
-    box-shadow: 3px 3px 20px 3px var(--shadow);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5) brightness(1.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), inset 1px 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 :root.mica .window.foc {
